@@ -12,8 +12,8 @@ const Head = () => {
             <i className='fa fa-envelope'></i>
             <label> support@ui-lib.com</label>
           </div>
-          <div className='right row1 RText'>
-            <label>Đăng nhập</label>
+          <div className='right row1 RText dangky'>
+           <Link to={'/dangnhap'}>Đăng nhập</Link>
            <Link to={'/dangky'}>Đăng ký</Link>
           </div>
         </div>

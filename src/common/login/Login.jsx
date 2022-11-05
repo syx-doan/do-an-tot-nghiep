@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import './register.scss';
-import { useNavigate } from 'react-router-dom';
-import { isEmpty, isEmail} from 'validator';
-import Axios from 'axios';
+import './login.scss';
 
-function Register() {
-    const [fullname, setFullname] = useState('');
-    const [password, setPassword] = useState('');
-    const [confPassWord, setConfPassWord] = useState('');
+import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { isEmpty } from 'validator';
+
+function Login() {
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
     const navigate = useNavigate();
 
@@ -16,64 +15,43 @@ function Register() {
         const value = e.target.value;
         setEmail(value);
     };
-    const onChangeFullName = (e) => {
-        const value = e.target.value;
-        setFullname(value);
-    };
     const onChangePassWord = (e) => {
         const value = e.target.value;
         setPassword(value);
     };
-    const onChangeConfPassWord = (e) => {
-        setConfPassWord(e.target.value);
-        // if( password !== confPassWord){
-        //     setValidateMsg(validateMsg.confPassWord)
-        // }
-    };
+
     const validateAll = () => {
         const msg = {};
         if (isEmpty(email)) {
-            msg.email = 'Vui lòng nhập  email ';
-        } else if (!isEmail(email)) {
-            msg.email = 'Định dạng email chưa đúng';
+            msg.email = 'Vui lòng nhập email đăng nhập';
         }
-
         if (isEmpty(password)) {
-            msg.password = 'Vui lòng nhập  mật khẩu';
-        }
-        if (password !== confPassWord) {
-            msg.confPassWord = 'Mật khẩu không giống nhau';
-        }
-
-        if (isEmpty(fullname)) {
-            msg.fullname = 'Vui lòng nhập tên ';
+            msg.password = 'Vui lòng nhập số mật khẩu';
         }
         setValidateMsg(msg);
         if (Object.keys(msg).length > 0) return false;
         return true;
     };
 
-    const handleSubmitRegister = (e) => {
+    const handleSubmitLogin = (e) => {
         e.preventDefault();
         const isValidate = validateAll();
-
         if (!isValidate) return;
 
-        try {
-            Axios.post('http://localhost:4000/api/insert', {
-                fullname,
-                password,
-                email,
-            });
-            navigate('/dangnhap');
-        } catch (error) {
-            alert('error');
-        }
-        alert('Thêm thành công');
-        setFullname('');
-        setEmail('');
-        setPassword('');
-        setConfPassWord('');
+
+
+        navigate('/');
+        // Axios.post('http://localhost:4000/api/login', {
+        //     email,
+        //     password,
+        // }).then((response) => {
+        //     if (response.data.message) {
+        //         alert(response.data.message);
+        //     } else {
+        //         alert('Xin chào : ' + response.data[0].fullname);
+        //         navigate('/');
+        //     }
+        // });
     };
     return (
         <div>
@@ -89,52 +67,28 @@ function Register() {
                                     hiện nay
                                 </p>
                                 <img
-                                    src="	https://img.lovepik.com/photo/45010/2350.jpg_wh860.jpg"
+                                    src="https://img.lovepik.com/photo/45009/7683.jpg_wh300.jpg"
                                     alt=""
                                 />
                             </div>
                         </div>
                         <div className="col-lg-5">
                             <div className="form-box">
-                                <h3 className="text-center mb-5 title">Đăng ký ngay</h3>
+                                <h3 className="text-center mb-5 title">Đăng nhập</h3>
                                 <form action="" className="form-register">
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">
                                             <div className="form-label col">
                                                 <label htmlFor="" className="">
-                                                    Họ tên
+                                                    Email Đăng Nhập
                                                 </label>
                                             </div>
                                             <div className="form-input col">
                                                 <div className="input-content">
                                                     <input
-                                                        onChange={onChangeFullName}
+                                                    onChange={onChangeEmail}
                                                         type="text"
-                                                        placeholder="Nhập họ và tên"
-                                                        className="input-item"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="d-flex mt-2">
-                                                <div className="validateMsg">
-                                                    {validateMsg.fullname}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-item">
-                                        <div className="row flex-column flex-wrap">
-                                            <div className="form-label col">
-                                                <label htmlFor="" className="">
-                                                    Nhập email
-                                                </label>
-                                            </div>
-                                            <div className="form-input col">
-                                                <div className="input-content">
-                                                    <input
-                                                        onChange={onChangeEmail}
-                                                        type="email"
-                                                        placeholder="Nhập email của bạn"
+                                                        placeholder="Nhập email "
                                                         className="input-item"
                                                     />
                                                 </div>
@@ -146,7 +100,6 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">
                                             <div className="form-label col">
@@ -157,7 +110,7 @@ function Register() {
                                             <div className="form-input col">
                                                 <div className="input-content">
                                                     <input
-                                                        onChange={onChangePassWord}
+                                                    onChange={onChangePassWord}
                                                         type="password"
                                                         placeholder="Nhập mật khẩu"
                                                         className="input-item"
@@ -171,44 +124,24 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="form-item">
-                                        <div className="row flex-column flex-wrap">
-                                            <div className="form-label col">
-                                                <label htmlFor="" className="">
-                                                    Nhập lại mật khẩu
-                                                </label>
-                                            </div>
-                                            <div className="form-input col">
-                                                <div className="input-content">
-                                                    <input
-                                                        onChange={onChangeConfPassWord}
-                                                        type="password"
-                                                        placeholder="Nhập lại mật khẩu"
-                                                        className="input-item"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="d-flex mt-2">
-                                                <div className="validateMsg">
-                                                    {validateMsg.confPassWord}
-                                                </div>
-                                            </div>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <div className="radio">
+                                            <label htmlFor="" className="radio-wrapper checkbox">
+                                                <input type="checkbox"  />
+                                                <span className="checkbox-name">Nhớ mật khẩu</span>
+                                            </label>
                                         </div>
+                                        <a href="#/">Quên mật khẩu?</a>
                                     </div>
 
                                     <div className="mt-4">
-                                        <button
-                                            onClick={handleSubmitRegister}
-                                            className="btn-register"
-                                        >
-                                            <span>Đăng ký</span>
-                                        </button>
+                                        <button onClick={handleSubmitLogin} className="btn-register">Đăng Nhập</button>
                                     </div>
+
                                     <div className="text-center mt-4 text-register">
-                                        <strong>Đã có tài khoản? </strong>
-                                        <a href="/dangnhap">Đăng nhập</a>
+                                        <a href="/dangki">Bạn chưa có tài khoản? </a>
                                     </div>
+
                                     <div className="text-center mt-5">
                                         <div className="description-register">
                                             Bằng việc chọn đăng ký, bạn đã đồng ý với các
@@ -226,4 +159,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Login;
