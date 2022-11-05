@@ -10,6 +10,7 @@ import Sdata from '~/components/shops/Sdata';
 
 function App() {
     /*
+    he he syx doan deep try
   step1 :  const { productItems } = Data 
   lai pass garne using props
   

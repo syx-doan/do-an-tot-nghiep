@@ -1,6 +1,6 @@
 {
-  "name": "bonik-shop",
-  "version": "0.1.0",
+  "name": "do-an-toto-nghiep",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
