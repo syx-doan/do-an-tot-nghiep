@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Data from './components/Data';
@@ -85,6 +85,7 @@ import Login from './common/login/Login';
                
                 <Header CartItem={CartItem} />
                 <Routes>
+                    <Route />
                 <Route path='dangky' element={<Register/>}/>
                 <Route path='dangnhap' element={<Login/>}/>
                     <Route

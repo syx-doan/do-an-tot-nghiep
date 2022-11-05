@@ -1,5 +1,5 @@
 import React from "react"
-import "./Home.css"
+import "./mainPage.css"
 import SliderHome from "./Slider"
 
 const Home = () => {

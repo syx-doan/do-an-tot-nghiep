@@ -10,9 +10,9 @@
 
 .cart-items .cart-total {
   width: 30%;
-  margin-top: 30px;
+  
   margin-left: 30px;
-  height: 130px;
+ 
 }
 .cart-list {
   background: white;
@@ -88,4 +88,25 @@
   font-size: 18px;
   margin-top: 30px;
   height: 130px;
+}
+.btn-success{
+  background: linear-gradient(
+    to right top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+) !important;
+}
+
+.btn-success:hover{
+  opacity: 0.8;
 }
