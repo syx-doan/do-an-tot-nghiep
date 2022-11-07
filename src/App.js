@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Data from './components/Data';
@@ -9,6 +9,7 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
+import Product from './components/Product/Product';
 
 function App() {
     /*
@@ -82,12 +83,11 @@ import Login from './common/login/Login';
     return (
         <>
             <Router>
-               
                 <Header CartItem={CartItem} />
                 <Routes>
                     <Route />
-                <Route path='dangky' element={<Register/>}/>
-                <Route path='dangnhap' element={<Login/>}/>
+                    <Route path="dangky" element={<Register />} />
+                    <Route path="dangnhap" element={<Login />} />
                     <Route
                         path="/"
                         exact
@@ -99,7 +99,7 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-                  <Route/>
+                    <Route />
                     <Route
                         path="/cart"
                         exact
@@ -111,6 +111,7 @@ import Login from './common/login/Login';
                             />
                         }
                     />
+                    <Route path="san-pham" element={<Product />} exact />
                 </Routes>
                 <Footer />
             </Router>
