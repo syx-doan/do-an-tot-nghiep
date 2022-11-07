@@ -1,7 +1,7 @@
 const Ttdata = [
   {
     cover: "./images/discount/discount-1.png",
-    name: "BenuX 2022",
+    name: "Nghi vấn iPhone 14 Pro có thể truyền điện khi đang sạc pin",
     price: "$250",
   },
   {
