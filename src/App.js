@@ -81,6 +81,26 @@ import Login from './common/login/Login';
         }
     };
 
+    // Stpe: 7
+    const deleteQty = (product) => {
+        // const productExit = CartItem.find((item) => item.id === product.id);
+
+        const index = CartItem.findIndex((x) => x.id === product.id);
+        const newCartItem = [...CartItem];
+        newCartItem.splice(index, 1);
+        setCartItem(newCartItem);
+
+        // if (productExit.qty === 1) {
+        //     setCartItem(CartItem.filter((item) => item.id !== product.id));
+        // } else {
+        //     setCartItem(
+        //         CartItem.map((item) =>
+        //             item.id === product.id ? { newCartItem } : item,
+        //         ),
+        //     );
+        // }
+    };
+
     return (
         <>
             <Router>
@@ -89,7 +109,10 @@ import Login from './common/login/Login';
                     <Route />
                     <Route path="dangky" element={<Register />} />
                     <Route path="dangnhap" element={<Login />} />
-                    <Route path="sảnphẩm" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
+                    <Route
+                        path="sảnphẩm"
+                        element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                    />
                     {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                     <Route
                         path="/"
@@ -111,6 +134,7 @@ import Login from './common/login/Login';
                                 CartItem={CartItem}
                                 addToCart={addToCart}
                                 decreaseQty={decreaseQty}
+                                deleteQty={deleteQty}
                             />
                         }
                     />

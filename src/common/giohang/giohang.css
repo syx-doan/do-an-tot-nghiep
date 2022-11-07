@@ -44,10 +44,17 @@
   font-weight: 500;
 }
 .removeCart {
+  display: flex;
   background: none;
   font-size: 25px;
   text-align: right;
   margin-right: 10px;
+}
+
+.cart-icon {
+    color: #e94560;
+    width: 35px;
+    height: 35px;
 }
 .cartControl {
   margin-top: 50px;
