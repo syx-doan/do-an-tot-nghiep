@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Data from './components/Data';
@@ -9,7 +9,8 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-import Shop from './components/shops/Shop';
+// import Shop from './components/shops/Shop';
+import Product from './components/Product/Product';
 
 function App() {
     /*
@@ -88,6 +89,8 @@ import Login from './common/login/Login';
                     <Route />
                     <Route path="dangky" element={<Register />} />
                     <Route path="dangnhap" element={<Login />} />
+                    <Route path="sảnphẩm" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
+                    {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                     <Route
                         path="/"
                         exact
@@ -99,7 +102,6 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-                    <Route path="sảnphẩm" element={<Shop shopItems={shopItems} addToCart={addToCart} />} />
 
                     <Route
                         path="/cart"
