@@ -9,6 +9,7 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
+import Shop from './components/shops/Shop';
 
 function App() {
     /*
@@ -82,12 +83,11 @@ import Login from './common/login/Login';
     return (
         <>
             <Router>
-               
                 <Header CartItem={CartItem} />
                 <Routes>
                     <Route />
-                <Route path='dangky' element={<Register/>}/>
-                <Route path='dangnhap' element={<Login/>}/>
+                    <Route path="dangky" element={<Register />} />
+                    <Route path="dangnhap" element={<Login />} />
                     <Route
                         path="/"
                         exact
@@ -99,7 +99,8 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-                  
+                    <Route path="sảnphẩm" element={<Shop shopItems={shopItems} addToCart={addToCart} />} />
+
                     <Route
                         path="/cart"
                         exact
