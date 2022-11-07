@@ -7,9 +7,20 @@
 .head i {
   margin-right: 10px;
 }
-.head label {
+.head label  {
   margin-right: 30px;
   font-size: 13px;
+}
+.dangky > a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 30px;
+  font-size: 13px;
+}
+
+.navlink a{
+  text-decoration: none;
+  color: black;
 }
 /*------head-----------*/
 /*------search-----------*/

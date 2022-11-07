@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
+import Register from './common/register/Register';
+import Login from './common/login/Login';
 
 function App() {
     /*
@@ -15,7 +17,9 @@ function App() {
   
   Step 2 : item lai cart ma halne using useState
   ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- 
+ import Register from './common/register/Register';
+import Login from './common/login/Login';
+
   Step 3 :  chai flashCard ma xa button ma
 
   Step 4 :  addToCart lai chai pass garne using props in pages and cart components
@@ -78,8 +82,12 @@ function App() {
     return (
         <>
             <Router>
+               
                 <Header CartItem={CartItem} />
                 <Routes>
+                    <Route />
+                <Route path='dangky' element={<Register/>}/>
+                <Route path='dangnhap' element={<Login/>}/>
                     <Route
                         path="/"
                         exact
@@ -90,7 +98,8 @@ function App() {
                                 shopItems={shopItems}
                             />
                         }
-                    ></Route>
+                    />
+                  
                     <Route
                         path="/cart"
                         exact
@@ -101,7 +110,7 @@ function App() {
                                 decreaseQty={decreaseQty}
                             />
                         }
-                    ></Route>
+                    />
                 </Routes>
                 <Footer />
             </Router>
