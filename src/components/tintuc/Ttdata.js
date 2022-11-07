@@ -1,4 +1,4 @@
-const Ddata = [
+const Ttdata = [
   {
     cover: "./images/discount/discount-1.png",
     name: "BenuX 2022",
@@ -45,4 +45,4 @@ const Ddata = [
     price: "$80",
   },
 ]
-export default Ddata
+export default Ttdata

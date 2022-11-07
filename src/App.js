@@ -9,7 +9,6 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-// import Shop from './components/shops/Shop';
 import Product from './components/Product/Product';
 
 function App() {
@@ -109,10 +108,7 @@ import Login from './common/login/Login';
                     <Route />
                     <Route path="dangky" element={<Register />} />
                     <Route path="dangnhap" element={<Login />} />
-                    <Route
-                        path="sảnphẩm"
-                        element={<Product addToCart={addToCart} shopItems={shopItems} />}
-                    />
+                    <Route path="sanpham" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
                     {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                     <Route
                         path="/"
@@ -125,7 +121,6 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-
                     <Route
                         path="/cart"
                         exact
