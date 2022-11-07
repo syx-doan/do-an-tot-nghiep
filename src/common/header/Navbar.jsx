@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Link to='/'>Trang chủ</Link>
               </li>
               <li>
-                <Link to={'san-pham'}>Sản phẩm</Link>
+                <Link to={''}>Sản phẩm</Link>
               </li>
               <li>
                 <Link to='/giớithiệu'>Giới thiệu</Link>

@@ -36,7 +36,16 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                                     <div className="cart-items-function">
                                         <div className="removeCart">
                                             <button className="removeCart">
-                                                <i className="fa-solid fa-xmark"></i>
+                                                <i
+                                                    className="fa fa-plus"
+                                                    onClick={() => addToCart(item)}
+                                                ></i>
+                                            </button>
+                                            <button className="removeCart">
+                                                <i
+                                                    className="fa fa-minus"
+                                                    onClick={() => decreaseQty(item)}
+                                                ></i>
                                             </button>
                                         </div>
                                         {/* stpe: 5 
@@ -57,7 +66,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                         </div>
                         <div className="d-flex justify-content-center">
                             <button type="button" class=" mt-3 btn btn-success">
-                              Thanh Toán
+                                Thanh Toán
                             </button>
                         </div>
                     </div>
