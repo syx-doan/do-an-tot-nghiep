@@ -2,6 +2,7 @@
 import React from "react"
 import Cart from "./Cart"
 import "./newarriavals.css"
+import iconNew from "../../assets/images/icons/new.png"
 
 const NewArrivals = () => {
   return (
@@ -10,7 +11,7 @@ const NewArrivals = () => {
         <div className='container'>
           <div className='heading d_flex'>
             <div className='heading-left row1  f_flex'>
-              <img src='https://img.icons8.com/glyph-neue/64/26e07f/new.png' />
+              <img src={iconNew} />
               <h2>New Arrivals </h2>
             </div>
             <div className='heading-right row1 '>

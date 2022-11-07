@@ -9,10 +9,6 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-<<<<<<< HEAD
-=======
-// import Shop from './components/shops/Shop';
->>>>>>> a4413052a67be746cccbeb530499144b55bfcdec
 import Product from './components/Product/Product';
 
 function App() {
@@ -92,11 +88,8 @@ import Login from './common/login/Login';
                     <Route />
                     <Route path="dangky" element={<Register />} />
                     <Route path="dangnhap" element={<Login />} />
-<<<<<<< HEAD
-=======
-                    <Route path="sảnphẩm" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
+                    <Route path="sanpham" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
                     {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
->>>>>>> a4413052a67be746cccbeb530499144b55bfcdec
                     <Route
                         path="/"
                         exact
@@ -108,11 +101,6 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-<<<<<<< HEAD
-                    <Route />
-=======
-
->>>>>>> a4413052a67be746cccbeb530499144b55bfcdec
                     <Route
                         path="/cart"
                         exact
@@ -124,7 +112,6 @@ import Login from './common/login/Login';
                             />
                         }
                     />
-                    <Route path="san-pham" element={<Product />} exact />
                 </Routes>
                 <Footer />
             </Router>
