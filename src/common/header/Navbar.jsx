@@ -18,10 +18,10 @@ const Navbar = () => {
                 <Link to={'/sanpham'}>Sản phẩm</Link>
               </li>
               <li>
-                <Link to='/giớithiệu'>Giới thiệu</Link>
+                <Link to={'/gioithieu'}>Giới thiệu</Link>
               </li>
               <li>
-                <Link to='/liênhệ'>Liên hệ</Link>
+                <Link to={'/lienhe'}>Liên hệ</Link>
               </li>
             </ul>
 

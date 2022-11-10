@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='container grid2'>
           <div className='box'>
             <h1>CLICKME</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at amet.</p>
+            <p>Chúng tôi tin rằng chúng tôi là xuất sắc. Không phải vì chúng tôi nói nó, mà bởi vì chúng tôi làm việc chăm chỉ. Chúng tôi tận tâm, tận tụy và tập trung.</p>
             <div className='icon d_flex'>
               <div className='img d_flex'>
                 <i class='fa-brands fa-google-play'></i>
@@ -22,31 +22,29 @@ const Footer = () => {
           </div>
 
           <div className='box'>
-            <h2>About Us</h2>
-            <ul>
-              <li>Careers</li>
-              <li>Our Stores</li>
-              <li>Our Cares</li>
-              <li>Terms & Conditions</li>
-              <li>Privacy Policy</li>
+            <h3>Sản phẩm</h3>
+            <ul className="paddingleft">
+              <li>Điện thoại</li>
+              <li>Máy tính</li>
+              <li>Laptop</li>
+              <li>Tai nghe</li>
             </ul>
           </div>
           <div className='box'>
-            <h2>Customer Care</h2>
+            <h3>Chăm sóc khách hàng</h3>
             <ul>
-              <li>Help Center </li>
-              <li>How to Buy </li>
-              <li>Track Your Order </li>
-              <li>Corporate & Bulk Purchasing </li>
-              <li>Returns & Refunds </li>
+              <li>Mua thế nào </li>
+              <li>Theo dõi đơn hàng </li>
+              <li>Công ty & Mua hàng loạt </li>
+              <li>Trả lại và hoàn lại tiền</li>
             </ul>
           </div>
           <div className='box'>
-            <h2>Contact Us</h2>
+            <h3>Liên hệ</h3>
             <ul>
-              <li>70 Washington Square South, New York, NY 10012, United States </li>
-              <li>Email: uilib.help@gmail.com</li>
-              <li>Phone: +1 1123 456 780</li>
+              <li>137 Nguyễn Thị Thập, Liên Chiểu, Đà Nẵng </li>
+              <li>Email: abc.help@gmail.com</li>
+              <li>Phone: +0 123 456 780</li>
             </ul>
           </div>
         </div>

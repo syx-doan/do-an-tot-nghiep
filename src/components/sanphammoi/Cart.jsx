@@ -11,8 +11,8 @@ const Cart = () => {
               <div className='img'>
                 <img src={val.cover} alt='' />
               </div>
-              <h4>{val.name}</h4>
-              <span>${val.price}</span>
+              <h5>{val.name}</h5>
+              <span>{val.price}đ</span>
             </div>
           )
         })}
