@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
-import Pages from './pages/Pages';
+
 import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
@@ -10,6 +10,8 @@ import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
 import Product from './components/Product/Product';
+import { publicRouter } from './router';
+import DefaultLayout from './pages/DefaultLayout';
 
 function App() {
     /*
@@ -27,7 +29,6 @@ import Login from './common/login/Login';
   */
 
     //Step 1 :
-    const { productItems } = Data;
     const { shopItems } = Sdata;
 
     //Step 2 :
@@ -102,40 +103,45 @@ import Login from './common/login/Login';
 
     return (
         <>
-            <Router>
-                <Header CartItem={CartItem} />
-                <Routes>
-                    <Route />
-                    <Route path="dangky" element={<Register />} />
-                    <Route path="dangnhap" element={<Login />} />
-                    <Route path="sanpham" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
-                  
-                    <Route
-                        path="/"
-                        exact
-                        element={
-                            <Pages
-                                productItems={productItems}
-                                addToCart={addToCart}
-                                shopItems={shopItems}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/cart"
-                        exact
-                        element={
-                            <Cart
-                                CartItem={CartItem}
-                                addToCart={addToCart}
-                                decreaseQty={decreaseQty}
-                                deleteQty={deleteQty}
-                            />
-                        }
-                    />
-                </Routes>
-                <Footer />
-            </Router>
+            {/* <Header CartItem={CartItem} /> */}
+            <Routes>
+                {/* <Route />
+                <Route path="dangky" element={<Register />} />
+                <Route path="dangnhap" element={<Login />} />
+                <Route
+                    path="sanpham"
+                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                />
+
+                <Route
+                    path="/cart"
+                    exact
+                    element={
+                        <Cart
+                            CartItem={CartItem}
+                            addToCart={addToCart}
+                            decreaseQty={decreaseQty}
+                            deleteQty={deleteQty}
+                        />
+                    }
+                /> */}
+                {publicRouter.map((route, index) => {
+                    const Layout = route.layout || DefaultLayout;
+                    const Page = route.component;
+                    return (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={
+                                <Layout>
+                                    <Page />
+                                </Layout>
+                            }
+                        />
+                    );
+                })}
+            </Routes>
+            {/* <Footer /> */}
         </>
     );
 }

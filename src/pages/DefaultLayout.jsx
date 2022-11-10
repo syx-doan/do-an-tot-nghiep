@@ -8,7 +8,7 @@ import Shop from "../components/shops/Shop"
 import Annocument from "../components/annocument/Annocument"
 import Wrapper from "../components/wrapper/Wrapper"
 
-const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
+const DefaultLayout = ({ productItems, addToCart, CartItem, shopItems,children }) => {
   return (
     <>
       <Home CartItem={CartItem} />
@@ -17,10 +17,11 @@ const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
       <NewArrivals />
       <Discount />
       <Shop shopItems={shopItems} addToCart={addToCart} />
+      <div> {children}</div>
       <Annocument />
       <Wrapper />
     </>
   )
 }
 
-export default Pages
+export default DefaultLayout
