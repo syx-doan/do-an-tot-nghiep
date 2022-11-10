@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosClient from './../../utils/http';
 
-const ShopCart = ({ shopItems, addToCart }) => {
+const ShopCart = ({ addToCart }) => {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const increment = () => {
@@ -28,7 +28,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
                     <div className="box" key={item.id_product}>
                         <div className="product mtop">
                             <div className="img">
-                                <span className="discount">{shopItems.discount}% Off</span>
+                                <span className="discount">{item.discount}% Off</span>
                                 <img src={item.image} alt="" />
                                 <div className="product-like">
                                     <label>{count}</label> <br />
@@ -49,7 +49,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
                                     {/* step : 3  
                      if hami le button ma click garryo bahne 
                     */}
-                                    <button onClick={() => addToCart(shopItems)}>
+                                    <button onClick={() => addToCart(item)}>
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>

@@ -1,4 +1,4 @@
-import DefaultLayout from '~/pages/DefaultLayout';
+import DefaultLayout from '~/pages/Pages';
 import DienThoai from './../pages/dienthoai/DienThoai';
 import TaiPhone from './../pages/taiphone/TaiPhone';;
 

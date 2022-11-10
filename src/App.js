@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
-
+import Pages from './pages/Pages';
 import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
@@ -10,8 +10,8 @@ import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
 import Product from './components/Product/Product';
-import { publicRouter } from './router';
-import DefaultLayout from './pages/DefaultLayout';
+// import GioiThieu from './components/gioiThieu/GioiThieu';
+// import LienHe from './components/lienhe/LienHe';
 
 function App() {
     /*
@@ -22,13 +22,12 @@ function App() {
   ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
  import Register from './common/register/Register';
 import Login from './common/login/Login';
-
   Step 3 :  chai flashCard ma xa button ma
-
   Step 4 :  addToCart lai chai pass garne using props in pages and cart components
   */
 
     //Step 1 :
+    const { productItems } = Data;
     const { shopItems } = Sdata;
 
     //Step 2 :
@@ -103,16 +102,29 @@ import Login from './common/login/Login';
 
     return (
         <>
-            {/* <Header CartItem={CartItem} /> */}
+            <Header CartItem={CartItem} />
             <Routes>
-                {/* <Route />
+                <Route />
                 <Route path="dangky" element={<Register />} />
                 <Route path="dangnhap" element={<Login />} />
                 <Route
                     path="sanpham"
                     element={<Product addToCart={addToCart} shopItems={shopItems} />}
                 />
-
+                {/* <Route path="gioithieu" element={<GioiThieu />} />
+                <Route path="lienhe" element={<LienHe />} /> */}
+                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                <Route
+                    path="/"
+                    exact
+                    element={
+                        <Pages
+                            productItems={productItems}
+                            addToCart={addToCart}
+                            shopItems={shopItems}
+                        />
+                    }
+                />
                 <Route
                     path="/cart"
                     exact
@@ -124,24 +136,9 @@ import Login from './common/login/Login';
                             deleteQty={deleteQty}
                         />
                     }
-                /> */}
-                {publicRouter.map((route, index) => {
-                    const Layout = route.layout || DefaultLayout;
-                    const Page = route.component;
-                    return (
-                        <Route
-                            key={index}
-                            path={route.path}
-                            element={
-                                <Layout>
-                                    <Page />
-                                </Layout>
-                            }
-                        />
-                    );
-                })}
+                />
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
