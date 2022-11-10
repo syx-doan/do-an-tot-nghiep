@@ -1,7 +1,7 @@
 import React from 'react';
 import './giohang.css';
 
-const Cart = ({ CartItem, addToCart, decreaseQty }) => {
+const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     // Stpe: 7   calucate total of items
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
 
@@ -35,16 +35,22 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                                     </div>
                                     <div className="cart-items-function">
                                         <div className="removeCart">
-                                            <button className="removeCart">
+                                            <button className="removeCart cart-icon">
                                                 <i
-                                                    className="fa fa-plus"
+                                                    className="fa fa-solid fa-plus"
                                                     onClick={() => addToCart(item)}
                                                 ></i>
                                             </button>
-                                            <button className="removeCart">
+                                            <button className="removeCart cart-icon">
                                                 <i
-                                                    className="fa fa-minus"
+                                                    className="fa fa-solid fa-minus"
                                                     onClick={() => decreaseQty(item)}
+                                                ></i>
+                                            </button>
+                                            <button className="removeCart cart-icon">
+                                                <i
+                                                    className="fa fa-duotone fa-circle-xmark"
+                                                    onClick={() => deleteQty(item)}
                                                 ></i>
                                             </button>
                                         </div>
