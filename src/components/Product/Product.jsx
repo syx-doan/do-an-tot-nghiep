@@ -1,28 +1,24 @@
-import React from 'react'
+import React from 'react';
 import Danhmuc from './Danhmuc';
 import ProductCart from './ProductCart';
-import "./product.css"
+import './product.css';
+import Heading from '~/common/heading/Heading';
 
 const Product = ({ addToCart, shopItems }) => {
     return (
-      <>
-        <section className='shop background'>
-          <div className='container d_flex'>
-            <Danhmuc />
-  
-            <div className='contentWidth'>
-              <div className='heading d_flex'>
-                <div className='heading-left row1  f_flex'>
-                  <h2>Sản phẩm</h2>
+        <>
+            <section className="shop background">
+                <div className="container d_flex">
+                    <Danhmuc />
+                    <div className="contentWidth">
+                        <Heading>Sản Phẩm</Heading>
+                        <div className="product-content  gridsp">
+                            <ProductCart addToCart={addToCart} shopItems={shopItems} />
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div className='product-content  gridsp'>
-                <ProductCart addToCart={addToCart} shopItems={shopItems} />
-              </div>
-            </div>
-          </div>
-        </section>
-      </>
-    )
-  }
+            </section>
+        </>
+    );
+};
 export default Product;

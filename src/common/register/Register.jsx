@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './register.scss';
 import { useNavigate } from 'react-router-dom';
-import { isEmpty, isEmail} from 'validator';
-import Axios from 'axios';
+import { isEmpty, isEmail } from 'validator';
+import axiosClient from './../../utils/http';
 
 function Register() {
     const [fullname, setFullname] = useState('');
@@ -60,12 +60,13 @@ function Register() {
         if (!isValidate) return;
 
         try {
-            Axios.post('http://localhost:4000/api/insert', {
+            axiosClient.post('insert', {
                 fullname,
                 password,
                 email,
             });
             navigate('/dangnhap');
+            console.log('aloalo')
         } catch (error) {
             alert('error');
         }

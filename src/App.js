@@ -89,7 +89,7 @@ import Login from './common/login/Login';
                     <Route path="dangky" element={<Register />} />
                     <Route path="dangnhap" element={<Login />} />
                     <Route path="sanpham" element={<Product addToCart={addToCart} shopItems={shopItems} />} />
-                    {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                  
                     <Route
                         path="/"
                         exact
