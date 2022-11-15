@@ -20,7 +20,7 @@ const Wrapper = () => {
     },
     {
       cover: <i class='fa-solid fa-headset'></i>,
-      title: "Hỗ trợ 24/7 ",
+      title: "Luôn luôn hỗ trợ 24/7 ",
       decs: "Chúng tôi sẽ giải đáp thắc mắc của quý khách 24/7.",
     },
   ]

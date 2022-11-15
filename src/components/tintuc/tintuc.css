@@ -1,18 +1,25 @@
 .tintuc {
+    /* margin-left: -20px; */
+    margin-left: 20px;
     background: #fff;
-    padding: 5px;
+    padding: 10px;
     position: relative;
     border-radius: 8px;
     box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
-    margin: 20px;
-    width: 220px;
+    /* width: 220px; */
     height: 260px;
 }
-.tintuc h6{
+.tintuc h6 {
+    font-style: italic;
     margin-top: 5px;
-    font-size: 0.95em;
+    font-size: 18px;
 }
-.tintuc p{
+.tintuc p {
     font-size: 0.72em;
-   color: grey;
+    color: grey;
+    overflow: hidden;
+    
+    display: inline-block;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
 }
