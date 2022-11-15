@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='box'>
+          <div className='box-footer'>
             <h3>Sản phẩm</h3>
             <ul className="paddingleft">
               <li>Điện thoại</li>
@@ -30,7 +30,7 @@ const Footer = () => {
               <li>Tai nghe</li>
             </ul>
           </div>
-          <div className='box'>
+          <div className='box-footer'>
             <h3>Chăm sóc khách hàng</h3>
             <ul>
               <li>Mua thế nào </li>
@@ -39,7 +39,7 @@ const Footer = () => {
               <li>Trả lại và hoàn lại tiền</li>
             </ul>
           </div>
-          <div className='box'>
+          <div className='box-footer'>
             <h3>Liên hệ</h3>
             <ul>
               <li>137 Nguyễn Thị Thập, Liên Chiểu, Đà Nẵng </li>
