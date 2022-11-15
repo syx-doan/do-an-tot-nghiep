@@ -144,20 +144,8 @@ button {
     box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
     margin: 10px;
 }
-.product h3 {
-    font-weight: 400;
-    font-size: 17px;
-}
-.product .rate i {
-    font-size: 15px;
-    color: #ffcd4e;
-    margin: 5px 5px 5px 0;
-}
-.product .price {
-    display: flex;
-    justify-content: space-between;
-    color: #e94560;
-}
+
+
 .price button {
     background: none;
     color: #e94560;
@@ -175,10 +163,10 @@ button {
 }
 .product-like {
     position: absolute;
-    top: 0;
-    right: 0;
+   top: 1%;
+   right: 10%;
     margin: 10px;
-    opacity: 0;
+    opacity: 1;
     transition: 0.5s;
 }
 .product-like label {

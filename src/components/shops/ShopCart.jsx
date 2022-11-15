@@ -9,50 +9,48 @@ const ShopCart = ({ addToCart }) => {
     };
 
     const fetchPost = async () => {
-      try {
-        const response = await axiosClient('products');
-        setData(response.data);
-        console.log(response);
-      } catch (err) {
-        console.error(err);
-      }
+        try {
+            const response = await axiosClient('products');
+            setData(response.data);
+            console.log(response);
+        } catch (err) {
+            console.error(err);
+        }
     };
     useEffect(() => {
-      fetchPost()
+        fetchPost();
     }, []);
 
     return (
         <>
-            {data.map((item, index) => {
+            {data.map((item) => {
                 return (
-                    <div className="box" key={item.id_product}>
-                        <div className="product mtop">
-                            <div className="img">
-                                <span className="discount">{item.discount}% Off</span>
-                                <img src={item.image} alt="" />
-                                <div className="product-like">
-                                    <label>{count}</label> <br />
-                                    <i className="fa-regular fa-heart" onClick={increment}></i>
-                                </div>
+                    <div className="card" key={item.id_product}>
+                        <span className="discount">{item.discount}% Off</span>
+                        <div className="product-like">
+                            <label>{count}</label> <br />
+                            <i className="fa-regular fa-heart" onClick={increment}></i>
+                        </div>
+                        <img src={item.image} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title product-name">{item.name}</h5>
+                            <div className="rate">
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
                             </div>
-                            <div className="product-details">
-                                <h3>{item.name}</h3>
-                                <div className="rate">
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                                <div className="price">
-                                    <h4>${item.price}.đ </h4>
-                                    {/* step : 3  
-                     if hami le button ma click garryo bahne 
-                    */}
-                                    <button onClick={() => addToCart(item)}>
-                                        <i className="fa fa-plus"></i>
-                                    </button>
-                                </div>
+                            <div className="d-flex justify-content-between mt-2">
+                                <p className="price">Giá tiền: {item.price}.đ</p>
+
+                                <button
+                                    className="btn-add"
+                                    href="!#"
+                                    onClick={() => addToCart(item)}
+                                >
+                                    <i className="fa fa-plus"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

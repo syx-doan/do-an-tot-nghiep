@@ -2,3 +2,12 @@
   background: #f6f9fc;
   padding: 50px 0;
 }
+.flash-deal.slick-list {
+  margin: 0 -7px !important;
+}
+  
+  
+ .flash-deal .slick-slide > div {
+    padding: 0 7px !important;
+  }
+
