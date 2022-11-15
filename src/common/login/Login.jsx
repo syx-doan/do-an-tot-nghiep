@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './login.scss';
 
-import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { isEmpty } from 'validator';
+import axiosClient from './../../utils/http';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -37,21 +37,20 @@ function Login() {
         e.preventDefault();
         const isValidate = validateAll();
         if (!isValidate) return;
-
-
-
-        navigate('/');
-        // Axios.post('http://localhost:4000/api/login', {
-        //     email,
-        //     password,
-        // }).then((response) => {
-        //     if (response.data.message) {
-        //         alert(response.data.message);
-        //     } else {
-        //         alert('Xin chào : ' + response.data[0].fullname);
-        //         navigate('/');
-        //     }
-        // });
+        axiosClient
+            .post('login', {
+                email,
+                password,
+            })
+            .then((response) => {
+                   
+                if (response.data.message) {
+                    alert(response.data.message);
+                } else {
+                    alert('Xin chào : ' + response.data[0].fullname);
+                    navigate('/');
+                }
+            });
     };
     return (
         <div>
@@ -86,7 +85,7 @@ function Login() {
                                             <div className="form-input col">
                                                 <div className="input-content">
                                                     <input
-                                                    onChange={onChangeEmail}
+                                                        onChange={onChangeEmail}
                                                         type="text"
                                                         placeholder="Nhập email "
                                                         className="input-item"
@@ -110,7 +109,7 @@ function Login() {
                                             <div className="form-input col">
                                                 <div className="input-content">
                                                     <input
-                                                    onChange={onChangePassWord}
+                                                        onChange={onChangePassWord}
                                                         type="password"
                                                         placeholder="Nhập mật khẩu"
                                                         className="input-item"
@@ -127,7 +126,7 @@ function Login() {
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="radio">
                                             <label htmlFor="" className="radio-wrapper checkbox">
-                                                <input type="checkbox"  />
+                                                <input type="checkbox" />
                                                 <span className="checkbox-name">Nhớ mật khẩu</span>
                                             </label>
                                         </div>
@@ -135,7 +134,12 @@ function Login() {
                                     </div>
 
                                     <div className="mt-4">
-                                        <button onClick={handleSubmitLogin} className="btn-register">Đăng Nhập</button>
+                                        <button
+                                            onClick={handleSubmitLogin}
+                                            className="btn-register"
+                                        >
+                                            Đăng Nhập
+                                        </button>
                                     </div>
 
                                     <div className="text-center mt-4 text-register">

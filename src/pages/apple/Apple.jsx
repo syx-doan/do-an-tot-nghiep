@@ -1,10 +1,11 @@
 import React from 'react';
-import Danhmuc from './Danhmuc';
-import ProductCart from './ProductCart';
-import './product.css';
-import Heading from '~/common/heading/Heading';
 
-const Product = ({ addToCart, shopItems }) => {
+import Danhmuc from './../../components/Product/Danhmuc';
+
+import ProductCart from './../../components/Product/ProductCart';
+import Heading from './../../common/heading/Heading';
+
+const Apple = ({ addToCart, shopItems }) => {
     return (
         <>
             <section className="shop background">
@@ -21,4 +22,4 @@ const Product = ({ addToCart, shopItems }) => {
         </>
     );
 };
-export default Product;
+export default Apple;

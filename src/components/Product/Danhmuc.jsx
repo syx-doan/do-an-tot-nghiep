@@ -1,10 +1,12 @@
 import React from "react"
+import { Link } from 'react-router-dom';
 
 const Danhmuc = () => {
   const data = [
     {
       cateImg: "./images/category/cat-1.png",
       cateName: "Apple",
+      path:'/apple'
     },
     {
       cateImg: "./images/category/cat-2.png",
@@ -24,7 +26,7 @@ const Danhmuc = () => {
     },
     {
       cateImg: "./images/category/cat-2.png",
-      cateName: "Sony",
+       cateName: "Sony"
     },
   ]
   return (
@@ -35,10 +37,12 @@ const Danhmuc = () => {
         </div>
         {data.map((value, index) => {
           return (
-            <div className='box f_flex' key={index}>
-              <img src={value.cateImg} alt='' />
-              <span>{value.cateName}</span>
-            </div>
+          <Link to={value.path}>
+              <div className='box f_flex' key={index}>
+                <img src={value.cateImg} alt='' />
+                <span>{value.cateName}</span>
+              </div>
+          </Link>
           )
         })}
         <div className='box box2'>
