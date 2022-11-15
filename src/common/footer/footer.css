@@ -5,7 +5,7 @@ footer {
 }
 footer h1 {
   margin-bottom: 30px;
-  color: #e94560;
+  color: #ed1912;
   font-weight: 800;
   font-style: italic;
 }
@@ -33,4 +33,11 @@ footer h2 {
 footer li {
   margin-bottom: 10px;
   opacity: 0.5;
+ 
+}
+.paddingleft{
+  padding-left: -2rem !important;
+}
+.box-footer h3{
+  color: #fff;
 }

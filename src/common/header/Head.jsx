@@ -8,9 +8,9 @@ const Head = () => {
         <div className='container d_flex'>
           <div className='left row1'>
             <i className='fa fa-phone'></i>
-            <label> +88012 3456 7894</label>
+            <label> +123 456 7890</label>
             <i className='fa fa-envelope'></i>
-            <label> support@ui-lib.com</label>
+            <label> abc123@gmail.com</label>
           </div>
           <div className='right row1 RText dangky'>
            <Link to={'/dangnhap'}>Đăng nhập</Link>

@@ -10,9 +10,6 @@ import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
 import Product from './components/Product/Product';
-import Apple from './pages/apple/Apple';
-// import GioiThieu from './components/gioiThieu/GioiThieu';
-// import LienHe from './components/lienhe/LienHe';
 
 function App() {
     /*
@@ -112,8 +109,6 @@ import Login from './common/login/Login';
                     path="sanpham"
                     element={<Product addToCart={addToCart} shopItems={shopItems} />}
                 />
-                {/* <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} /> */}
                 {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                 <Route
                     path="/"
@@ -138,7 +133,6 @@ import Login from './common/login/Login';
                         />
                     }
                 />
-                <Route path="apple" element={<Apple />} />
             </Routes>
             <Footer />
         </>

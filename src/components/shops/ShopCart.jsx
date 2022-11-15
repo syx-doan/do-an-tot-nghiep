@@ -25,7 +25,7 @@ const ShopCart = ({ addToCart }) => {
         <>
             {data.map((item) => {
                 return (
-                    <div className="card" key={item.id_product}>
+                    <div className="card " key={item.id_product}>
                         <span className="discount">{item.discount}% Off</span>
                         <div className="product-like">
                             <label>{count}</label> <br />

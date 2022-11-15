@@ -1,0 +1,18 @@
+.tintuc {
+    background: #fff;
+    padding: 5px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+    margin: 20px;
+    width: 220px;
+    height: 260px;
+}
+.tintuc h6{
+    margin-top: 5px;
+    font-size: 0.95em;
+}
+.tintuc p{
+    font-size: 0.72em;
+   color: grey;
+}

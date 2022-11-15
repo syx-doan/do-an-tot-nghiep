@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react"
 import Cart from "./Cart"
-import "./newarriavals.css"
+import "./sanphammoi.css"
 import iconNew from "../../assets/images/icons/new.png"
 
-const NewArrivals = () => {
+const NewSanPham = () => {
   return (
     <>
       <section className='NewArrivals background'>
@@ -12,7 +12,7 @@ const NewArrivals = () => {
           <div className='heading d_flex'>
             <div className='heading-left row1  f_flex'>
               <img src={iconNew} />
-              <h2>New Arrivals </h2>
+              <h2>Sản phẩm mới</h2>
             </div>
             <div className='heading-right row1 '>
               <span>View all</span>
@@ -27,4 +27,4 @@ const NewArrivals = () => {
   )
 }
 
-export default NewArrivals
+export default NewSanPham

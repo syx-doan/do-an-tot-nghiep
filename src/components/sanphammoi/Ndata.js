@@ -1,12 +1,12 @@
 const Ndata = [
   {
     cover: "./images/arrivals/arrivals1.png",
-    name: "Sunglass",
+    name: "Iphone 14",
     price: "150",
   },
   {
     cover: "./images/arrivals/arrivals2.png",
-    name: "Makeup",
+    name: "Galaxy Z4",
     price: "250",
   },
   {
@@ -16,17 +16,17 @@ const Ndata = [
   },
   {
     cover: "./images/arrivals/arrivals4.png",
-    name: "Lipstick",
+    name: "Xperia 1 III",
     price: "15",
   },
   {
     cover: "./images/arrivals/arrivals5.png",
-    name: "Green Plant",
+    name: "HP 240 G8 i3 1005G1",
     price: "10",
   },
   {
     cover: "./images/arrivals/arrivals6.png",
-    name: "Bonsai tree",
+    name: "iPad Pro M1 11 inch 5G",
     price: "400",
   },
 ]
