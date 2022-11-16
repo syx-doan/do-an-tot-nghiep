@@ -1,6 +1,6 @@
 import React from 'react'
 import Heading from './../../../common/heading/Heading';
-import ProductCart from './../../Product/ProductCart';
+import ProductCart from '../../MainPage/Product/ProductCart';
 
 function Tivi({addToCart,shopItems}) {
   return (
