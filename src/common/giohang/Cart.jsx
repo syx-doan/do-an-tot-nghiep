@@ -3,6 +3,7 @@ import './giohang.css';
 import ThanhToan from './ThanhToan';
 import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     // Stpe: 7   calucate total of items
@@ -10,11 +11,23 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
     // prodcut qty total
+    const success = () =>
+    toast.success('Đặt hàng thành công ', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+    });
     const showModal = () => {
         setIsModalOpen(true);
     };
 
     const handleOk = () => {
+        success()
        navigate('/')
     };
 
@@ -24,6 +37,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
 
     return (
         <section className="cart-items">
+              <ToastContainer />
             <div className="container d_flex">
                 {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 

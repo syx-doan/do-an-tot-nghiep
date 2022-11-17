@@ -4,6 +4,7 @@ import './login.scss';
 import { useNavigate } from 'react-router-dom';
 import { isEmpty } from 'validator';
 import axiosClient from './../../utils/http';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -11,6 +12,28 @@ function Login() {
     const [validateMsg, setValidateMsg] = useState('');
     const navigate = useNavigate();
 
+    const error = () =>
+        toast.error('Thông tin tài khoải hoặc mật khẩu không chính xác!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+        });
+    const success = () =>
+        toast.success('Đăng nhập thành công', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     const onChangeEmail = (e) => {
         const value = e.target.value;
         setEmail(value);
@@ -43,18 +66,21 @@ function Login() {
                 password,
             })
             .then((response) => {
-                   
                 if (response.data.message) {
-                    alert(response.data.message);
+                    error();
                 } else {
-                    alert('Xin chào : ' + response.data[0].fullname);
-                    navigate('/');
+                    // e.preventDefault()
+                    success();
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 500);
                 }
             });
     };
     return (
         <div>
             <div className="wrapper-register">
+                <ToastContainer />
                 <div className="container">
                     <div className="row alight-item-center">
                         <div className="col-lg-7">

@@ -3,6 +3,7 @@ import './register.scss';
 import { useNavigate } from 'react-router-dom';
 import { isEmpty, isEmail } from 'validator';
 import axiosClient from './../../utils/http';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Register() {
     const [fullname, setFullname] = useState('');
@@ -30,6 +31,18 @@ function Register() {
         //     setValidateMsg(validateMsg.confPassWord)
         // }
     };
+
+    const success = () =>
+        toast.success('Đăng nhập thành công', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     const validateAll = () => {
         const msg = {};
         if (isEmpty(email)) {
@@ -65,12 +78,15 @@ function Register() {
                 password,
                 email,
             });
-            navigate('/dangnhap');
-            console.log('aloalo')
+            success();
+            setTimeout(() => {
+                navigate('/dangnhap');
+            }, 1000);
+            // console.log('aloalo')
         } catch (error) {
             alert('error');
         }
-        alert('Thêm thành công');
+
         setFullname('');
         setEmail('');
         setPassword('');
@@ -80,6 +96,7 @@ function Register() {
         <div>
             <div className="wrapper-register">
                 <div className="container">
+                    <ToastContainer />
                     <div className="row alight-item-center">
                         <div className="col-lg-7">
                             <div className="contact-register">
