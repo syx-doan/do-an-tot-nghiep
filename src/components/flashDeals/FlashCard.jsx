@@ -6,9 +6,9 @@ import 'slick-carousel/slick/slick-theme.css';
 const SampleNextArrow = (props) => {
     const { onClick } = props;
     return (
-        <div className="control-btn" onClick={onClick}>
-            <button className="next">
-                <i className="fa fa-long-arrow-alt-right"></i>
+        <div className="control-btn " onClick={onClick}>
+            <button className="next ">
+                <i className="fa fa-long-arrow-alt-right d-flex alight-item-center justify-content-center"></i>
             </button>
         </div>
     );
@@ -18,7 +18,7 @@ const SamplePrevArrow = (props) => {
     return (
         <div className="control-btn" onClick={onClick}>
             <button className="prev">
-                <i className="fa fa-long-arrow-alt-left"></i>
+                <i className="fa fa-long-arrow-alt-left d-flex alight-item-center justify-content-center"></i>
             </button>
         </div>
     );
@@ -31,12 +31,12 @@ const FlashCard = ({ productItems, addToCart }) => {
     const settings = {
         dots: false,
         infinite: true,
-
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
+        autoplay: true,
     };
 
     return (
@@ -49,7 +49,7 @@ const FlashCard = ({ productItems, addToCart }) => {
                             <img src={productItems.cover} className="card-img-top" alt="..." />
                             <div className="product-like">
                                 <label>{count}</label> <br />
-                                <i className="fa-regular fa-heart" onClick={increment}></i>
+                                <i class="fa-solid fa-heart" onClick={increment}></i>
                             </div>
                             <div className="card-body">
                                 <h5 className="card-title product-name">{productItems.name}</h5>
