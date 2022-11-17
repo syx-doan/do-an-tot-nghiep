@@ -1,3 +1,4 @@
+
 import { height } from "@mui/system"
 import React from "react"
 
@@ -18,5 +19,4 @@ const Annocument = () => {
     </>
   )
 }
-
-export default Annocument
+export default Annocument;

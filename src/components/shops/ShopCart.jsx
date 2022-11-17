@@ -29,7 +29,7 @@ const ShopCart = ({ addToCart }) => {
                         <span className="discount">{item.discount}% Off</span>
                         <div className="product-like">
                             <label>{count}</label> <br />
-                            <i className="fa-regular fa-heart" onClick={increment}></i>
+                            <i class="fa-solid fa-heart" onClick={increment}></i>
                         </div>
                         <img src={item.image} className="card-img-top" alt="..." />
                         <div className="card-body">
@@ -52,6 +52,7 @@ const ShopCart = ({ addToCart }) => {
                                     <i className="fa fa-plus"></i>
                                 </button>
                             </div>
+                            <p >Giảm tới: {item.price}.đ</p>
                         </div>
                     </div>
                 );
