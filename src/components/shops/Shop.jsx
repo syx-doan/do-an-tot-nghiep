@@ -3,7 +3,7 @@ import Catg from './Catg';
 import ShopCart from './ShopCart';
 import './shop.css';
 
-const Shop = ({ addToCart, shopItems }) => {
+const Shop = ({ addToCart, shopItems, detailPro }) => {
     return (
         <>
             <section className="shop background">
@@ -21,7 +21,11 @@ const Shop = ({ addToCart, shopItems }) => {
                             </div>
                         </div>
                         <div className="product-content  grid1">
-                            <ShopCart addToCart={addToCart} shopItems={shopItems} />
+                            <ShopCart
+                                addToCart={addToCart}
+                                shopItems={shopItems}
+                                detailPro={detailPro}
+                            />
                         </div>
                     </div>
                 </div>

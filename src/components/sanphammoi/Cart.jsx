@@ -1,17 +1,34 @@
-import React from 'react';
-import Ndata from './Ndata';
+import React, { useEffect, useState } from 'react';
+import axiosClient from '~/utils/http';
 
 const Cart = () => {
+    const [data, setData] = useState([]);
+
+    const fetchPost = async () => {
+        try {
+            const response = await axiosClient('products');
+            setData(response.data);
+            // console.log(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    useEffect(() => {
+        fetchPost();
+    }, []);
     return (
         <>
             <div className="content grid3 product">
-                {Ndata.map((val, index) => {
+                {data.map((val, index) => {
                     return (
                         <div className="box" key={index}>
                             <div className="img">
-                                <img src={val.cover} alt="" />
+                                <img
+                                    src={`http://172.16.10.111/admin_dasboard/upload/product/${val.image}`}
+                                    alt=""
+                                />
                             </div>
-                            <h5 className='d-flex justify-content-center mt-2'>{val.name}</h5>
+                            <h5 className="d-flex justify-content-center mt-2">{val.name}</h5>
                         </div>
                     );
                 })}

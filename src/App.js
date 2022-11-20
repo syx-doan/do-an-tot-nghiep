@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -9,7 +10,11 @@ import Footer from './common/footer/Footer';
 import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-import Product from './components/Product/Product';
+// import Product from './components/Product/Product';
+import Product_Detail from './components/Product/Product_Detail';
+import GioiThieu from './components/gioiThieu/GioiThieu';
+import LienHe from './components/lienhe/LienHe';
+import Shop from './components/shops/Shop';
 
 function App() {
     /*
@@ -31,10 +36,12 @@ import Login from './common/login/Login';
     //Step 2 :
     const [CartItem, setCartItem] = useState([]);
 
+    const [productDetail, setProductDetail] = useState([]);
+
     //Step 4 :
     const addToCart = (product) => {
         // if hamro product alredy cart xa bhane  find garna help garxa
-        const productExit = CartItem.find((item) => item.id === product.id);
+        const productExit = CartItem.find((item) => item.id_product === product.id_product);
         // if productExit chai alredy exit in cart then will run fun() => setCartItem
         // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
         // gayara check garxa if item.id ra product.id chai match bhayo bhane
@@ -44,7 +51,9 @@ import Login from './common/login/Login';
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
-                    item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item,
+                    item.id_product === product.id_product
+                        ? { ...productExit, qty: productExit.qty + 1 }
+                        : item,
                 ),
             );
         } else {
@@ -52,19 +61,20 @@ import Login from './common/login/Login';
             // then new product is added in cart  and its qty is initalize to 1
             setCartItem([...CartItem, { ...product, qty: 1 }]);
         }
+        console.log(CartItem);
     };
 
     // Stpe: 6
     const decreaseQty = (product) => {
         // if hamro product alredy cart xa bhane  find garna help garxa
-        const productExit = CartItem.find((item) => item.id === product.id);
+        const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
         // if product is exit and its qty is 1 then we will run a fun  setCartItem
         // inside  setCartItem we will run filter to check if item.id is match to product.id
         // if the item.id is doesnt match to product.id then that items are display in cart
         // else
         if (productExit.qty === 1) {
-            setCartItem(CartItem.filter((item) => item.id !== product.id));
+            setCartItem(CartItem.filter((item) => item.id_product !== product.id_product));
         } else {
             // if product is exit and qty  of that produt is not equal to 1
             // then will run function call setCartItem
@@ -72,7 +82,9 @@ import Login from './common/login/Login';
             // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
             setCartItem(
                 CartItem.map((item) =>
-                    item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item,
+                    item.id_product === product.id_product
+                        ? { ...productExit, qty: productExit.qty - 1 }
+                        : item,
                 ),
             );
         }
@@ -98,6 +110,20 @@ import Login from './common/login/Login';
         // }
     };
 
+    // Stpe: 8detail
+    const detailPro = (products) => {
+        const productExit = productDetail.find((item) => item.id_product === products.id_product);
+        if (productExit) {
+            setProductDetail(
+                productDetail.map((item) =>
+                    item.id_product === products.id_product ? { ...productExit, qty: 1 } : item,
+                ),
+            );
+        } else {
+            setProductDetail([{ ...products, qty: 1 }]);
+        }
+    };
+
     return (
         <>
             <Header CartItem={CartItem} />
@@ -105,9 +131,22 @@ import Login from './common/login/Login';
                 <Route />
                 <Route path="dangky" element={<Register />} />
                 <Route path="dangnhap" element={<Login />} />
+                <Route path="gioithieu" element={<GioiThieu />} />
+                <Route path="lienhe" element={<LienHe />} />
+                <Route
+                    path="product_detail"
+                    element={<Product_Detail productDetail={productDetail} CartItem={CartItem} />}
+                />
                 <Route
                     path="sanpham"
-                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                    element={
+                        // <Product
+                        //     addToCart={addToCart}
+                        //     shopItems={shopItems}
+                        //     detailPro={detailPro}
+                        // />
+                        <Shop shopItems={shopItems} addToCart={addToCart} detailPro={detailPro} />
+                    }
                 />
                 {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                 <Route
@@ -118,6 +157,7 @@ import Login from './common/login/Login';
                             productItems={productItems}
                             addToCart={addToCart}
                             shopItems={shopItems}
+                            detailPro={detailPro}
                         />
                     }
                 />

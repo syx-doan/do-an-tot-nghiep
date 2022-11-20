@@ -4,7 +4,7 @@ import ProductCart from './ProductCart';
 import './product.css';
 import Heading from '~/common/heading/Heading';
 
-const Product = ({ addToCart, shopItems }) => {
+const Product = ({ addToCart, shopItems, productDetail, product_Detail }) => {
     return (
         <>
             <section className="shop background">
@@ -13,7 +13,12 @@ const Product = ({ addToCart, shopItems }) => {
                     <div className="contentWidth">
                         <Heading>Sản Phẩm</Heading>
                         <div className="product-content  gridsp">
-                            <ProductCart addToCart={addToCart} shopItems={shopItems} />
+                            <ProductCart
+                                addToCart={addToCart}
+                                shopItems={shopItems}
+                                productDetail={productDetail}
+                                product_Detail={product_Detail}
+                            />
                         </div>
                     </div>
                 </div>

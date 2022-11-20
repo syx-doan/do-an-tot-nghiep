@@ -2,20 +2,19 @@ import React from 'react';
 import './giohang.css';
 import ThanhToan from './ThanhToan';
 import { useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
-    // Stpe: 7   calucate total of items
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
-    // prodcut qty total
+
     const showModal = () => {
         setIsModalOpen(true);
     };
 
     const handleOk = () => {
-       navigate('/')
+        navigate('/');
     };
 
     const handleCancel = () => {
@@ -25,21 +24,20 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     return (
         <section className="cart-items">
             <div className="container d_flex">
-                {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
-
                 <div className="cart-details">
                     {CartItem.length === 0 && (
                         <h1 className="no-items product">Không có sản phẩm được chọn</h1>
                     )}
-
-                    {/* yasma hami le cart item lai display garaaxa */}
                     {CartItem.map((item) => {
                         const productQty = item.price * item.qty;
 
                         return (
-                            <div className="cart-list product d_flex" key={item.id}>
+                            <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
-                                    <img src={item.cover} alt="" />
+                                    <img
+                                        src={`http://172.16.27.88/admin_dasboard/upload/product/${item.image}`}
+                                        alt=""
+                                    />
                                 </div>
                                 <div className="cart-details">
                                     <h3>{item.name}</h3>
@@ -69,9 +67,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                                             ></i>
                                         </button>
                                     </div>
-                                    {/* stpe: 5 
-                    product ko qty lai inc ra des garne
-                    */}
                                 </div>
                                 <div className="cart-item-price"></div>
                             </div>

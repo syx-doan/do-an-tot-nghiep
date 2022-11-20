@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axiosClient from './../../utils/http';
 
-const ShopCart = ({ addToCart }) => {
+const ShopCart = ({ addToCart, detailPro }) => {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const increment = () => {
@@ -12,7 +13,7 @@ const ShopCart = ({ addToCart }) => {
         try {
             const response = await axiosClient('products');
             setData(response.data);
-            console.log(response);
+            // console.log(response);
         } catch (err) {
             console.error(err);
         }
@@ -31,9 +32,19 @@ const ShopCart = ({ addToCart }) => {
                             <label>{count}</label> <br />
                             <i class="fa-solid fa-heart" onClick={increment}></i>
                         </div>
-                        <img src={item.image} className="card-img-top" alt="..." />
+                        <Link to="/product_detail">
+                            <img
+                                src={`http://172.16.27.88/admin_dasboard/upload/product/${item.image}`}
+                                className="card-img-top"
+                                alt="..."
+                                onClick={() => detailPro(item)}
+                            />
+                        </Link>
+
                         <div className="card-body">
-                            <h5 className="card-title product-name">{item.name}</h5>
+                            <h5 className="card-title product-name" title={item.name}>
+                                {item.name}
+                            </h5>
                             <div className="rate">
                                 <i className="fa fa-star"></i>
                                 <i className="fa fa-star"></i>
@@ -43,7 +54,6 @@ const ShopCart = ({ addToCart }) => {
                             </div>
                             <div className="d-flex justify-content-between mt-2">
                                 <p className="price">Giá tiền: {item.price}.đ</p>
-
                                 <button
                                     className="btn-add"
                                     href="!#"
@@ -52,7 +62,7 @@ const ShopCart = ({ addToCart }) => {
                                     <i className="fa fa-plus"></i>
                                 </button>
                             </div>
-                            <p >Giảm tới: {item.price}.đ</p>
+                            <p>Giảm tới: {item.price}.đ</p>
                         </div>
                     </div>
                 );
