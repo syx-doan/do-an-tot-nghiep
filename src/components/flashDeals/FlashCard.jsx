@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axiosClient from './../../utils/http';
 
 const SampleNextArrow = (props) => {
     const { onClick } = props;
@@ -24,10 +25,28 @@ const SamplePrevArrow = (props) => {
     );
 };
 const FlashCard = ({ productItems, addToCart }) => {
+    // const [products, setProducts] = useState({});
     const [count, setCount] = useState(0);
     const increment = () => {
         setCount(count + 1);
     };
+    // useEffect(() => {
+    //     getProductFlash()
+    // }, []);
+
+    // const getProductFlash = () => {
+    // axiosClient
+    // .post('api-product.php', {
+    //     action: "get-product",
+    // })
+    // .then((response) => {
+    //     if (response.data.code === 200) {
+    //         console.log(response.data.data)
+    //         setProducts(response.data.data)
+    //     }
+    // });
+    // }
+
     const settings = {
         dots: false,
         infinite: true,
