@@ -36,7 +36,7 @@ useEffect(() => {
             <>
               <div className='box tintuc' key={value.id_news}>
                 <div className='img'>
-                  <img src={`http://172.16.10.187/duan/admin_dasboard/upload/news/${value.image}`} alt='' width='100' height='70px'/>
+                  <img src={`http://172.16.10.234/duan/admin_dasboard/upload/news/${value.image}`} alt='' width='100' height='70px'/>
                 </div>
                 <h6>{value.title}</h6>
                 <p>{value.content}</p>

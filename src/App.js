@@ -13,7 +13,7 @@ import Product from './components/MainPage/Product/Product';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
-import ChatBox from 'react-custom-chat';
+// import ChatBox from 'react-custom-chat';
 
 function App() {
     /*
@@ -100,43 +100,6 @@ import { toast } from 'react-toastify';
     };
 
     return (
-
-        <>
-            <Header CartItem={CartItem} />
-            <ToastContainer />
-            <Routes>
-                <Route />
-                <Route path="dangky" element={<Register />} />
-                <Route path="dangnhap" element={<Login />} />
-                <Route
-                    path="sanpham"
-                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
-                />
-                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
-                <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />
-                <Route
-                    path="/"
-                    exact
-                    element={
-                        <Pages
-                            productItems={productItems}
-                            addToCart={addToCart}
-                            shopItems={shopItems}
-                        />
-                    }
-                />
-                {data.map((value) => (
-                        <Route
-                            path="products/category_id/"
-                            exact
-                            element={
-                                <Pages
-                                    productItems={productItems}
-                                    addToCart={addToCart}
-                                    shopItems={shopItems}
-                                />
-                            }
         <>
             <Header CartItem={CartItem} />
             <ToastContainer />
@@ -161,23 +124,6 @@ import { toast } from 'react-toastify';
                             addToCart={addToCart}
                             shopItems={shopItems}
                         />
-                    ))} 
-                    <Route
-                        path="/cart"
-                        exact
-                        element={
-                            <Cart
-                                CartItem={CartItem}
-                                addToCart={addToCart}
-                                decreaseQty={decreaseQty}
-                                deleteQty={deleteQty}
-                            />
-                        }
-                    />
-                </Routes>
-                <Footer />
-            </>
-                );
                     }
                 />
                 <Route
@@ -193,7 +139,7 @@ import { toast } from 'react-toastify';
                     }
                 />
             </Routes>
-
+           
             <Footer />
         </>
     );

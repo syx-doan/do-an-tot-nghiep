@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Ndata from './Ndata';
 import styles from './sanphammoi.module.scss';
 import classNames from 'classnames/bind';
+import axiosClient from '~/utils/http';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 const Cart = () => {
+  const [data, setData] = useState([]);
     const settings = {
         dots: false,
         infinite: true,
@@ -16,6 +19,21 @@ const Cart = () => {
         slidesToScroll: 1,
         // autoplay: true,
     };
+    const fetchPost = async () => {
+        try {
+          const response = await axiosClient('newproducts');
+          setData(response.data);
+          // console.log(response.data)
+          console.log(response);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    
+      useEffect(() => {
+        fetchPost();
+        // fetchPost1();
+      }, []);
     return (
         <>
             <Slider {...settings} className='flash-deal'>
