@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axiosClient from '~/utils/http';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+// import './sanphammoi.module.scss';
 
 const Cart = () => {
     const [data, setData] = useState([]);
@@ -15,7 +18,7 @@ const Cart = () => {
     useEffect(() => {
         fetchPost();
     }, []);
-
+    
     return (
         <>
             <div className="content grid3 product">

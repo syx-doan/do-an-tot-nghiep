@@ -117,6 +117,7 @@ function App() {
         <>
             <Header CartItem={CartItem} />
             <ToastContainer />
+
             <Routes>
                 <Route />
                 <Route path="dangky" element={<Register />} />
@@ -166,6 +167,7 @@ function App() {
                     }
                 />
             </Routes>
+           
             <Footer />
         </>
     );

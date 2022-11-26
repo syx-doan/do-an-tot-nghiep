@@ -10,22 +10,22 @@ function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        console.log(dataUser, 'here1')
+        console.log(dataUser, 'here1');
         if (dataUser && dataUser !== 'null') {
-            setDataUser(dataUser)
+            setDataUser(dataUser);
         } else {
-            setDataUser(false)
+            setDataUser(false);
         }
     }, []);
 
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        console.log(dataUser, 'here2')
+        // console.log(dataUser, 'here2')
 
         if (dataUser && dataUser !== 'null') {
-            setDataUser(dataUser)
+            setDataUser(dataUser);
         } else {
-            setDataUser(false)
+            setDataUser(false);
         }
     }, []);
 
@@ -42,10 +42,10 @@ function ThongTinCaNhan() {
                         {dataUser.map((data) => {
                             return (
                                 <>
-                                    <h3 key={data.id}>{data.fullname}</h3>
-                                    <p>{data.email}</p>
+                                    <h3 key={data.id}>{data?.fullname}</h3>
+                                    <p>{data?.email}</p>
                                 </>
-                            )
+                            );
                         })}
                         <Link to={'/cart'}> Xem giỏ hàng</Link>
                     </div>

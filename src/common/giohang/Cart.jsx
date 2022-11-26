@@ -1,6 +1,6 @@
 import React from 'react';
 import './giohang.css';
-import ThanhToan from './ThanhToan';
+import ThanhToan from '../thanhtoan/ThanhToan';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
