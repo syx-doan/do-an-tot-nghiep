@@ -15,6 +15,7 @@ import Product_Detail from './components/Product/Product_Detail';
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
+import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
 function App() {
     const success = () =>
@@ -121,6 +122,7 @@ function App() {
                 <Route />
                 <Route path="dangky" element={<Register />} />
                 <Route path="dangnhap" element={<Login />} />
+                <Route path="quenmatkhau" element={<QuenMatKhau />} />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
                 <Route
@@ -139,7 +141,7 @@ function App() {
                     }
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />donhang
+                <Route path="lienhe" element={<LienHe />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
