@@ -2,16 +2,15 @@ import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Ndata from './Ndata';
-import styles from './sanphammoi.module.scss';
 import classNames from 'classnames/bind';
 import axiosClient from '~/utils/http';
 import { useState } from 'react';
+import styles from './newsanpham.scss'
 
 const cx = classNames.bind(styles);
 
 const Cart = () => {
-  const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const settings = {
         dots: false,
         infinite: true,
@@ -21,40 +20,36 @@ const Cart = () => {
     };
     const fetchPost = async () => {
         try {
-          const response = await axiosClient('newproducts');
-          setData(response.data);
-          // console.log(response.data)
-          console.log(response);
+            const response = await axiosClient('newproducts');
+            setData(response.data);
+            // console.log(response.data)
+            console.log(response);
         } catch (err) {
-          console.error(err);
+            console.error(err);
         }
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         fetchPost();
         // fetchPost1();
-      }, []);
+    }, []);
     return (
         <>
-            <Slider {...settings} className='flash-deal'>
-                {Ndata.map((value, index) => {
+            <div className="content grid3 product">
+                {data.map((val, index) => {
                     return (
-                        <div className='card'>
-                            <div className={cx('container')}>
-                                <div className={cx('content')}>
-                                    <h1>{value.name}</h1>
-                                    <h3>
-                                        I love designing websites and keep things as simple as
-                                        possible. My goals is to focus on minimalism and conveying
-                                        the message that you want to send
-                                    </h3>
-                                </div>
-                                <div className={cx('flap')} />
+                        <div className="box" key={index}>
+                            <div className="img">
+                                <img
+                                    src={`http://172.16.10.231/admin_dasboard/upload/product/${val.image}`}
+                                    alt=""
+                                />
                             </div>
+                            <h5 className="d-flex justify-content-center mt-2">{val.name}</h5>
                         </div>
                     );
                 })}
-            </Slider>
+            </div>
         </>
     );
 };

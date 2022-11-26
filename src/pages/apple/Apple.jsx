@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Danhmuc from '../../components/MainPage/Product/Danhmuc';
+import Danhmuc from '../../components/Product/Danhmuc';
 
-import ProductCart from '../../components/MainPage/Product/ProductCart';
+import ProductCart from '../../components/Product/ProductCart';
 import Heading from './../../common/heading/Heading';
 
 const Apple = ({ addToCart, shopItems }) => {

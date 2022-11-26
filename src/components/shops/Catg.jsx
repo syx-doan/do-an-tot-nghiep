@@ -43,4 +43,4 @@ const Catg = () => {
   )
 }
 
-export default Catg
+export default Catg;
