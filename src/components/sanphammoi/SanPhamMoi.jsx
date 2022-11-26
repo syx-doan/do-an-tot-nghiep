@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react"
 import Cart from "./Cart"
-import "./sanphammoi.css"
+import "./newsanpham.scss"
 import iconNew from "../../assets/images/icons/new.png"
 
 const NewSanPham = () => {

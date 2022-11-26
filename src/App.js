@@ -13,6 +13,7 @@ import Product from './components/MainPage/Product/Product';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
+import ChatBox from 'react-custom-chat';
 
 function App() {
     /*
@@ -74,20 +75,11 @@ import { toast } from 'react-toastify';
 
     // Stpe: 6
     const decreaseQty = (product) => {
-        // if hamro product alredy cart xa bhane  find garna help garxa
         const productExit = CartItem.find((item) => item.id === product.id);
 
-        // if product is exit and its qty is 1 then we will run a fun  setCartItem
-        // inside  setCartItem we will run filter to check if item.id is match to product.id
-        // if the item.id is doesnt match to product.id then that items are display in cart
-        // else
         if (productExit.qty === 1) {
             setCartItem(CartItem.filter((item) => item.id !== product.id));
         } else {
-            // if product is exit and qty  of that produt is not equal to 1
-            // then will run function call setCartItem
-            // inside setCartItem we will run map method
-            // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
             setCartItem(
                 CartItem.map((item) =>
                     item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item,
@@ -104,52 +96,37 @@ import { toast } from 'react-toastify';
         const newCartItem = [...CartItem];
         newCartItem.splice(index, 1);
         setCartItem(newCartItem);
-        deleteProduct()
+        deleteProduct();
     };
-    const [data, setData] = useState([]);
-    const fetchPost = async () => {
-        try {
-            const response = await axiosClient('category');
-            setData(response.data);
-            // console.log(response.data)
-            console.log(response);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-    useEffect(() => {
-        fetchPost();
-        // fetchPost1();
-    }, []);
 
     return (
 
-            <>
-                <Header CartItem={CartItem} />
-                <ToastContainer />
-                <Routes>
-                    <Route />
-                    <Route path="dangky" element={<Register />} />
-                    <Route path="dangnhap" element={<Login />} />
-                    <Route
-                        path="sanpham"
-                        element={<Product addToCart={addToCart} shopItems={shopItems} />}
-                    />
-                    {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
-                    <Route path="gioithieu" element={<GioiThieu />} />
-                    <Route path="lienhe" element={<LienHe />} />
-                    <Route
-                        path="/"
-                        exact
-                        element={
-                            <Pages
-                                productItems={productItems}
-                                addToCart={addToCart}
-                                shopItems={shopItems}
-                            />
-                        }
-                    />
-                    {data.map((value) => (
+        <>
+            <Header CartItem={CartItem} />
+            <ToastContainer />
+            <Routes>
+                <Route />
+                <Route path="dangky" element={<Register />} />
+                <Route path="dangnhap" element={<Login />} />
+                <Route
+                    path="sanpham"
+                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                />
+                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                <Route path="gioithieu" element={<GioiThieu />} />
+                <Route path="lienhe" element={<LienHe />} />
+                <Route
+                    path="/"
+                    exact
+                    element={
+                        <Pages
+                            productItems={productItems}
+                            addToCart={addToCart}
+                            shopItems={shopItems}
+                        />
+                    }
+                />
+                {data.map((value) => (
                         <Route
                             path="products/category_id/"
                             exact
@@ -160,6 +137,29 @@ import { toast } from 'react-toastify';
                                     shopItems={shopItems}
                                 />
                             }
+        <>
+            <Header CartItem={CartItem} />
+            <ToastContainer />
+
+            <Routes>
+                <Route />
+                <Route path="dangky" element={<Register />} />
+                <Route path="dangnhap" element={<Login />} />
+                <Route
+                    path="sanpham"
+                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                />
+                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                <Route path="gioithieu" element={<GioiThieu />} />
+                <Route path="lienhe" element={<LienHe />} />
+                <Route
+                    path="/"
+                    exact
+                    element={
+                        <Pages
+                            productItems={productItems}
+                            addToCart={addToCart}
+                            shopItems={shopItems}
                         />
                     ))} 
                     <Route
@@ -177,7 +177,26 @@ import { toast } from 'react-toastify';
                 </Routes>
                 <Footer />
             </>
-            );
+                );
+                    }
+                />
+                <Route
+                    path="/cart"
+                    exact
+                    element={
+                        <Cart
+                            CartItem={CartItem}
+                            addToCart={addToCart}
+                            decreaseQty={decreaseQty}
+                            deleteQty={deleteQty}
+                        />
+                    }
+                />
+            </Routes>
+
+            <Footer />
+        </>
+    );
 }
 
-            export default App;
+export default App;

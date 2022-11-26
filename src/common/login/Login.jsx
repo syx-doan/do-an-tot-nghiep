@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './login.scss';
 
 import { useNavigate } from 'react-router-dom';
-import { isEmpty } from 'validator';
+import { isEmpty, isEmail } from 'validator';
 import axiosClient from './../../utils/http';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -47,6 +47,8 @@ function Login() {
         const msg = {};
         if (isEmpty(email)) {
             msg.email = 'Vui lòng nhập email đăng nhập';
+        } else if (!isEmail(email)) {
+            msg.email = 'Nhập đúng định dạng email';
         }
         if (isEmpty(password)) {
             msg.password = 'Vui lòng nhập số mật khẩu';
@@ -62,15 +64,17 @@ function Login() {
         if (!isValidate) return;
         axiosClient
             .post('login', {
-                email,
-                password,
+                // action: "login",
+                email: email,
+                password: password,
             })
             .then((response) => {
-                if (response.data.message) {
+                if (response.data.code === 100) {
                     error();
                 } else {
                     // e.preventDefault()
                     success();
+                    localStorage.setItem('data-user', JSON.stringify(response.data))
                     setTimeout(() => {
                         navigate('/');
                     }, 500);
@@ -169,7 +173,7 @@ function Login() {
                                     </div>
 
                                     <div className="text-center mt-4 text-register">
-                                        <a href="/dangki">Bạn chưa có tài khoản? </a>
+                                        <a href="/dangky">Bạn chưa có tài khoản? </a>
                                     </div>
 
                                     <div className="text-center mt-5">
