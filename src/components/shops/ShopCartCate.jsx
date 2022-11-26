@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axiosClient from './../../utils/http';
+import axiosClient from '../../utils/http';
 
-const ShopCart = ({ addToCart }) => {
+const ShopCartCate = ({ addToCart }) => {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const {id} = useParams();
     const increment = () => {
         setCount(count + 1);
     };
-
+    
     const fetchPost = async () => {
         try {
-            const response = await axiosClient('products');
-            setData(response.data);
-            console.log(response);
+          const response = await axiosClient(`pruducts/category_id:${id}`)
+          setData(response.data);
+          console.log(response.data)
         } catch (err) {
-            console.error(err);
+          console.error(err);
         }
-    };
+      };
     useEffect(() => {
         fetchPost();
     }, []);
@@ -63,4 +63,4 @@ const ShopCart = ({ addToCart }) => {
     );
 };
 
-export default ShopCart;
+export default ShopCartCate;

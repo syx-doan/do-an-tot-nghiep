@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axiosClient from './utils/http';
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
@@ -106,49 +106,78 @@ import { toast } from 'react-toastify';
         setCartItem(newCartItem);
         deleteProduct()
     };
+    const [data, setData] = useState([]);
+    const fetchPost = async () => {
+        try {
+            const response = await axiosClient('category');
+            setData(response.data);
+            // console.log(response.data)
+            console.log(response);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    useEffect(() => {
+        fetchPost();
+        // fetchPost1();
+    }, []);
 
     return (
-        <>
-            <Header CartItem={CartItem} />
-            <ToastContainer />
-            <Routes>
-                <Route />
-                <Route path="dangky" element={<Register />} />
-                <Route path="dangnhap" element={<Login />} />
-                <Route
-                    path="sanpham"
-                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
-                />
-                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
-                <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />
-                <Route
-                    path="/"
-                    exact
-                    element={
-                        <Pages
-                            productItems={productItems}
-                            addToCart={addToCart}
-                            shopItems={shopItems}
+
+            <>
+                <Header CartItem={CartItem} />
+                <ToastContainer />
+                <Routes>
+                    <Route />
+                    <Route path="dangky" element={<Register />} />
+                    <Route path="dangnhap" element={<Login />} />
+                    <Route
+                        path="sanpham"
+                        element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                    />
+                    {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                    <Route path="gioithieu" element={<GioiThieu />} />
+                    <Route path="lienhe" element={<LienHe />} />
+                    <Route
+                        path="/"
+                        exact
+                        element={
+                            <Pages
+                                productItems={productItems}
+                                addToCart={addToCart}
+                                shopItems={shopItems}
+                            />
+                        }
+                    />
+                    {data.map((value) => (
+                        <Route
+                            path="products/category_id/"
+                            exact
+                            element={
+                                <Pages
+                                    productItems={productItems}
+                                    addToCart={addToCart}
+                                    shopItems={shopItems}
+                                />
+                            }
                         />
-                    }
-                />
-                <Route
-                    path="/cart"
-                    exact
-                    element={
-                        <Cart
-                            CartItem={CartItem}
-                            addToCart={addToCart}
-                            decreaseQty={decreaseQty}
-                            deleteQty={deleteQty}
-                        />
-                    }
-                />
-            </Routes>
-            <Footer />
-        </>
-    );
+                    ))} 
+                    <Route
+                        path="/cart"
+                        exact
+                        element={
+                            <Cart
+                                CartItem={CartItem}
+                                addToCart={addToCart}
+                                decreaseQty={decreaseQty}
+                                deleteQty={deleteQty}
+                            />
+                        }
+                    />
+                </Routes>
+                <Footer />
+            </>
+            );
 }
 
-export default App;
+            export default App;
