@@ -1,15 +1,29 @@
 import React from 'react';
 import styles from './logout.module.scss';
 import classNames from 'classnames/bind';
+import { toast, ToastContainer } from 'react-toastify';
 const cx = classNames.bind(styles);
 const Logout = () => {
+    const success = () =>
+    toast.success('Đã đăng xuất tài khoản ', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+    });
     const handleLogout = () => {
+        success()
         localStorage.clear();
         window.location.href = '/';
     };
   
     return (
         <div className={cx('logout','')}>
+              <ToastContainer />
             <svg
             className={cx('icon-logout')}
                 version="1.1"

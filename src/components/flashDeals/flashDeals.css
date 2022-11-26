@@ -1,13 +1,19 @@
 .flash {
-  background: #f6f9fc;
-  padding: 50px 0;
+    background: #f6f9fc;
+    padding: 50px 0;
 }
 .flash-deal.slick-list {
-  margin: 0 -7px !important;
+    margin: 0 -7px !important;
 }
-  
-  
- .flash-deal .slick-slide > div {
-    padding: 0 7px !important;
-  }
 
+.flash-deal .slick-slide > div {
+    padding: 0 7px !important;
+}
+.name-flash {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.mr-2 {
+    color: red;
+    margin-right: 5px;
+}

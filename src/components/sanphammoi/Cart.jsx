@@ -6,16 +6,16 @@ const Cart = () => {
 
     const fetchPost = async () => {
         try {
-            const response = await axiosClient('products');
+            const response = await axiosClient('newproducts');
             setData(response.data);
-            // console.log(response.data);
         } catch (err) {
             console.error(err);
         }
     };
     useEffect(() => {
         fetchPost();
-    }, []);
+    }, []);;
+
     return (
         <>
             <div className="content grid3 product">
@@ -24,7 +24,7 @@ const Cart = () => {
                         <div className="box" key={index}>
                             <div className="img">
                                 <img
-                                    src={`http://172.16.10.111/admin_dasboard/upload/product/${val.image}`}
+                                    src={`http://172.16.10.158/admin_dasboard/upload/product/${val.image}`}
                                     alt=""
                                 />
                             </div>

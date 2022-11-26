@@ -3,17 +3,30 @@ import './giohang.css';
 import ThanhToan from './ThanhToan';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
-
+    // prodcut qty total
+    const success = () =>
+        toast.success('Đặt hàng thành công ', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     const showModal = () => {
         setIsModalOpen(true);
     };
 
     const handleOk = () => {
+        success();
         navigate('/');
     };
 
@@ -23,6 +36,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
 
     return (
         <section className="cart-items">
+            <ToastContainer />
             <div className="container d_flex">
                 <div className="cart-details">
                     {CartItem.length === 0 && (
@@ -35,7 +49,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
                                     <img
-                                        src={`http://172.16.27.88/admin_dasboard/upload/product/${item.image}`}
+                                        src={`http://172.16.10.158/admin_dasboard/upload/product/${item.image}`}
                                         alt=""
                                     />
                                 </div>

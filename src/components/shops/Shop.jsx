@@ -3,12 +3,12 @@ import Catg from './Catg';
 import ShopCart from './ShopCart';
 import './shop.css';
 
-const Shop = ({ addToCart, shopItems, detailPro }) => {
+const Shop = ({ addToCart, detailPro, CategoryProduct, categoryid }) => {
     return (
         <>
             <section className="shop background">
                 <div className="container d_flex">
-                    <Catg />
+                    <Catg CategoryProduct={CategoryProduct} />
 
                     <div className="contentWidth">
                         <div className="heading d_flex">
@@ -23,8 +23,8 @@ const Shop = ({ addToCart, shopItems, detailPro }) => {
                         <div className="product-content  grid1">
                             <ShopCart
                                 addToCart={addToCart}
-                                shopItems={shopItems}
                                 detailPro={detailPro}
+                                categoryid={categoryid}
                             />
                         </div>
                     </div>

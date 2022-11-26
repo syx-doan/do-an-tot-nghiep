@@ -7,31 +7,38 @@ import Pages from './pages/Pages';
 import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
-import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-// import Product from './components/Product/Product';
-import Product_Detail from './components/Product/Product_Detail';
+import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
+import Product_Detail from './components/Product/Product_Detail';
 import Shop from './components/shops/Shop';
 
 function App() {
-    /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- import Register from './common/register/Register';
-import Login from './common/login/Login';
-  Step 3 :  chai flashCard ma xa button ma
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
-
-    //Step 1 :
+    const success = () =>
+        toast.success('Đã thêm vào giỏ hàng', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+    const deleteProduct = () =>
+        toast.success('Đã hủy sản phẩm', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     const { productItems } = Data;
-    const { shopItems } = Sdata;
 
     //Step 2 :
     const [CartItem, setCartItem] = useState([]);
@@ -40,14 +47,8 @@ import Login from './common/login/Login';
 
     //Step 4 :
     const addToCart = (product) => {
-        // if hamro product alredy cart xa bhane  find garna help garxa
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-        // if productExit chai alredy exit in cart then will run fun() => setCartItem
-        // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
-        // gayara check garxa if item.id ra product.id chai match bhayo bhane
-        // productExit product chai display garxa
-        // ani increase  exits product QTY by 1
-        // if item and product doesnt match then will add new items
+
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
@@ -57,29 +58,18 @@ import Login from './common/login/Login';
                 ),
             );
         } else {
-            // but if the product doesnt exit in the cart that mean if card is empty
-            // then new product is added in cart  and its qty is initalize to 1
             setCartItem([...CartItem, { ...product, qty: 1 }]);
         }
-        console.log(CartItem);
+        success();
     };
 
     // Stpe: 6
     const decreaseQty = (product) => {
-        // if hamro product alredy cart xa bhane  find garna help garxa
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
-        // if product is exit and its qty is 1 then we will run a fun  setCartItem
-        // inside  setCartItem we will run filter to check if item.id is match to product.id
-        // if the item.id is doesnt match to product.id then that items are display in cart
-        // else
         if (productExit.qty === 1) {
             setCartItem(CartItem.filter((item) => item.id_product !== product.id_product));
         } else {
-            // if product is exit and qty  of that produt is not equal to 1
-            // then will run function call setCartItem
-            // inside setCartItem we will run map method
-            // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
             setCartItem(
                 CartItem.map((item) =>
                     item.id_product === product.id_product
@@ -92,22 +82,11 @@ import Login from './common/login/Login';
 
     // Stpe: 7
     const deleteQty = (product) => {
-        // const productExit = CartItem.find((item) => item.id === product.id);
-
         const index = CartItem.findIndex((x) => x.id === product.id);
         const newCartItem = [...CartItem];
         newCartItem.splice(index, 1);
         setCartItem(newCartItem);
-
-        // if (productExit.qty === 1) {
-        //     setCartItem(CartItem.filter((item) => item.id !== product.id));
-        // } else {
-        //     setCartItem(
-        //         CartItem.map((item) =>
-        //             item.id === product.id ? { newCartItem } : item,
-        //         ),
-        //     );
-        // }
+        deleteProduct();
     };
 
     // Stpe: 8detail
@@ -122,11 +101,20 @@ import Login from './common/login/Login';
         } else {
             setProductDetail([{ ...products, qty: 1 }]);
         }
+        console.log(productDetail);
+    };
+
+    // Lay id_category
+    const [categoryid, setCategoryid] = useState();
+
+    const CategoryProduct = (id) => {
+        setCategoryid(id);
     };
 
     return (
         <>
             <Header CartItem={CartItem} />
+            <ToastContainer />
             <Routes>
                 <Route />
                 <Route path="dangky" element={<Register />} />
@@ -135,20 +123,21 @@ import Login from './common/login/Login';
                 <Route path="lienhe" element={<LienHe />} />
                 <Route
                     path="product_detail"
-                    element={<Product_Detail productDetail={productDetail} CartItem={CartItem} />}
+                    element={<Product_Detail productDetail={productDetail} addToCart={addToCart} />}
                 />
                 <Route
                     path="sanpham"
                     element={
-                        // <Product
-                        //     addToCart={addToCart}
-                        //     shopItems={shopItems}
-                        //     detailPro={detailPro}
-                        // />
-                        <Shop shopItems={shopItems} addToCart={addToCart} detailPro={detailPro} />
+                        <Shop
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            CategoryProduct={CategoryProduct}
+                            categoryid={categoryid}
+                        />
                     }
                 />
-                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
+                <Route path="gioithieu" element={<GioiThieu />} />
+                <Route path="lienhe" element={<LienHe />} />
                 <Route
                     path="/"
                     exact
@@ -156,7 +145,6 @@ import Login from './common/login/Login';
                         <Pages
                             productItems={productItems}
                             addToCart={addToCart}
-                            shopItems={shopItems}
                             detailPro={detailPro}
                         />
                     }
