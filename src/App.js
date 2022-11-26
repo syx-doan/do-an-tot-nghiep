@@ -13,6 +13,7 @@ import Product from './components/MainPage/Product/Product';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
+import ChatBox from 'react-custom-chat';
 
 function App() {
     /*
@@ -74,20 +75,11 @@ import { toast } from 'react-toastify';
 
     // Stpe: 6
     const decreaseQty = (product) => {
-        // if hamro product alredy cart xa bhane  find garna help garxa
         const productExit = CartItem.find((item) => item.id === product.id);
 
-        // if product is exit and its qty is 1 then we will run a fun  setCartItem
-        // inside  setCartItem we will run filter to check if item.id is match to product.id
-        // if the item.id is doesnt match to product.id then that items are display in cart
-        // else
         if (productExit.qty === 1) {
             setCartItem(CartItem.filter((item) => item.id !== product.id));
         } else {
-            // if product is exit and qty  of that produt is not equal to 1
-            // then will run function call setCartItem
-            // inside setCartItem we will run map method
-            // this map() will check if item.id match to produt.id  then we have to desc the qty of product by 1
             setCartItem(
                 CartItem.map((item) =>
                     item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item,
@@ -104,13 +96,14 @@ import { toast } from 'react-toastify';
         const newCartItem = [...CartItem];
         newCartItem.splice(index, 1);
         setCartItem(newCartItem);
-        deleteProduct()
+        deleteProduct();
     };
 
     return (
         <>
             <Header CartItem={CartItem} />
             <ToastContainer />
+
             <Routes>
                 <Route />
                 <Route path="dangky" element={<Register />} />
@@ -146,6 +139,7 @@ import { toast } from 'react-toastify';
                     }
                 />
             </Routes>
+           
             <Footer />
         </>
     );

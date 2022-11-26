@@ -33,7 +33,7 @@ function Register() {
     };
 
     const success = () =>
-        toast.success('Đăng nhập thành công', {
+        toast.success('Đăng ký tài khoản thành công', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
