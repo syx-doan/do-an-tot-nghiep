@@ -31,7 +31,7 @@ const ShopCart = ({ addToCart }) => {
                             <label>{count}</label> <br />
                             <i class="fa-solid fa-heart" onClick={increment}></i>
                         </div>
-                        <img src={item.image} className="card-img-top" alt="..." />
+                        <img src={`http://192.168.43.50/duan/admin_dasboard/upload/product/${item.image}`} className="card-img-top" alt="..." />  
                         <div className="card-body">
                             <h5 className="card-title product-name">{item.name}</h5>
                             <div className="rate">
