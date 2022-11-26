@@ -14,7 +14,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     const success = () =>
     toast.success('Đặt hàng thành công ', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -27,6 +27,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     };
 
     const handleOk = () => {
+        
         success()
        navigate('/')
     };

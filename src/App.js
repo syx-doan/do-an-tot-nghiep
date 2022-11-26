@@ -32,7 +32,7 @@ import { toast } from 'react-toastify';
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -43,7 +43,7 @@ import { toast } from 'react-toastify';
     const deleteProduct = () =>
         toast.success('Đã hủy sản phẩm', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
