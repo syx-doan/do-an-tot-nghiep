@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axiosClient from './utils/http';
+import React, { useState } from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
@@ -17,18 +17,7 @@ import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
 
 function App() {
-    /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- import Register from './common/register/Register';
-import Login from './common/login/Login';
-import { toast } from 'react-toastify';
-  Step 3 :  chai flashCard ma xa button ma
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
+
 
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
