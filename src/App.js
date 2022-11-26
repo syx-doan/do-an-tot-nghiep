@@ -13,7 +13,7 @@ import Product from './components/MainPage/Product/Product';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
-import ChatBox from 'react-custom-chat';
+
 
 function App() {
     /*
