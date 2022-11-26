@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axiosClient from './utils/http';
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
@@ -13,6 +13,7 @@ import Product from './components/MainPage/Product/Product';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
+import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
 
 function App() {
@@ -108,6 +109,8 @@ import { toast } from 'react-toastify';
                 <Route />
                 <Route path="dangky" element={<Register />} />
                 <Route path="dangnhap" element={<Login />} />
+                <Route path="quenmatkhau" element={<QuenMatKhau />} exact/>
+         
                 <Route
                     path="sanpham"
                     element={<Product addToCart={addToCart} shopItems={shopItems} />}

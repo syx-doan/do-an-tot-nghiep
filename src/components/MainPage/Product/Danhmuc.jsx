@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Danhmuc = () => {
   const data = [
     {
+      id:1,
       cateImg: "./images/category/cat-1.png",
       cateName: "Apple",
-      path:'/apple'
     },
     {
       cateImg: "./images/category/cat-2.png",
@@ -37,7 +37,7 @@ const Danhmuc = () => {
         </div>
         {data.map((value, index) => {
           return (
-          <Link to={value.path}>
+          <Link to={`sanpham/${value.id}`}>
               <div className='box f_flex' key={index}>
                 <img src={value.cateImg} alt='' />
                 <span>{value.cateName}</span>

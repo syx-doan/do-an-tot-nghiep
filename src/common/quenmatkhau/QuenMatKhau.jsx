@@ -1,90 +1,37 @@
 import React, { useState } from 'react';
-import './login.scss';
-
-import { Link, useNavigate } from 'react-router-dom';
+import './quenmatkhau.module.scss';
 import { isEmpty, isEmail } from 'validator';
-import axiosClient from './../../utils/http';
-import { toast, ToastContainer } from 'react-toastify';
 
-function Login() {
+function QuenMatKhau() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
-    const navigate = useNavigate();
 
-    const error = () =>
-        toast.error('Thông tin tài khoải hoặc mật khẩu không chính xác!', {
-            position: 'top-right',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'colored',
-        });
-    const success = () =>
-        toast.success('Đăng nhập thành công', {
-            position: 'top-right',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-        });
     const onChangeEmail = (e) => {
         const value = e.target.value;
         setEmail(value);
-    };
-    const onChangePassWord = (e) => {
-        const value = e.target.value;
-        setPassword(value);
     };
 
     const validateAll = () => {
         const msg = {};
         if (isEmpty(email)) {
-            msg.email = 'Vui lòng nhập email đăng nhập';
+            msg.email = 'Vui lòng nhập  email ';
         } else if (!isEmail(email)) {
-            msg.email = 'Nhập đúng định dạng email';
-        }
-        if (isEmpty(password)) {
-            msg.password = 'Vui lòng nhập số mật khẩu';
+            msg.email = 'Định dạng email chưa đúng';
         }
         setValidateMsg(msg);
         if (Object.keys(msg).length > 0) return false;
         return true;
     };
-
-    const handleSubmitLogin = (e) => {
+    const handleForgetPassWord = (e) => {
         e.preventDefault();
         const isValidate = validateAll();
         if (!isValidate) return;
-        axiosClient
-            .post('login', {
-                // action: "login",
-                email: email,
-                password: password,
-            })
-            .then((response) => {
-                if (response.data.code === 100) {
-                    error();
-                } else {
-                    // e.preventDefault()
-                    success();
-                    localStorage.setItem('data-user', JSON.stringify(response.data))
-                    setTimeout(() => {
-                        navigate('/');
-                    }, 500);
-                }
-            });
+        
+        console.log(e);
     };
     return (
         <div>
             <div className="wrapper-register">
-                <ToastContainer />
                 <div className="container">
                     <div className="row alight-item-center">
                         <div className="col-lg-7">
@@ -109,7 +56,7 @@ function Login() {
                                         <div className="row flex-column flex-wrap">
                                             <div className="form-label col">
                                                 <label htmlFor="" className="">
-                                                    Email Đăng Nhập
+                                                    Nhập email đăng ki tài khoản
                                                 </label>
                                             </div>
                                             <div className="form-input col">
@@ -127,53 +74,23 @@ function Login() {
                                                     {validateMsg.email}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-item">
-                                        <div className="row flex-column flex-wrap">
-                                            <div className="form-label col">
-                                                <label htmlFor="" className="">
-                                                    Mật khẩu
-                                                </label>
-                                            </div>
-                                            <div className="form-input col">
-                                                <div className="input-content">
-                                                    <input
-                                                        onChange={onChangePassWord}
-                                                        type="password"
-                                                        placeholder="Nhập mật khẩu"
-                                                        className="input-item"
-                                                    />
-                                                </div>
-                                            </div>
                                             <div className="d-flex mt-2">
-                                                <div className="validateMsg">
-                                                    {validateMsg.password}
-                                                </div>
+                                                <div className="validateMsg"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="radio">
-                                            <label htmlFor="" className="radio-wrapper checkbox">
-                                                <input type="checkbox" />
-                                                <span className="checkbox-name">Nhớ mật khẩu</span>
-                                            </label>
-                                        </div>
-                                        <Link to={'/quenmatkhau'}>Quên mật khẩu</Link>
                                     </div>
 
                                     <div className="mt-4">
                                         <button
-                                            onClick={handleSubmitLogin}
+                                            onClick={handleForgetPassWord}
                                             className="btn-register"
                                         >
-                                            Đăng Nhập
+                                            Lấy mật khẩu
                                         </button>
                                     </div>
 
-                                    <div className="text-center mt-4 text-register">
-                                        <a href="/dangky">Bạn chưa có tài khoản? </a>
+                                    <div className="text-right mt-4 text-register">
+                                        <a href="/dangnhap">Đăng nhập </a>
                                     </div>
 
                                     <div className="text-center mt-5">
@@ -193,4 +110,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default QuenMatKhau;
