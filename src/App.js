@@ -12,8 +12,7 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-import { toast, ToastContainer } from 'react-toastify';
-import ChatBox from 'react-custom-chat';
+import {toast, ToastContainer } from 'react-toastify';
 
 function App() {
     const success = () =>
