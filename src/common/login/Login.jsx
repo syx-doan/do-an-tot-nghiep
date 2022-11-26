@@ -61,16 +61,18 @@ function Login() {
         const isValidate = validateAll();
         if (!isValidate) return;
         axiosClient
-            .post('login', {
-                email,
-                password,
+            .post('api-login.php', {
+                action: "login",
+                email: email,
+                password: password,
             })
             .then((response) => {
-                if (response.data.message) {
+                if (response.data.code === 100) {
                     error();
                 } else {
                     // e.preventDefault()
                     success();
+                    localStorage.setItem('data-user', JSON.stringify(response.data.data))
                     setTimeout(() => {
                         navigate('/');
                     }, 500);
