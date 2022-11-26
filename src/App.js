@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -6,30 +7,15 @@ import Pages from './pages/Pages';
 import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
-import Sdata from '~/components/shops/Sdata';
 import Register from './common/register/Register';
 import Login from './common/login/Login';
-import Product from './components/MainPage/Product/Product';
+import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import { toast, ToastContainer } from 'react-toastify';
-import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
-
+import ChatBox from 'react-custom-chat';
 
 function App() {
-    /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- import Register from './common/register/Register';
-import Login from './common/login/Login';
-import { toast } from 'react-toastify';
-  Step 3 :  chai flashCard ma xa button ma
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
-
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -53,19 +39,22 @@ import { toast } from 'react-toastify';
             theme: 'light',
         });
     const { productItems } = Data;
-    const { shopItems } = Sdata;
 
     //Step 2 :
     const [CartItem, setCartItem] = useState([]);
 
+    const [productDetail, setProductDetail] = useState([]);
+
     //Step 4 :
     const addToCart = (product) => {
-        const productExit = CartItem.find((item) => item.id === product.id);
+        const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
-                    item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item,
+                    item.id_product === product.id_product
+                        ? { ...productExit, qty: productExit.qty + 1 }
+                        : item,
                 ),
             );
         } else {
@@ -76,14 +65,16 @@ import { toast } from 'react-toastify';
 
     // Stpe: 6
     const decreaseQty = (product) => {
-        const productExit = CartItem.find((item) => item.id === product.id);
+        const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
         if (productExit.qty === 1) {
-            setCartItem(CartItem.filter((item) => item.id !== product.id));
+            setCartItem(CartItem.filter((item) => item.id_product !== product.id_product));
         } else {
             setCartItem(
                 CartItem.map((item) =>
-                    item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item,
+                    item.id_product === product.id_product
+                        ? { ...productExit, qty: productExit.qty - 1 }
+                        : item,
                 ),
             );
         }
@@ -91,13 +82,33 @@ import { toast } from 'react-toastify';
 
     // Stpe: 7
     const deleteQty = (product) => {
-        // const productExit = CartItem.find((item) => item.id === product.id);
-
         const index = CartItem.findIndex((x) => x.id === product.id);
         const newCartItem = [...CartItem];
         newCartItem.splice(index, 1);
         setCartItem(newCartItem);
         deleteProduct();
+    };
+
+    // Stpe: 8detail
+    const detailPro = (products) => {
+        const productExit = productDetail.find((item) => item.id_product === products.id_product);
+        if (productExit) {
+            setProductDetail(
+                productDetail.map((item) =>
+                    item.id_product === products.id_product ? { ...productExit, qty: 1 } : item,
+                ),
+            );
+        } else {
+            setProductDetail([{ ...products, qty: 1 }]);
+        }
+        console.log(productDetail);
+    };
+
+    // Lay id_category
+    const [categoryid, setCategoryid] = useState();
+
+    const CategoryProduct = (id) => {
+        setCategoryid(id);
     };
 
     return (
@@ -109,15 +120,21 @@ import { toast } from 'react-toastify';
                 <Route />
                 <Route path="dangky" element={<Register />} />
                 <Route path="dangnhap" element={<Login />} />
-                <Route path="quenmatkhau" element={<QuenMatKhau />} exact/>
-         
                 <Route
                     path="sanpham"
-                    element={<Product addToCart={addToCart} shopItems={shopItems} />}
+                    element={
+                        <Shop
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            CategoryProduct={CategoryProduct}
+                            categoryid={categoryid}
+                        />
+                    }
                 />
-                {/* <Shop shopItems={shopItems} addToCart={addToCart} /> */}
                 <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />
+                <Route path="lienhe" element={<LienHe />} />donhang
+                <Route path="donhang" element={<DonHang />} />
+                <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
                     path="/"
                     exact
@@ -125,7 +142,7 @@ import { toast } from 'react-toastify';
                         <Pages
                             productItems={productItems}
                             addToCart={addToCart}
-                            shopItems={shopItems}
+                            detailPro={detailPro}
                         />
                     }
                 />

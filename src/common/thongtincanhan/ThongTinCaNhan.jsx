@@ -27,7 +27,7 @@ function ThongTinCaNhan() {
         } else {
             setDataUser(false);
         }
-    }, [dataUser]);
+    }, []);
 
     return (
         <div>
