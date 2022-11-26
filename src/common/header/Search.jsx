@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import logo from '../../assets/images/clickme.png';
 import { Link } from 'react-router-dom';
 import { Popover } from 'antd';
 import Logout from '~/components/logout/Logout';
 import ThongTinCaNhan from '../thongtincanhan/ThongTinCaNhan';
+import PropTypes from 'prop-types';
+import TimKiem from '../timkiem/TimKiem';
+Search.propTypes = {
+    handlerSearch: PropTypes.func
+};
 
-const Search = ({ CartItem }) => {
-    // fixed Header
-    window.addEventListener('scroll', function () {
-        const search = document.querySelector('.search');
-        search.classList.toggle('active', window.scrollY > 100);
-    });
+Search.defaultProps = {
+    handlerSearch: null
+}
 
+function Search({CartItem, ...props}) {
+
+  
 
 
    
@@ -26,12 +31,7 @@ const Search = ({ CartItem }) => {
                         </Link>
                     </div>
 
-                    <div className="search-box f_flex">
-                        <i className="fa fa-search"></i>
-                        <input type="text" placeholder="Tìm kiếm sản phẩm..." />
-                        <span>ALL</span>
-                    </div>
-
+                        <TimKiem/>
                     <div className="icon f_flex width">
                         <Popover
                             style={{
