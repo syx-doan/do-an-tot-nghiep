@@ -27,7 +27,7 @@ function ThongTinCaNhan() {
         } else {
             setDataUser(false)
         }
-    }, [dataUser]);
+    }, []);
 
     return (
         <div>
@@ -39,8 +39,14 @@ function ThongTinCaNhan() {
                         alt="avatar"
                     />
                     <div className={cx('dropdowncontent')}>
-                        <h3>{dataUser?.fullname}</h3>
-                        <p>{dataUser?.email}</p>
+                        {dataUser.map((data) => {
+                            return (
+                                <>
+                                    <h3 key={data.id}>{data.fullname}</h3>
+                                    <p>{data.email}</p>
+                                </>
+                            )
+                        })}
                         <Link to={'/cart'}> Xem giỏ hàng</Link>
                     </div>
                 </div>

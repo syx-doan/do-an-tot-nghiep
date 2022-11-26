@@ -14,6 +14,8 @@ import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
 import Product_Detail from './components/Product/Product_Detail';
 import Shop from './components/shops/Shop';
+import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
+import DonHang from './common/donhang/DonHang';
 
 function App() {
     const success = () =>
@@ -137,7 +139,9 @@ function App() {
                     }
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />
+                <Route path="lienhe" element={<LienHe />} />donhang
+                <Route path="donhang" element={<DonHang />} />
+                <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
                     path="/"
                     exact

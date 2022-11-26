@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BinhLuan from './BinhLuan';
+import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
 import SanPhamMoi from './SanPhamMoi';
 
@@ -172,13 +172,13 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                         <div className="product__content-price">
                                             <div className="content-price--old">
                                                 {productDetail.map((item) => {
-                                                    return <p>{item.price * item.price}</p>;
+                                                    return <p>{(item.price * item.price).toLocaleString('us-US')}</p>;
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
                                             <div className="content-price--new">
                                                 {productDetail.map((item) => {
-                                                    return <p>{item.price}</p>;
+                                                    return <p>{item.price.toLocaleString('us-US')}</p>;
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
@@ -186,83 +186,6 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                         </div>
                                     </div>
                                     <div className="product__content-body hide-on-mobile">
-                                        <div className="f8row sale_mobile">
-                                            <div className="col p-0 t-0 m-12">
-                                                <div className="product__content-discount">
-                                                    <div className="content-discount--title">
-                                                        Mã giảm giá
-                                                    </div>
-                                                    <div className="content-discount--code">
-                                                        <div className="content-discount--item">
-                                                            10% GIẢM
-                                                        </div>
-                                                        <div className="content-discount--item">
-                                                            5% GIẢM
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-discount--detail">
-                                                        <div className="discount-detail__header">
-                                                            Mã giảm giá của shop
-                                                        </div>
-                                                        <div className="discount-detail__sup-header">
-                                                            Tiết kiệm hơn khi áp dụng mã giảm giá
-                                                            của Shop. Liên hệ với Shop nếu gặp trục
-                                                            trặc về mã giảm giá do Shop tự tạo.
-                                                        </div>
-                                                        <div className="discount-detail__code">
-                                                            <div className="discount-detail__code-item">
-                                                                <div className="discount-detail__background">
-                                                                    <div
-                                                                        className="discount-detail__img"
-                                                                        style={{
-                                                                            backgroundImage:
-                                                                                'url("https://cf.shopee.vn/file/9ce102789d156548395752b9978d13a4")',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="discount-detail__border" />
-                                                                <div className="discount-detail__content-head">
-                                                                    <span className="discount-detail__content-title">
-                                                                        Giảm 10% Đơn Tối Thiểu ₫99k
-                                                                        Giảm tối đa ₫15k
-                                                                    </span>
-                                                                    <span className="discount-detail__content-date">
-                                                                        HSD: 30.06.2021
-                                                                    </span>
-                                                                </div>
-                                                                <button className="discount-detail__content-button">
-                                                                    Lưu
-                                                                </button>
-                                                            </div>
-                                                            <div className="discount-detail__code-item">
-                                                                <div className="discount-detail__background">
-                                                                    <div
-                                                                        className="discount-detail__img"
-                                                                        style={{
-                                                                            backgroundImage:
-                                                                                'url("https://cf.shopee.vn/file/9ce102789d156548395752b9978d13a4")',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="discount-detail__border" />
-                                                                <div className="discount-detail__content-head">
-                                                                    <span className="discount-detail__content-title">
-                                                                        Giảm 10% Đơn Tối Thiểu ₫99k
-                                                                        Giảm tối đa ₫15k
-                                                                    </span>
-                                                                    <span className="discount-detail__content-date">
-                                                                        HSD: 30.06.2021
-                                                                    </span>
-                                                                </div>
-                                                                <button className="discount-detail__content-button">
-                                                                    Lưu
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div className="product__content-info">
                                             <div className="content-info--title">Mô tả</div>
                                             <div className="content-info--body">

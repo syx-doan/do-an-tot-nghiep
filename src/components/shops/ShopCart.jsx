@@ -11,7 +11,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
         setCount(count + 1);
     };
 
-    console.log(categoryid);
+    // console.log(categoryid);
 
     const fetchPost = async () => {
         try {
@@ -61,7 +61,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="price">Giá tiền: {item.price}.đ</p>
+                                    <p className="price">Giá tiền: {item.price.toLocaleString('us-US')} đ</p>
                                     <button
                                         className="btn-add"
                                         href="!#"
@@ -70,7 +70,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {item.price}.đ</p>
+                                <p>Giảm tới: {item.price.toLocaleString('us-US')} đ</p>
                             </div>
                         </div>
                     );

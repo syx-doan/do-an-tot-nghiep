@@ -27,7 +27,7 @@ const SanPhamMoi = () => {
                         <a href className="detail__top-product--link">
                             <img
                                 className="detail__top-img"
-                                src={`http://172.16.10.158/admin_dasboard/upload/product/${val.image}`}
+                                src={`http://172.16.10.231/admin_dasboard/upload/product/${val.image}`}
                                 alt="Avatar"
                             />
 
@@ -37,7 +37,7 @@ const SanPhamMoi = () => {
                                 </h3>
                                 <div className="detail__top-price">
                                     <span className="detail__top-product--price">
-                                        {val.price}
+                                        {val.price.toLocaleString('us-US')}
                                         <span className="vnd-class">₫</span>
                                     </span>
                                 </div>

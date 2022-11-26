@@ -61,8 +61,8 @@ function Login() {
         const isValidate = validateAll();
         if (!isValidate) return;
         axiosClient
-            .post('api-login.php', {
-                action: "login",
+            .post('login', {
+                // action: "login",
                 email: email,
                 password: password,
             })
@@ -72,7 +72,7 @@ function Login() {
                 } else {
                     // e.preventDefault()
                     success();
-                    localStorage.setItem('data-user', JSON.stringify(response.data.data))
+                    localStorage.setItem('data-user', JSON.stringify(response.data))
                     setTimeout(() => {
                         navigate('/');
                     }, 500);
