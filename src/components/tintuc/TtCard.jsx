@@ -1,15 +1,15 @@
-import React from "react"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 // import Ddata from "./Ttdata"
-import "./tintuc.css"
-import { useState } from "react"
-import axiosClient from "~/utils/http"
-import { useEffect } from "react"
+import './tintuc.css';
+import { useState } from 'react';
+import axiosClient from '~/utils/http';
+import { useEffect } from 'react';
 
 const Ttcard = () => {
-  const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
 
     const fetchPost = async () => {
         try {
@@ -23,34 +23,37 @@ const Ttcard = () => {
         fetchPost();
     }, []);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 4.5,
-    slidesToScroll: 1,
-    autoplay: true,
-  }
-  return (
-    <>
-      <Slider {...settings}>
-        {data.map((value, index) => {
-          return (
-            <>
-              <div className='box tintuc' key={index}>
-                <div className='img'>
-                  <img
-                  src={`http://172.16.10.231/admin_dasboard/upload/product/${value.image}`}
-                  alt='' width='100' height='70px'/>
-                </div>
-                <h6>{value.title}</h6>
-                <p>{value.content}</p>
-              </div>
-            </>
-          )
-        })}
-      </Slider>
-    </>
-  )
-}
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4.5,
+        slidesToScroll: 1,
+        autoplay: true,
+    };
+    return (
+        <>
+            <Slider {...settings}>
+                {data.map((value, index) => {
+                    return (
+                        <>
+                            <div className="box tintuc" key={index}>
+                                <div className="img">
+                                    <img
+                                        src={`REACT_APP_BASE_URL${value.image}`}
+                                        alt=""
+                                        width="100"
+                                        height="70px"
+                                    />
+                                </div>
+                                <h6>{value.title}</h6>
+                                <p>{value.content}</p>
+                            </div>
+                        </>
+                    );
+                })}
+            </Slider>
+        </>
+    );
+};
 
-export default Ttcard
+export default Ttcard;

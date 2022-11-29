@@ -39,7 +39,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                    src={`REACT_APP_BASE_URL${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item)}
