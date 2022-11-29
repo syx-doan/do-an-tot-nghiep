@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Cards from 'react-credit-cards';
-// import 'react-credit-cards/es/styles-compiled.css';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 import './cartvisa.scss';
 
 const CartVisa = () => {
@@ -14,7 +14,7 @@ const CartVisa = () => {
     return (
         <>
             <div clasName="rccs__card rccs__card--unknown">
-                {/* <Cards number={number} name={name} expiry={date} cvc={cvc} focused={focus} /> */}
+                <Cards number={number} name={name} expiry={date} cvc={cvc} focused={focus} />
             </div>
 
             <br />

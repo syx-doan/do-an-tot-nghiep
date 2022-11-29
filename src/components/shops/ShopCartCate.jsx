@@ -21,7 +21,8 @@ const ShopCartCate = ({ addToCart }) => {
       };
     useEffect(() => {
         fetchPost();
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return (
         <>
@@ -33,7 +34,7 @@ const ShopCartCate = ({ addToCart }) => {
                             <label>{count}</label> <br />
                             <i class="fa-solid fa-heart" onClick={increment}></i>
                         </div>
-                        <img src={`http://172.16.10.234/duan/admin_dasboard/upload/product/${item.image}`} className="card-img-top" alt="..." />  
+                        <img src={`http://172.16.10.111/duan/admin_dasboard/upload/product/${item.image}`} className="card-img-top" alt="..." />  
                         <div className="card-body">
                             <h5 className="card-title product-name">{item.name}</h5>
                             <div className="rate">

@@ -29,7 +29,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                     {productDetail.map((item) => {
                                         return (
                                             <img
-                                                src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                                src={`http://172.16.10.111/admin_dasboard/upload/product/${item.image}`}
                                                 alt=""
                                             />
                                         );

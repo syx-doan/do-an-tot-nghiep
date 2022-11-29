@@ -39,7 +39,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                    src={`http://172.16.10.111/admin_dasboard/upload/product/${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item)}
@@ -56,7 +56,8 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
-                                </div>
+                                </div> 
+                                <p className='giacu'>Giảm tới: {item.price.toLocaleString('us-US')} đ</p>
                                 <div className="d-flex justify-content-between mt-2">
                                     <p className="price">
                                         Giá tiền: {item.price.toLocaleString('us-US')} đ
@@ -69,7 +70,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {item.price.toLocaleString('us-US')} đ</p>
+                               
                             </div>
                         </div>
                     );

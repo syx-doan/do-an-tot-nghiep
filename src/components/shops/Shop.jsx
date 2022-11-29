@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Catg from './Catg';
 import ShopCart from './ShopCart';
 import './shop.css';
-import { Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 import ShopCartCate from './ShopCartCate';
 // const {id} = useParams();
-const Shop = ({ addToCart, shopItems }) => {
+const Shop = ({ addToCart, shopItems,  }) => {
     const [data, setData] = useState([]);
     const fetchPost = async () => {
         try {
