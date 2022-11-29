@@ -10,7 +10,7 @@ function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        console.log(dataUser, 'here1');
+        // console.log(dataUser, 'here1');
         if (dataUser && dataUser !== 'null') {
             setDataUser(dataUser);
         } else {

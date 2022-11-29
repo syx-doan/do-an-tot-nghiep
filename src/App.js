@@ -16,6 +16,7 @@ import Product_Detail from './components/Product/Product_Detail';
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
+import Detail from './components/tintuc/Detail';
 
 function App() {
     const success = () =>
@@ -140,7 +141,8 @@ function App() {
                     }
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
-                <Route path="lienhe" element={<LienHe />} />donhang
+                <Route path="lienhe" element={<LienHe />} />
+                <Route path="tintuc" element={<Detail productDetail={productDetail} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route

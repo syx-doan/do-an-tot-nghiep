@@ -29,7 +29,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                     {productDetail.map((item) => {
                                         return (
                                             <img
-                                                src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                                src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
                                                 alt=""
                                             />
                                         );
@@ -172,13 +172,21 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                         <div className="product__content-price">
                                             <div className="content-price--old">
                                                 {productDetail.map((item) => {
-                                                    return <p>{(item.price * item.price).toLocaleString('us-US')}</p>;
+                                                    return (
+                                                        <p>
+                                                            {(
+                                                                item.price * item.price
+                                                            ).toLocaleString('us-US')}
+                                                        </p>
+                                                    );
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
                                             <div className="content-price--new">
                                                 {productDetail.map((item) => {
-                                                    return <p>{item.price.toLocaleString('us-US')}</p>;
+                                                    return (
+                                                        <p>{item.price.toLocaleString('us-US')}</p>
+                                                    );
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>

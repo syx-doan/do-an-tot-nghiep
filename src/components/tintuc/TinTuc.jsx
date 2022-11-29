@@ -1,7 +1,7 @@
 import React from "react"
 import Ttcard from "./TtCard"
 import iconNews from "../../assets/images/icons/news.png"
-const TinTuc = () => {
+const TinTuc = ( {detailPro} ) => {
   return (
     <>
       <section className='Discount background NewArrivals'>
@@ -16,7 +16,7 @@ const TinTuc = () => {
               <i className='fa-solid fa-caret-right'></i>
             </div>
           </div>
-          <Ttcard />
+          <Ttcard detailPro={detailPro} />
         </div>
       </section>
     </>

@@ -27,7 +27,7 @@ const Cart = () => {
                         <div className="box" key={index}>
                             <div className="img">
                                 <img
-                                    src={`http://172.16.10.231/admin_dasboard/upload/product/${val.image}`}
+                                    src={`http://172.16.10.245/admin_dasboard/upload/product/${val.image}`}
                                     alt=""
                                 />
                             </div>

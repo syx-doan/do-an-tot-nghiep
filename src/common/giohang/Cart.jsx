@@ -79,7 +79,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
                                     <img
-                                        src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                        src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
                                         alt=""
                                     />
                                 </div>
