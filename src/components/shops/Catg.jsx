@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axiosClient from '~/utils/http';
 
-const Catg = ( {CategoryProduct} ) => {
+const Catg = ({ CategoryProduct }) => {
     const [data, setData] = useState([]);
-    
+
     const fetchPost = async () => {
         try {
             const response = await axiosClient('category');

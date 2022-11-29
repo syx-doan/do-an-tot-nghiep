@@ -8,6 +8,7 @@ footer h1 {
   color: #ed1912;
   font-weight: 800;
   font-style: italic;
+  font-size: 40px;
 }
 footer .img {
   background-color: #0c2a4d;
@@ -35,10 +36,11 @@ footer li {
   opacity: 0.5;
  
 }
-.paddingleft{
-  padding-left: -2rem !important;
-}
 .box-footer h3{
+  margin-left: 2rem;
   color: #fff;
-  padding-left: 2rem;
+  font-size: 20px;
+}
+.box-footer{
+  padding-left: 30px;
 }

@@ -23,4 +23,4 @@ const TinTuc = ( {detailPro} ) => {
   )
 }
 
-export default TinTuc
+export default TinTuc;

@@ -1,24 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import axiosClient from '~/utils/http';
+import React, { useEffect } from 'react';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import './sanphammoi.module.scss';
+import classNames from 'classnames/bind';
+import axiosClient from '~/utils/http';
+import { useState } from 'react';
+import styles from './newsanpham.scss'
+
+const cx = classNames.bind(styles);
 
 const Cart = () => {
     const [data, setData] = useState([]);
-
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // autoplay: true,
+    };
     const fetchPost = async () => {
         try {
             const response = await axiosClient('newproducts');
             setData(response.data);
+            // console.log(response.data)
+            console.log(response);
         } catch (err) {
             console.error(err);
         }
     };
+
     useEffect(() => {
         fetchPost();
+        // fetchPost1();
     }, []);
-    
     return (
         <>
             <div className="content grid3 product">
