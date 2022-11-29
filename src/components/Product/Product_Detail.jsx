@@ -29,7 +29,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                     {productDetail.map((item) => {
                                         return (
                                             <img
-                                                src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
+                                                src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
                                                 alt=""
                                             />
                                         );
@@ -207,23 +207,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                                 </a>
                                             </div>
                                         </div>
-                                        <div className="product__content-select">
-                                            <div className="content-select--title">Màu</div>
-                                            <div className="content-select--color">
-                                                <button className="content-select--item">
-                                                    ĐEN
-                                                </button>
-                                                <button className="content-select--item">
-                                                    HỒNG
-                                                </button>
-                                                <button className="content-select--item">
-                                                    TRẮNG
-                                                </button>
-                                                <button className="content-select--item">
-                                                    XANH
-                                                </button>
-                                            </div>
-                                        </div>
+                                       
                                         <div className="product__content-count">
                                             <div className="content-count--title">Số lượng</div>
                                             <div className="content-count--control">

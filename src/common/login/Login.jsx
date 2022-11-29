@@ -62,22 +62,25 @@ function Login() {
         e.preventDefault();
         const isValidate = validateAll();
         if (!isValidate) return;
+
         axiosClient
             .post('login', {
-                // action: "login",
+                // action: 'login',
                 email: email,
                 password: password,
             })
             .then((response) => {
-                if (response.data.code === 100) {
+                if (response.data.message) {
                     error();
+
+                    // console.log(response);
                 } else {
-                    // e.preventDefault()
+                    localStorage.setItem('data-user', JSON.stringify(response.data));
                     success();
-                    localStorage.setItem('data-user', JSON.stringify(response.data))
                     setTimeout(() => {
                         navigate('/');
                     }, 500);
+                    // e.preventDefault()
                 }
             });
     };

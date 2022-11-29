@@ -9,7 +9,7 @@ const Detail = ({ productDetail }) => {
                         return (
                             <>
                                 <img
-                                    src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
+                                    src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
                                     alt=""
                                     width="100px"
                                     height="70px"

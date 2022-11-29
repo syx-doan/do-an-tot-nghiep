@@ -41,7 +41,7 @@ const Ttcard = ( {detailPro} ) => {
                                 <Link to="/tintuc">
                                     <div className="img">
                                         <img
-                                            src={`http://172.16.10.245/admin_dasboard/upload/product/${value.image}`}
+                                            src={`http://172.16.24.218/admin_dasboard/upload/product/${value.image}`}
                                             alt=""
                                             width="100"
                                             height="70px"

@@ -13,7 +13,7 @@ const Pages = ({ productItems, addToCart, CartItem, detailPro, CategoryProduct, 
         <>
             <Home CartItem={CartItem} />
             <FlashDeals productItems={productItems} addToCart={addToCart} />
-            <TopCate />
+            {/* <TopCate /> */}
             <NewSanPham />
             <Discount detailPro={detailPro} />
             <Shop
