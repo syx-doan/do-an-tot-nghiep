@@ -15,7 +15,7 @@ function Login() {
     const error = () =>
         toast.error('Thông tin tài khoải hoặc mật khẩu không chính xác!', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -26,7 +26,7 @@ function Login() {
     const success = () =>
         toast.success('Đăng nhập thành công', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

@@ -12,7 +12,7 @@ function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
             onCancel={handleCancel}
             forceRender
             mask
-            zIndex={99999}
+            zIndex={99}
             width="80%"
         >
             <div className="thanhtoan">
@@ -42,6 +42,7 @@ function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
                                             <i className="fa fa-user" /> Tên khách hàng
                                         </label>
                                         <input
+                                        required
                                             type="text"
                                             id="fname"
                                             name="firstname"
@@ -95,6 +96,7 @@ function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
                                                 Thanh toán sau khi nhận hàng
                                             </span>
                                         </label>
+                                        <p>Hoặc : </p>
                                         <h5 className="d-flex justify-content-center thethanhtoan">
                                             Thanh toán bằng thẻ visa
                                         </h5>

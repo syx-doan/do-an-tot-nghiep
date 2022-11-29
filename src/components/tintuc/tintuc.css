@@ -18,7 +18,6 @@
     font-size: 0.72em;
     color: grey;
     overflow: hidden;
-    
     display: inline-block;
     text-overflow: ellipsis;
     /* white-space: nowrap; */

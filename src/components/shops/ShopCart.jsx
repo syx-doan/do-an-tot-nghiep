@@ -26,9 +26,6 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
         fetchPost();
     }, []);
 
-    
-    
-
     if (categoryid === undefined) {
         return (
             <>
@@ -61,7 +58,9 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="price">Giá tiền: {item.price.toLocaleString('us-US')} đ</p>
+                                    <p className="price">
+                                        Giá tiền: {item.price.toLocaleString('us-US')} đ
+                                    </p>
                                     <button
                                         className="btn-add"
                                         href="!#"

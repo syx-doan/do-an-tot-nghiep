@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cards from 'react-credit-cards';
-import 'react-credit-cards/es/styles-compiled.css';
+// import Cards from 'react-credit-cards';
+// import 'react-credit-cards/es/styles-compiled.css';
 import './cartvisa.scss';
 
 const CartVisa = () => {
@@ -14,7 +14,7 @@ const CartVisa = () => {
     return (
         <>
             <div clasName="rccs__card rccs__card--unknown">
-                <Cards number={number} name={name} expiry={date} cvc={cvc} focused={focus} />
+                {/* <Cards number={number} name={name} expiry={date} cvc={cvc} focused={focus} /> */}
             </div>
 
             <br />
@@ -23,11 +23,13 @@ const CartVisa = () => {
                     <div className="col-sm-11">
                         <label for="name">Số thẻ</label>
                         <input
-                        placeholder='1234-5678-9876-5432'
-                            type="number"
+                            placeholder="ex: 1234-5678-9876-5432"
+                            maxlength={16}
+                            type="text"
                             className="form-control"
                             value={number}
                             name="number"
+
                             onChange={(e) => {
                                 SetNumber(e.target.value);
                             }}
@@ -40,7 +42,7 @@ const CartVisa = () => {
                     <div className="col-sm-11">
                         <label for="name">Tên thẻ</label>
                         <input
-                        placeholder='DOAN VIET SY'
+                            placeholder="ex: DOAN VIET SY"
                             type="text"
                             className="form-control"
                             value={name}
@@ -57,7 +59,8 @@ const CartVisa = () => {
                     <div className="col-sm-6">
                         <label for="name">Ngày hết hạn</label>
                         <input
-                        placeholder='13/02'
+                            placeholder="13/02"
+                            maxlength={4}
                             type="text"
                             name="expiry"
                             className="form-control"
@@ -71,8 +74,9 @@ const CartVisa = () => {
                     <div className="col-sm-5">
                         <label for="name">CVV</label>
                         <input
-                        placeholder='123'
-                            type="number"
+                            placeholder="123"
+                            maxlength={3}
+                            type="tel"
                             name="cvc"
                             className="card"
                             value={cvc}
