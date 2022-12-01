@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React  from 'react';
 import logo from '../../assets/images/clickme.png';
 import { Link } from 'react-router-dom';
 import { Popover } from 'antd';

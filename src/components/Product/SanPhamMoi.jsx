@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
-const SanPhamMoi = () => {
+const SanPhamMoi = ({ detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -25,16 +26,17 @@ const SanPhamMoi = () => {
                 {data.map((val) => {
                     return (
                         <a href className="detail__top-product--link">
-                            <img
-                                className="detail__top-img"
-                                src={`http://172.16.24.218/admin_dasboard/upload/product/${val.image}`}
-                                alt="Avatar"
-                            />
+                            <Link to="/product_detail">
+                                <img
+                                    className="detail__top-img"
+                                    src={`${url}${val.image}`}
+                                    alt="Avatar"
+                                    onClick={() => detailPro(val)}
+                                />
+                            </Link>
 
                             <div className="detail__top-product--text">
-                                <h3 className="detail__top-product--name">
-                                    {val.name}
-                                </h3>
+                                <h3 className="detail__top-product--name">{val.name}</h3>
                                 <div className="detail__top-price">
                                     <span className="detail__top-product--price">
                                         {val.price.toLocaleString('us-US')}

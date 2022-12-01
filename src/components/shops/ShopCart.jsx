@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from './../../utils/http';
 
-const ShopCart = ({ addToCart, detailPro, categoryid }) => {
+const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
 
@@ -36,7 +36,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
+                                    src={`${url}${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item)}
@@ -81,7 +81,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
+                                    src={`${url}${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item)}

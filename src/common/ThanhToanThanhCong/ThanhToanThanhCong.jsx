@@ -26,7 +26,7 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
                 <h1>
                     <b>Thanh toán thành công</b>
                 </h1>
-                <p>Mã đơn hàng của bạn là 232132423232.</p>
+                <p>Mã đơn hàng của bạn là <span className={cx('idsanpham')}>232132423232</span>.</p>
                 <p>
                     Xem đơn hàng của bạn tại{' '}
                     <Link className={cx('link')} to="/donhang">

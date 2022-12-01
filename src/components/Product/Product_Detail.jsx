@@ -6,7 +6,7 @@ import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
 import SanPhamMoi from './SanPhamMoi';
 
-const Product_Detail = ({ productDetail, addToCart }) => {
+const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
     return (
         <>
             <div className="f8wrapper">
@@ -29,108 +29,14 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                     {productDetail.map((item) => {
                                         return (
                                             <img
-                                                src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
+                                                className="mb-5"
+                                                src={`${url}${item.image}`}
                                                 alt=""
                                             />
                                         );
                                     })}
-                                    <div className="product__content-scroll">
-                                        <div className="product__content-img--list">
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/f53558ea21555919f4d506ace10b7118_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/d4242d1e9ae1e78cb2977514c454ddfc_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/f53558ea21555919f4d506ace10b7118_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/6eb96fdda8b9bcb989179e2ca944e8b1_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/6eb96fdda8b9bcb989179e2ca944e8b1_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/f53558ea21555919f4d506ace10b7118_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/d4242d1e9ae1e78cb2977514c454ddfc_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/f53558ea21555919f4d506ace10b7118_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/6eb96fdda8b9bcb989179e2ca944e8b1_tn")',
-                                                }}
-                                            />
-                                            <div
-                                                className="product__content-img--item"
-                                                style={{
-                                                    backgroundImage:
-                                                        'url("https://cf.shopee.vn/file/6eb96fdda8b9bcb989179e2ca944e8b1_tn")',
-                                                }}
-                                            />
-                                            <button className="product__content-button product__content-button-left">
-                                                <svg
-                                                    enableBackground="new 0 0 13 20"
-                                                    viewBox="0 0 13 20"
-                                                    x={0}
-                                                    y={0}
-                                                    className="product__content-svg-icon icon-arrow-left-bold"
-                                                >
-                                                    <polygon points="4.2 10 12.1 2.1 10 -.1 1 8.9 -.1 10 1 11 10 20 12.1 17.9" />
-                                                </svg>
-                                            </button>
-                                            <button className="product__content-button product__content-button-right">
-                                                <svg
-                                                    enableBackground="new 0 0 13 21"
-                                                    viewBox="0 0 13 21"
-                                                    x={0}
-                                                    y={0}
-                                                    className="product__content-svg-icon icon-arrow-right-bold"
-                                                >
-                                                    <polygon points="11.1 9.9 2.1 .9 -.1 3.1 7.9 11 -.1 18.9 2.1 21 11.1 12 12.1 11" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="product__content-action">
+
+                                    <div className="product__content-action mt-5">
                                         <div className="product__content--share">
                                             <span className="product__content-share--text">
                                                 Chia sẽ:
@@ -207,7 +113,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                                 </a>
                                             </div>
                                         </div>
-                                       
+
                                         <div className="product__content-count">
                                             <div className="content-count--title">Số lượng</div>
                                             <div className="content-count--control">
@@ -241,7 +147,9 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                                     </button>
                                                 </div>
                                                 <div className="content-count--item">
-                                                    996 sản phẩm có sẵn
+                                                    {productDetail.map((item) => {
+                                                        return <p>{item.quantity} sản phẩm có sẵn</p>;
+                                                    })} 
                                                 </div>
                                             </div>
                                         </div>
@@ -343,7 +251,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                         <div className="f8row detail__product sm-gutter">
                             <BinhLuan />
 
-                            <SanPhamMoi />
+                            <SanPhamMoi detailPro={detailPro} url={url} />
                         </div>
                     </div>
                 </div>
