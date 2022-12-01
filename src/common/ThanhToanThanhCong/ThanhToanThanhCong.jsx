@@ -22,7 +22,7 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
                 <div className={cx('icon')}>
                     <i className="fa fa-sharp fa-solid fa-circle-check"></i>
                 </div>
-                
+
                 <h1>
                     <b>Thanh toán thành công</b>
                 </h1>

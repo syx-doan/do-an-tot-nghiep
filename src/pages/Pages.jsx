@@ -8,15 +8,20 @@ import Annocument from '../components/annocument/Annocument';
 import Wrapper from '../components/wrapper/Wrapper';
 import NewSanPham from './../components/sanphammoi/SanPhamMoi';
 
-const Pages = ({ productItems, addToCart, CartItem, detailPro }) => {
+const Pages = ({ productItems, addToCart, CartItem, detailPro, CategoryProduct, categoryid }) => {
     return (
         <>
             <Home CartItem={CartItem} />
             <FlashDeals productItems={productItems} addToCart={addToCart} />
-            <TopCate />
+            {/* <TopCate /> */}
             <NewSanPham />
-            <Discount />
-            <Shop addToCart={addToCart} detailPro={detailPro} />
+            <Discount detailPro={detailPro} />
+            <Shop
+                addToCart={addToCart}
+                detailPro={detailPro}
+                CategoryProduct={CategoryProduct}
+                categoryid={categoryid}
+            />
             <Annocument />
             <Wrapper />
         </>

@@ -29,7 +29,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                     {productDetail.map((item) => {
                                         return (
                                             <img
-                                                src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
+                                                src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
                                                 alt=""
                                             />
                                         );
@@ -172,13 +172,21 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                         <div className="product__content-price">
                                             <div className="content-price--old">
                                                 {productDetail.map((item) => {
-                                                    return <p>{(item.price * item.price).toLocaleString('us-US')}</p>;
+                                                    return (
+                                                        <p>
+                                                            {(
+                                                                item.price * item.price
+                                                            ).toLocaleString('us-US')}
+                                                        </p>
+                                                    );
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
                                             <div className="content-price--new">
                                                 {productDetail.map((item) => {
-                                                    return <p>{item.price.toLocaleString('us-US')}</p>;
+                                                    return (
+                                                        <p>{item.price.toLocaleString('us-US')}</p>
+                                                    );
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
@@ -199,23 +207,7 @@ const Product_Detail = ({ productDetail, addToCart }) => {
                                                 </a>
                                             </div>
                                         </div>
-                                        <div className="product__content-select">
-                                            <div className="content-select--title">Màu</div>
-                                            <div className="content-select--color">
-                                                <button className="content-select--item">
-                                                    ĐEN
-                                                </button>
-                                                <button className="content-select--item">
-                                                    HỒNG
-                                                </button>
-                                                <button className="content-select--item">
-                                                    TRẮNG
-                                                </button>
-                                                <button className="content-select--item">
-                                                    XANH
-                                                </button>
-                                            </div>
-                                        </div>
+                                       
                                         <div className="product__content-count">
                                             <div className="content-count--title">Số lượng</div>
                                             <div className="content-count--control">

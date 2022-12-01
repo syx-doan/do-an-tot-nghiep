@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -16,8 +17,14 @@ import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
+import Detail from './components/tintuc/Detail';
 
 function App() {
+    const [CartItem, setCartItem] = useState([]);
+
+    const [productDetail, setProductDetail] = useState([]);
+    const [categoryid, setCategoryid] = useState();
+
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -43,9 +50,6 @@ function App() {
     const { productItems } = Data;
 
     //Step 2 :
-    const [CartItem, setCartItem] = useState([]);
-
-    const [productDetail, setProductDetail] = useState([]);
 
     //Step 4 :
     const addToCart = (product) => {
@@ -103,12 +107,10 @@ function App() {
         } else {
             setProductDetail([{ ...products, qty: 1 }]);
         }
-        console.log(productDetail);
+        // console.log(productDetail);
     };
 
     // Lay id_category
-    const [categoryid, setCategoryid] = useState();
-
     const CategoryProduct = (id) => {
         setCategoryid(id);
     };
@@ -116,7 +118,7 @@ function App() {
     return (
         <>
             <Header CartItem={CartItem} />
-            <ToastContainer />
+                <ToastContainer />
 
             <Routes>
                 <Route />
@@ -142,6 +144,7 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
+                <Route path="tintuc" element={<Detail productDetail={productDetail} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -152,6 +155,8 @@ function App() {
                             productItems={productItems}
                             addToCart={addToCart}
                             detailPro={detailPro}
+                            categoryid={categoryid}
+                            CategoryProduct={CategoryProduct}
                         />
                     }
                 />
@@ -168,7 +173,7 @@ function App() {
                     }
                 />
             </Routes>
-           
+
             <Footer />
         </>
     );

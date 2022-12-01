@@ -10,18 +10,7 @@ function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        console.log(dataUser, 'here1');
-        if (dataUser && dataUser !== 'null') {
-            setDataUser(dataUser);
-        } else {
-            setDataUser(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        // console.log(dataUser, 'here2')
-
+        // console.log(dataUser, 'here1');
         if (dataUser && dataUser !== 'null') {
             setDataUser(dataUser);
         } else {
@@ -34,7 +23,7 @@ function ThongTinCaNhan() {
             {dataUser ? (
                 <div className={cx('dropdown')}>
                     <img
-                        src="https://files.fullstack.edu.vn/f8-prod/user_avatars/41172/62eb6a5ac3504.jpg"
+                        src="https://assets.webiconspng.com/uploads/2016/12/User-Icon.png"
                         className={cx('dropdownimg')}
                         alt="avatar"
                     />

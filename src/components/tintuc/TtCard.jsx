@@ -7,8 +7,9 @@ import './tintuc.css';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-const Ttcard = () => {
+const Ttcard = ( {detailPro} ) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -37,14 +38,17 @@ const Ttcard = () => {
                     return (
                         <>
                             <div className="box tintuc" key={index}>
-                                <div className="img">
-                                    <img
-                                        src={`http://172.16.10.234/duan/admin_dasboard/upload/${value.image}`}
-                                        alt=""
-                                        width="100"
-                                        height="70px"
-                                    />
-                                </div>
+                                <Link to="/tintuc">
+                                    <div className="img">
+                                        <img
+                                            src={`http://172.16.24.218/admin_dasboard/upload/product/${value.image}`}
+                                            alt=""
+                                            width="100"
+                                            height="70px"
+                                            onClick={() => detailPro(value)}
+                                        />
+                                    </div>
+                                </Link>
                                 <h6>{value.title}</h6>
                                 <p>{value.content}</p>
                             </div>
