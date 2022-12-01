@@ -15,7 +15,7 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
             onCancel={handleCancelThanhToan}
             forceRender
             mask
-            zIndex={99999}
+            zIndex={999}
             width="50%"
         >
             <div className={cx('man')}>
