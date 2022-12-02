@@ -39,7 +39,7 @@ const Ttcard = () => {
                             <div className="box tintuc" key={index}>
                                 <div className="img">
                                     <img
-                                        src={`REACT_APP_BASE_URL${value.image}`}
+                                        src={`http://172.16.10.239/admin_dasboard/upload/product/news/${value.image}`}
                                         alt=""
                                         width="100"
                                         height="70px"
