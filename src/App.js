@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
-import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
 import Register from './common/register/Register';
@@ -23,6 +22,9 @@ function App() {
     const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
+
+    const [IdPro, setIdPro] = useState([]);
+    const [IdCate, setIdCate] = useState([]);
 
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
@@ -46,9 +48,10 @@ function App() {
             progress: undefined,
             theme: 'light',
         });
-    const { productItems } = Data;
 
     //Step 2 :
+
+    const url = 'http://172.16.10.235/admin_dasboard/upload/product/';
 
     //Step 4 :
     const addToCart = (product) => {
@@ -95,23 +98,46 @@ function App() {
     };
 
     // Stpe: 8detail
-    const detailPro = (products) => {
-        const productExit = productDetail.find((item) => item.id_product === products.id_product);
+    // const detail = (products) => {
+    //     const productExit = productDetail.find((item) => item.id_product === products.id_product);
+    //     if (productExit) {
+    //         setProductDetail(
+    //             productDetail.map((item) =>
+    //                 item.id_product === products.id_product ? { ...productExit } : item,
+    //             ),
+    //         );
+    //     } else {
+    //         setProductDetail([{ ...products }]);
+    //     }
+    // };
+
+    //
+    const detailTinTuc = (products) => {
+        const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {
             setProductDetail(
                 productDetail.map((item) =>
-                    item.id_product === products.id_product ? { ...productExit, qty: 1 } : item,
+                    item.id_news === products.id_news ? { ...productExit } : item,
                 ),
             );
         } else {
-            setProductDetail([{ ...products, qty: 1 }]);
+            setProductDetail([{ ...products }]);
         }
-        // console.log(productDetail);
+    };
+
+    const detailPro = (id_product, id_category) => {
+        setIdPro(id_product);
+        setIdCate(id_category);
+        console.log(IdPro, IdCate);
     };
 
     // Lay id_category
     const CategoryProduct = (id) => {
         setCategoryid(id);
+    };
+
+    const setCategory = () => {
+        setCategoryid(undefined);
     };
 
     return (
@@ -128,7 +154,16 @@ function App() {
                 <Route path="lienhe" element={<LienHe />} />
                 <Route
                     path="product_detail"
-                    element={<Product_Detail productDetail={productDetail} addToCart={addToCart} />}
+                    element={
+                        <Product_Detail
+                            productDetail={productDetail}
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            url={url}
+                            IdPro={IdPro}
+                            IdCate={IdCate}
+                        />
+                    }
                 />
                 <Route
                     path="sanpham"
@@ -138,12 +173,14 @@ function App() {
                             detailPro={detailPro}
                             CategoryProduct={CategoryProduct}
                             categoryid={categoryid}
+                            setCategory={setCategory}
+                            url={url}
                         />
                     }
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
-                <Route path="tintuc" element={<Detail productDetail={productDetail} />} />
+                <Route path="tintuc" element={<Detail productDetail={productDetail} url={url} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -151,11 +188,14 @@ function App() {
                     exact
                     element={
                         <Pages
-                            productItems={productItems}
                             addToCart={addToCart}
                             detailPro={detailPro}
+                            detailTinTuc={detailTinTuc}
                             categoryid={categoryid}
                             CategoryProduct={CategoryProduct}
+                            url={url}
+                            IdPro={IdPro}
+                            IdCate={IdCate}
                         />
                     }
                 />
@@ -168,6 +208,7 @@ function App() {
                             addToCart={addToCart}
                             decreaseQty={decreaseQty}
                             deleteQty={deleteQty}
+                            url={url}
                         />
                     }
                 />

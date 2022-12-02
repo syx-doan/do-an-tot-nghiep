@@ -52,8 +52,8 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         return true;
     };
     const handleThanhToan = () => {
-        // const isValidate = validateAll();
-        // if (!isValidate) return;
+        const isValidate = validateAll();
+        if (!isValidate) return;
 
         const data = { name, phone, address, district, city };
         try {

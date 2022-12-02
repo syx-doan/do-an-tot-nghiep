@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
 
-const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
+const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
@@ -29,7 +29,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
 
     const handleOk = () => {
         success();
-        // navigate('/thanhtoanthanhcong');
         handleCancel();
         showModalThanhToan();
     };
@@ -46,7 +45,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
     };
 
     const handleOkThanhToan = () => {
-        // successThanhToan();
         navigate('/sanpham');
     };
 
@@ -69,7 +67,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
                                     <img
-                                        src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
+                                        src={`${url}${item.image}`}
                                         alt=""
                                     />
                                 </div>
