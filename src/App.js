@@ -20,7 +20,6 @@ import Detail from './components/tintuc/Detail';
 
 function App() {
     const [CartItem, setCartItem] = useState([]);
-
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
 
