@@ -59,7 +59,6 @@ function TimKiem() {
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
                                     suggestions.map((item, i) => (
-                                       
                                         <Link to={`/`} className={cx('wrapper')}>
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>
