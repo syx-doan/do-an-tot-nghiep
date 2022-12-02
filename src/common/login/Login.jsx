@@ -82,7 +82,7 @@ function Login() {
                         localStorage.setItem('data-user', JSON.stringify(response.data));
                         success();
                         window.location.href = '/';
-                    }, 3000);
+                    }, 1000);
                 }
             });
     };
