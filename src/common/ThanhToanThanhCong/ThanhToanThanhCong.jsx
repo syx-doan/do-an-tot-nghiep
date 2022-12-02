@@ -15,14 +15,14 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
             onCancel={handleCancelThanhToan}
             forceRender
             mask
-            zIndex={99999}
+            zIndex={999}
             width="50%"
         >
             <div className={cx('man')}>
                 <div className={cx('icon')}>
                     <i className="fa fa-sharp fa-solid fa-circle-check"></i>
                 </div>
-                
+
                 <h1>
                     <b>Thanh toán thành công</b>
                 </h1>

@@ -2,7 +2,7 @@ import React  from 'react';
 import logo from '../../assets/images/clickme.png';
 import { Link } from 'react-router-dom';
 import { Popover } from 'antd';
-import Logout from '~/components/logout/Logout';
+import Logout from '~/common/logout/Logout';
 import ThongTinCaNhan from '../thongtincanhan/ThongTinCaNhan';
 import PropTypes from 'prop-types';
 import TimKiem from '../timkiem/TimKiem';

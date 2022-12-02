@@ -19,6 +19,14 @@ import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 import Detail from './components/tintuc/Detail';
 
 function App() {
+    const [CartItem, setCartItem] = useState([]);
+
+    const [productDetail, setProductDetail] = useState([]);
+    const [categoryid, setCategoryid] = useState();
+
+    const [IdPro, setIdPro] = useState([]);
+    const [IdCate, setIdCate] = useState([]);
+
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -43,11 +51,8 @@ function App() {
         });
 
     //Step 2 :
-    const [CartItem, setCartItem] = useState([]);
 
-    const [productDetail, setProductDetail] = useState([]);
-
-    const url = 'http://172.16.10.236/admin_dasboard/upload/product/';
+    const url = 'http://172.16.10.235/admin_dasboard/upload/product/';
 
     //Step 4 :
     const addToCart = (product) => {
@@ -94,18 +99,18 @@ function App() {
     };
 
     // Stpe: 8detail
-    const detailPro = (products) => {
-        const productExit = productDetail.find((item) => item.id_product === products.id_product);
-        if (productExit) {
-            setProductDetail(
-                productDetail.map((item) =>
-                    item.id_product === products.id_product ? { ...productExit } : item,
-                ),
-            );
-        } else {
-            setProductDetail([{ ...products }]);
-        }
-    };
+    // const detail = (products) => {
+    //     const productExit = productDetail.find((item) => item.id_product === products.id_product);
+    //     if (productExit) {
+    //         setProductDetail(
+    //             productDetail.map((item) =>
+    //                 item.id_product === products.id_product ? { ...productExit } : item,
+    //             ),
+    //         );
+    //     } else {
+    //         setProductDetail([{ ...products }]);
+    //     }
+    // };
 
     //
     const detailTinTuc = (products) => {
@@ -121,16 +126,20 @@ function App() {
         }
     };
 
-    // Lay id_category
-    const [categoryid, setCategoryid] = useState();
+    const detailPro = (id_product, id_category) => {
+        setIdPro(id_product);
+        setIdCate(id_category);
+        console.log(IdPro, IdCate);
+    };
 
+    // Lay id_category
     const CategoryProduct = (id) => {
         setCategoryid(id);
     };
 
     const setCategory = () => {
         setCategoryid(undefined);
-    }
+    };
 
     return (
         <>
@@ -152,6 +161,8 @@ function App() {
                             addToCart={addToCart}
                             detailPro={detailPro}
                             url={url}
+                            IdPro={IdPro}
+                            IdCate={IdCate}
                         />
                     }
                 />
@@ -170,7 +181,7 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
-                <Route path="tintuc" element={<Detail productDetail={productDetail} url={url}/>} />
+                <Route path="tintuc" element={<Detail productDetail={productDetail} url={url} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -184,6 +195,8 @@ function App() {
                             categoryid={categoryid}
                             CategoryProduct={CategoryProduct}
                             url={url}
+                            IdPro={IdPro}
+                            IdCate={IdCate}
                         />
                     }
                 />

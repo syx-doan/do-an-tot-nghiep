@@ -1,12 +1,31 @@
+/* eslint-disable react/jsx-pascal-case */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axiosClient from '~/utils/http';
 import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
+import Product_Images from './Product_Images';
 import SanPhamMoi from './SanPhamMoi';
 
-const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
+const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
+    const [data, setData] = useState([]);
+
+    const fetchPost = async () => {
+        try {
+            const response = await axiosClient('products');
+            // console.log(response);
+            setData(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    useEffect(() => {
+        fetchPost();
+    }, []);
     return (
         <>
             <div className="f8wrapper">
@@ -15,27 +34,23 @@ const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
                         <div className="f8row f8product__content">
                             <div className="col p-5 t-12 m-12">
                                 <div className="product__content-left">
-                                    <div className="show-on-tablet">
-                                        <div className="product__content-price">
-                                            <div className="content-price--old">
-                                                2.000.000 <span class="vnd-class">₫</span>
-                                            </div>
-                                            <div className="content-price--new">
-                                                1.899.000 <span class="vnd-class">₫</span>
-                                            </div>
-                                            <div className="content-price--discount">22% GIẢM</div>
-                                        </div>
-                                    </div>
-                                    {productDetail.map((item) => {
-                                        return (
-                                            <img
-                                                className="mb-5"
-                                                src={`${url}${item.image}`}
-                                                alt=""
-                                            />
-                                        );
+                                    {data.map((item) => {
+                                        if (item.id_product === IdPro) {
+                                            return (
+                                                <img
+                                                    className="mb-5"
+                                                    src={`${url}${item.image}`}
+                                                    alt=""
+                                                />
+                                            );
+                                        } else {
+                                            return <></>;
+                                        }
                                     })}
 
+                                    <Product_Images url={url} IdPro={IdPro} />
+
+                                    {/* icon */}
                                     <div className="product__content-action mt-5">
                                         <div className="product__content--share">
                                             <span className="product__content-share--text">
@@ -70,33 +85,59 @@ const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
                                     <div className="show-on-pc-mobile flex-head--product">
                                         <div className="product__content-heading">
                                             <h3 className="product__content-name">
-                                                {productDetail.map((item) => {
-                                                    return <p>{item.name}</p>;
+                                                {data.map((item) => {
+                                                    if (item.id_product === IdPro) {
+                                                        return <p>{item.name}</p>;
+                                                    } else {
+                                                        return <></>;
+                                                    }
                                                 })}
                                             </h3>
                                         </div>
                                         <div className="product__content-price">
                                             <div className="content-price--old">
-                                                {productDetail.map((item) => {
-                                                    return (
-                                                        <p>
-                                                            {(
-                                                                item.price * item.price
-                                                            ).toLocaleString('us-US')}
-                                                        </p>
-                                                    );
+                                                {data.map((item) => {
+                                                    if (item.id_product === IdPro) {
+                                                        return (
+                                                            <p>
+                                                                {item.price.toLocaleString('us-US')}
+                                                            </p>
+                                                        );
+                                                    } else {
+                                                        return <></>;
+                                                    }
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
                                             <div className="content-price--new">
-                                                {productDetail.map((item) => {
-                                                    return (
-                                                        <p>{item.price.toLocaleString('us-US')}</p>
-                                                    );
+                                                {data.map((item) => {
+                                                    if (item.id_product === IdPro) {
+                                                        return (
+                                                            <p>
+                                                                {(
+                                                                    (item.price *
+                                                                        (100 - item.sale)) /
+                                                                    100
+                                                                ).toLocaleString('us-US')}
+                                                            </p>
+                                                        );
+                                                    } else {
+                                                        return <></>;
+                                                    }
                                                 })}
                                                 <span class="vnd-class">₫</span>
                                             </div>
-                                            <div className="content-price--discount">22% GIẢM</div>
+                                            {data.map((item) => {
+                                                if (item.id_product === IdPro) {
+                                                    return (
+                                                        <div className="content-price--discount">
+                                                            {item.sale}% GIẢM
+                                                        </div>
+                                                    );
+                                                } else {
+                                                    return <></>;
+                                                }
+                                            })}
                                         </div>
                                     </div>
                                     <div className="product__content-body hide-on-mobile">
@@ -104,8 +145,12 @@ const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
                                             <div className="content-info--title">Mô tả</div>
                                             <div className="content-info--body">
                                                 <span className="content-info--text">
-                                                    {productDetail.map((item) => {
-                                                        return <p>{item.description}</p>;
+                                                    {data.map((item) => {
+                                                        if (item.id_product === IdPro) {
+                                                            return <p>{item.description}</p>;
+                                                        } else {
+                                                            return <></>;
+                                                        }
                                                     })}
                                                 </span>
                                                 <a href="#" className="content-info--link">
@@ -147,50 +192,51 @@ const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
                                                     </button>
                                                 </div>
                                                 <div className="content-count--item">
-                                                    {productDetail.map((item) => {
-                                                        return <p>{item.quantity} sản phẩm có sẵn</p>;
-                                                    })} 
+                                                    {data.map((item) => {
+                                                        if (item.id_product === IdPro) {
+                                                            return (
+                                                                <p>
+                                                                    {item.quantity} sản phẩm có sẵn
+                                                                </p>
+                                                            );
+                                                        } else {
+                                                            return <></>;
+                                                        }
+                                                    })}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="product__content-cart">
-                                        <button className="content-chat-text show-on-mobile">
-                                            <svg
-                                                enableBackground="new 0 0 15 15"
-                                                viewBox="0 0 15 15"
-                                                className="content-chat-icon"
-                                            >
-                                                <g stroke="none">
-                                                    <path d="m11.2 4.1c-1.1-1.3-3-2.2-5-2.2-3.4 0-6.2 2.3-6.2 5.2 0 1.7.9 3.2 2.4 4.2l-.7 1.4s-.2.4.1.6c.3.3 1.1-.1 1.1-.1l2.4-.9c.3.1.6.1.9.1.7 0 1.5-.1 2.1-.3.5.2 1 .2 1.6.2h.6l2.1 1.5c.6.4.8.1.8-.4v-2.2c.9-.8 1.5-1.8 1.5-3 0-2-1.6-3.6-3.7-4.1zm-5.6 7.3h-.5-.2l-1.8.7.5-1.1-.7-.5c-1.3-.8-2-2-2-3.4 0-2.3 2.3-4.2 5.2-4.2 2.8 0 5.2 1.9 5.2 4.2s-2.4 4.3-5.2 4.3c-.2 0-.4 0-.5 0zm6.8-.8v1.2c0 .6-.1.4-.4.2l-1-.8c-.4.1-.8.1-1.2.1 1.5-1 2.5-2.5 2.5-4.2 0-.6-.1-1.1-.3-1.7 1.2.6 1.9 1.6 1.9 2.7 0 1-.5 1.9-1.5 2.5z" />
-                                                    <circle cx="3.1" cy="7.1" r=".8" />
-                                                    <circle cx="9.1" cy="7.1" r=".8" />
-                                                    <circle cx="6.1" cy="7.1" r=".8" />
-                                                </g>
-                                            </svg>
-                                            Chat ngay
-                                        </button>
-                                        {productDetail.map((item) => {
-                                            return (
-                                                <button
-                                                    className="content-cart-text"
-                                                    onClick={() => addToCart(item)}
-                                                >
-                                                    <i className="content-cart-icon fas fa-cart-plus" />
-                                                    Thêm vào giỏ hàng
-                                                </button>
-                                            );
-                                        })}
-                                        <Link to="/cart">
-                                            {productDetail.map((item) => {
+                                        {data.map((item) => {
+                                            if (item.id_product === IdPro) {
                                                 return (
                                                     <button
-                                                        className="content-buy-text"
+                                                        className="content-cart-text"
                                                         onClick={() => addToCart(item)}
                                                     >
-                                                        Mua luôn
+                                                        <i className="content-cart-icon fas fa-cart-plus" />
+                                                        Thêm vào giỏ hàng
                                                     </button>
                                                 );
+                                            } else {
+                                                return <></>;
+                                            }
+                                        })}
+                                        <Link to="/cart">
+                                            {data.map((item) => {
+                                                if (item.id_product === IdPro) {
+                                                    return (
+                                                        <button
+                                                            className="content-buy-text"
+                                                            onClick={() => addToCart(item)}
+                                                        >
+                                                            Mua luôn
+                                                        </button>
+                                                    );
+                                                } else {
+                                                    return <></>;
+                                                }
                                             })}
                                         </Link>
                                     </div>
@@ -251,7 +297,7 @@ const Product_Detail = ({ productDetail, addToCart, detailPro, url }) => {
                         <div className="f8row detail__product sm-gutter">
                             <BinhLuan />
 
-                            <SanPhamMoi detailPro={detailPro} url={url} />
+                            <SanPhamMoi detailPro={detailPro} url={url} IdCate={IdCate} />
                         </div>
                     </div>
                 </div>

@@ -26,8 +26,6 @@ const Shop = ({ addToCart, detailPro, CategoryProduct, categoryid, setCategory, 
                                 categoryid={categoryid}
                                 url={url}
                             />
-
-                          
                         </div>
                     </div>
                 </div>

@@ -60,19 +60,9 @@ form {
     justify-content: space-between;
     background-image: url(../../../public/images/arrivals/6.jfif);
 }
-/* rccs-signature-background: repeating-linear-gradient(
-    0.1deg,
-    #fff 20%,
-    #fff 40%,
-    #fea 40%,
-    #fea 44%,
-    #fff 44%
-  );
-  rccs-default-background: linear-gradient(25deg, #d32121, #178a63);
-  rccs-unknown-background: linear-gradient(25deg, rgb(160, 18, 101), #999);
-  rccs-background-transition: 0.5s;
-  rccs-animate-background: true; */
-
+.form-control{
+    font-size: 1.5rem !important;
+}
 .rccs__card--unknown > div {
     background-image: url(../../../public/images/arrivals/6.jfif);
 }

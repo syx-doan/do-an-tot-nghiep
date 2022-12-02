@@ -3,7 +3,7 @@ import './giohang.css';
 import ThanhToan from '../thanhtoan/ThanhToan';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
@@ -12,11 +12,23 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
     const navigate = useNavigate();
 
+    const success = () =>
+        toast.success('Đặt hàng thành công ', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     const showModal = () => {
         setIsModalOpen(true);
     };
 
     const handleOk = () => {
+        success();
         handleCancel();
         showModalThanhToan();
     };
@@ -24,6 +36,9 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
+    //
+
 
     const showModalThanhToan = () => {
         setIsModalThanhToanOpen(true);

@@ -63,16 +63,16 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
         <>
             <Slider {...settings} className="flash-deal">
                 {data.map((item, index) => {
-                    if (item.uudai > 0) {
+                    if (item.sale > 0) {
                         return (
                             <div className="card" key={item.id_product}>
-                                <span className="discount">{item.uudai}% Off</span>
+                                <span className="discount">{item.sale}% Off</span>
                                 <Link to="/product_detail">
                                     <img
                                         src={`${url}${item.image}`}
                                         className="card-img-top"
                                         alt="..."
-                                        onClick={() => detailPro(item)}
+                                        onClick={() => detailPro(item.id_product, item.category_id)}
                                     />
                                 </Link>
                                 <div className="product-like">
@@ -87,7 +87,7 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                     <div className="d-flex justify-content-between mt-2">
                                         <p className="price">
                                             <i class="fa-solid fa-fire mr-2"></i>Giảm tới:{' '}
-                                            {((item.price * item.uudai) / 100).toLocaleString(
+                                            {((item.price * item.sale) / 100).toLocaleString(
                                                 'us-US',
                                             )}{' '}
                                             đ

@@ -73,7 +73,7 @@ function Register() {
         if (!isValidate) return;
 
         try {
-            axiosClient.post('insert', {
+            axiosClient.post('dangky', {
                 fullname,
                 password,
                 email,
