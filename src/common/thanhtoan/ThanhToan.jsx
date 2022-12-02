@@ -2,20 +2,21 @@ import React from 'react';
 import { Modal } from 'antd';
 import './thanhtoan.scss';
 import CartVisa from './../cartvisa/CartVisa';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axiosClient from './../../utils/http';
 import { isEmpty } from 'validator';
 import { toast, ToastContainer } from 'react-toastify';
 import Spinner from './../spiner/Spiner';
 
-function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) {
+function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
+    const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [district, setDistrict] = useState('');
     const [city, setCity] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     const errorThanhToan = () =>
         toast.error('Vui lòng nhập đầy đủ thông tin', {
@@ -57,15 +58,24 @@ function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) 
         const data = { name, phone, address, district, city };
         try {
             axiosClient.post('thanhtoan', { data });
-            setIsLoading(true);
+            // setIsLoading(true);
             setTimeout(() => {
-                setIsLoading(false);
+                // setIsLoading(false);
                 handleOk();
             }, 1000);
         } catch (error) {
             errorThanhToan();
         }
     };
+    useEffect(() => {
+        const dataUser = JSON.parse(localStorage.getItem('data-user'));
+        if (dataUser && dataUser !== 'null') {
+            setData(dataUser);
+        } else {
+            setData(false);
+        }
+    }, []);
+
     return (
         <Modal
             title="Thanh toán"
@@ -77,11 +87,10 @@ function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) 
             zIndex={99}
             width="80%"
         >
-            {isLoading ? (
-                <Spinner />
-            ) : (
-                <div className="thanhtoan">
-                    <ToastContainer />
+            <div className="thanhtoan">
+                <ToastContainer />
+
+                {dataUser.map((item) => (
                     <div className="row">
                         <div class="checkout-wrap">
                             <ul class="checkout-bar">
@@ -111,6 +120,7 @@ function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) 
                                             </label>
                                             <input
                                                 required
+                                                value={item.fullname}
                                                 onChange={(e) => {
                                                     setName(e.target.value);
                                                 }}
@@ -128,6 +138,7 @@ function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) 
                                                 <i className="fa fa-phone" /> Số điện thọai
                                             </label>
                                             <input
+                                            value={item.phone}
                                                 onChange={(e) => {
                                                     console.log(e.target.value);
                                                     setPhone(e.target.value);
@@ -226,8 +237,8 @@ function ThanhToan({ handleCancel, isModalOpen, showModalThanhToan, handleOk }) 
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                ))}
+            </div>
         </Modal>
     );
 }
