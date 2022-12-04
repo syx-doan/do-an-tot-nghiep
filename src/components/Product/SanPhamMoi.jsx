@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
-const SanPhamMoi = () => {
+const SanPhamMoi = ({ detailPro, url, IdCate }) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
         try {
-            const response = await axiosClient('newproducts');
+            const response = await axiosClient('products');
             setData(response.data);
-            // console.log(response.data);
         } catch (err) {
             console.error(err);
         }
@@ -23,27 +23,34 @@ const SanPhamMoi = () => {
                 <div className="detail__top-product--head">Sản Phẩm Bán Chạy</div>
 
                 {data.map((val) => {
-                    return (
-                        <a href className="detail__top-product--link">
-                            <img
-                                className="detail__top-img"
-                                src={`http://172.16.24.218/admin_dasboard/upload/product/${val.image}`}
-                                alt="Avatar"
-                            />
+                    if (val.category_id === IdCate) {
+                        return (
+                            <a href className="detail__top-product--link">
+                                <Link to="/product_detail">
+                                    <img
+                                        className="detail__top-img"
+                                        src={`${url}${val.image}`}
+                                        alt="Avatar"
+                                        onClick={() => detailPro(val.id_product, val.category_id)}
+                                    />
+                                </Link>
 
-                            <div className="detail__top-product--text">
-                                <h3 className="detail__top-product--name">
-                                    {val.name}
-                                </h3>
-                                <div className="detail__top-price">
-                                    <span className="detail__top-product--price">
-                                        {val.price.toLocaleString('us-US')}
-                                        <span className="vnd-class">₫</span>
-                                    </span>
+                                <div className="detail__top-product--text">
+                                    <h3 className="detail__top-product--name">{val.name}</h3>
+                                    <div className="detail__top-price">
+                                        <span className="detail__top-product--price">
+                                            {val.price.toLocaleString('us-US')}
+                                            <span className="vnd-class">₫</span>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    );
+                            </a>
+                        );
+                    } else {
+                        return (
+                            <></>
+                        )
+                    }
                 })}
             </div>
         </div>

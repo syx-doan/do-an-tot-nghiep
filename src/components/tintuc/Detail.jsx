@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Detail = ({ productDetail }) => {
+const Detail = ({ productDetail, url }) => {
     return (
         <>
             <div className="news">
@@ -9,10 +9,10 @@ const Detail = ({ productDetail }) => {
                         return (
                             <>
                                 <img
-                                    src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
+                                    src={`${url}${item.image}`}
                                     alt=""
                                     width="100px"
-                                    height="70px"
+                                    height="auto"
                                 />
                             </>
                         );

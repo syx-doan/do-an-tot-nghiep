@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from './../../utils/http';
 
-const ShopCart = ({ addToCart, detailPro, categoryid }) => {
+const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
 
@@ -14,6 +14,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
+            // console.log(response);
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -25,21 +26,21 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
 
     return (
         <>
-            {data.map((item) => {
+            {data.map((item ) => {
                 if (categoryid === undefined) {
                     return (
                         <div className="card " key={item.id_product}>
-                            <span className="discount">{item.discount}% Off</span>
+                            <span className="discount">{item.sale}% Off</span>
                             <div className="product-like">
                                 <label>{count}</label> <br />
                                 <i class="fa-solid fa-heart" onClick={increment}></i>
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.24.218/admin_dasboard/upload/product/${item.image}`}
+                                    src={`${url}${item.image}`}
                                     className="card-img-top"
                                     alt="..."
-                                    onClick={() => detailPro(item)}
+                                    onClick={() => detailPro(item.id_product, item.category_id)}
                                 />
                             </Link>
 
@@ -66,22 +67,21 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {item.price.toLocaleString('us-US')} đ</p>
+                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
                             </div>
                         </div>
                     );
                 } else if (categoryid === item.category_id) {
-                    console.log(categoryid);
                     return (
                         <div className="card " key={item.id_product}>
-                            <span className="discount">{item.uudai}% Off</span>
+                            <span className="discount">{item.sale}% Off</span>
                             <div className="product-like">
                                 <label>{count}</label> <br />
                                 <i class="fa-solid fa-heart" onClick={increment}></i>
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`http://172.16.10.245/admin_dasboard/upload/product/${item.image}`}
+                                    src={`${url}${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item)}
@@ -111,7 +111,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {item.price.toLocaleString('us-US')} đ</p>
+                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
                             </div>
                         </div>
                     );

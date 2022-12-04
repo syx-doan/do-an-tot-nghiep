@@ -2,14 +2,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import Ddata from "./Ttdata"
 import './tintuc.css';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Ttcard = ( {detailPro} ) => {
+const Ttcard = ( {detailTinTuc, url} ) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -27,7 +26,7 @@ const Ttcard = ( {detailPro} ) => {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4.5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
     };
@@ -41,11 +40,11 @@ const Ttcard = ( {detailPro} ) => {
                                 <Link to="/tintuc">
                                     <div className="img">
                                         <img
-                                            src={`http://172.16.24.218/admin_dasboard/upload/product/${value.image}`}
+                                            src={`${url}${value.image}`}
                                             alt=""
                                             width="100"
                                             height="70px"
-                                            onClick={() => detailPro(value)}
+                                            onClick={() => detailTinTuc(value)}
                                         />
                                     </div>
                                 </Link>
