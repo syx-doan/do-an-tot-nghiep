@@ -8,9 +8,9 @@ const cx = classNames.bind(styles);
 
 function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
+
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        // console.log(dataUser, 'here1');
         if (dataUser && dataUser !== 'null') {
             setDataUser(dataUser);
         } else {
@@ -28,14 +28,11 @@ function ThongTinCaNhan() {
                         alt="avatar"
                     />
                     <div className={cx('dropdowncontent')}>
-                        {dataUser.map((data) => {
-                            return (
-                                <>
-                                    <h3 key={data.id}>{data?.fullname}</h3>
-                                    <p>{data?.email}</p>
-                                </>
-                            );
-                        })}
+                        {/* Author by TheThinh
+                        * Pls not fix
+                        */}
+                        <h3>{dataUser.data?.fullname}</h3>
+                        <p>{dataUser.data?.email}</p>
                         <Link to={'/cart'}> Xem giỏ hàng</Link>
                     </div>
                 </div>

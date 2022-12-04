@@ -3,7 +3,7 @@ import './login.scss';
 
 import { Link } from 'react-router-dom';
 import { isEmpty, isEmail } from 'validator';
-import axiosClient from './../../utils/http';
+import axiosApi from './../../utils/api_php';
 import { toast, ToastContainer } from 'react-toastify';
 import Spinner from './../spiner/Spiner';
 
@@ -64,14 +64,17 @@ function Login() {
         const isValidate = validateAll();
         if (!isValidate) return;
 
-        axiosClient
+        axiosApi
             .post('login', {
-                // action: 'login',
+                action: 'login',
                 email: email,
                 password: password,
             })
-            .then((response) => {
-                if (response.data.message) {
+            .then((response) => { 
+                // Code error login fail == 100
+                // Success == 200
+                // Not fix pls
+                if (response.data.code == 100) {
                     error();
 
                     // console.log(response);
