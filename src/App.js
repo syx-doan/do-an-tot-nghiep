@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Cart from './common/giohang/Cart';
@@ -22,7 +22,6 @@ function App() {
     const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
-
     const [IdPro, setIdPro] = useState([]);
     const [IdCate, setIdCate] = useState([]);
 
@@ -97,21 +96,6 @@ function App() {
         deleteProduct();
     };
 
-    // Stpe: 8detail
-    // const detail = (products) => {
-    //     const productExit = productDetail.find((item) => item.id_product === products.id_product);
-    //     if (productExit) {
-    //         setProductDetail(
-    //             productDetail.map((item) =>
-    //                 item.id_product === products.id_product ? { ...productExit } : item,
-    //             ),
-    //         );
-    //     } else {
-    //         setProductDetail([{ ...products }]);
-    //     }
-    // };
-
-    //
     const detailTinTuc = (products) => {
         const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {
@@ -128,7 +112,7 @@ function App() {
     const detailPro = (id_product, id_category) => {
         setIdPro(id_product);
         setIdCate(id_category);
-        console.log(IdPro, IdCate);
+        // console.log(IdPro, IdCate);
     };
 
     // Lay id_category
