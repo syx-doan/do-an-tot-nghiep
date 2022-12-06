@@ -2,13 +2,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import Ddata from "./Ttdata"
 import './tintuc.css';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-const Ttcard = () => {
+const Ttcard = ( {detailTinTuc, url} ) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -26,9 +26,9 @@ const Ttcard = () => {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4.5,
+        slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
     };
     return (
         <>
@@ -37,14 +37,17 @@ const Ttcard = () => {
                     return (
                         <>
                             <div className="box tintuc" key={index}>
-                                <div className="img">
-                                    <img
-                                        src={`http://172.16.10.239/admin_dasboard/upload/product/news/${value.image}`}
-                                        alt=""
-                                        width="100"
-                                        height="70px"
-                                    />
-                                </div>
+                                <Link to="/tintuc">
+                                    <div className="image">
+                                        <img
+                                            src={`${url}${value.image}`}
+                                            alt=""
+                                            width="100"
+                                            height="70px"
+                                            onClick={() => detailTinTuc(value)}
+                                        />
+                                    </div>
+                                </Link>
                                 <h6>{value.title}</h6>
                                 <p>{value.content}</p>
                             </div>

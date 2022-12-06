@@ -3,6 +3,7 @@ import Sdata from "./Sdata"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { Link } from "react-router-dom"
 
 
 const SlideCard = () => {
@@ -26,7 +27,7 @@ const SlideCard = () => {
                 <div className='left'>
                   <h1>{value.title}</h1>
                   <p>{value.desc}</p>
-                  <button className='btn-primary'>Truy cập Bộ sưu tập</button>
+                  <button className='btn-primary suutap'><Link to={'/sanpham'}>Truy cập Bộ sưu tập</Link></button>
                 </div>
                 <div className='right'>
                   <img src={value.cover} alt='' />
