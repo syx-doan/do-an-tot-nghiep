@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
+import axiosClient from '~/utils/http';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
@@ -27,10 +28,16 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
-        success();
-        handleCancel();
-        showModalThanhToan();
+    const handleOk =  (data) => {
+        const newData = {
+            ...data,
+            carts: CartItem,
+        };
+        try {
+             axiosClient.post('thanhtoan', { data: newData });
+
+            showModalThanhToan();
+        } catch (error) {}
     };
 
     const handleCancel = () => {
@@ -38,7 +45,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     };
 
     //
-
 
     const showModalThanhToan = () => {
         setIsModalThanhToanOpen(true);
@@ -66,10 +72,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
                         return (
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
-                                    <img
-                                        src={`${url}${item.image}`}
-                                        alt=""
-                                    />
+                                    <img src={`${url}${item.image}`} alt="" />
                                 </div>
                                 <div className="cart-details">
                                     <h3>{item.name}</h3>

@@ -10,8 +10,6 @@ import Spinner from './../spiner/Spiner';
 
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [district, setDistrict] = useState('');
     const [city, setCity] = useState('');
@@ -31,41 +29,22 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         });
     const validateAll = () => {
         const msg = {};
-        if (isEmpty(name)) {
-            msg.name = 'Vui lòng nhập  tên  ';
-        }
-        if (isEmpty(phone)) {
-            msg.phone = 'Vui lòng nhập  số điện thoại';
-        }
 
         if (isEmpty(address)) {
             msg.address = 'Vui lòng nhập địa chỉ ';
         }
-        if (isEmpty(district)) {
-            msg.district = 'Vui lòng nhập quận/huyện ';
-        }
-        if (isEmpty(city)) {
-            msg.city = 'Vui lòng nhập tỉnh/thành phố ';
-        }
+
         setValidateMsg(msg);
         if (Object.keys(msg).length > 0) return false;
         return true;
     };
+    const { id_user, fullname, phone } = dataUser[0];
     const handleThanhToan = () => {
         const isValidate = validateAll();
         if (!isValidate) return;
 
-        const data = { name, phone, address, district, city };
-        try {
-            axiosClient.post('thanhtoan', { data });
-            // setIsLoading(true);
-            setTimeout(() => {
-                // setIsLoading(false);
-                handleOk();
-            }, 1000);
-        } catch (error) {
-            errorThanhToan();
-        }
+        const data = { id_user, address,fullname};
+        handleOk(data);
     };
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
@@ -111,15 +90,31 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                             <form action="/action_page.php">
                                 <div className="row">
                                     <div className="col-50">
-                                        <h5 className="d-flex justify-content-center font-weight-bold thanhtoan">
-                                            Thông tin khách hàng
-                                        </h5>
-                                        <div className="d-flex mt-n1">
-                                            <div className="validateMsg">{validateMsg.phone}</div>
-                                        </div>
                                         <label htmlFor="adr">
                                             <i className="fa fa-address-card-o" />
-                                            Địa chỉ chi tiết (nhà/ngõ/ngách)
+                                            Tên nhận hàng
+                                        </label>
+                                        <input
+                                            value={fullname}
+                                            type="text"
+                                            id="adr"
+                                            name="address"
+                                            placeholder="Nhập..."
+                                        />
+                                        <label htmlFor="adr">
+                                            <i className="fa fa-address-card-o" />
+                                            Số điện thoại
+                                        </label>
+                                        <input
+                                            value={phone}
+                                            type="text"
+                                            id="adr"
+                                            name="address"
+                                            placeholder="Nhập..."
+                                        />
+                                        <label htmlFor="adr">
+                                            <i className="fa fa-address-card-o" />
+                                            Địa chỉ chi tiết
                                         </label>
                                         <input
                                             onChange={(e) => {
@@ -132,40 +127,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                         />
                                         <div className="d-flex mt-n1">
                                             <div className="validateMsg">{validateMsg.address}</div>
-                                        </div>
-                                        <label htmlFor="quan">
-                                            <i className="fa fa-institution" />
-                                            Quận/Huyện
-                                        </label>
-                                        <input
-                                            onChange={(e) => {
-                                                setDistrict(e.target.value);
-                                            }}
-                                            type="text"
-                                            id="city"
-                                            name="city"
-                                            placeholder="Nhập..."
-                                        />
-                                        <div className="d-flex mt-n1">
-                                            <div className="validateMsg">
-                                                {validateMsg.district}
-                                            </div>
-                                        </div>
-                                        <label htmlFor="city">
-                                            <i className="fa fa-institution" />
-                                            Tỉnh/ Thành Phố
-                                        </label>
-                                        <input
-                                            onChange={(e) => {
-                                                setCity(e.target.value);
-                                            }}
-                                            type="text"
-                                            id="city"
-                                            name="city"
-                                            placeholder="Nhập..."
-                                        />
-                                        <div className="d-flex mt-n1">
-                                            <div className="validateMsg">{validateMsg.city}</div>
                                         </div>
                                     </div>
                                     {/*                                     

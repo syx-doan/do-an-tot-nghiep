@@ -50,7 +50,7 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://172.16.10.235/admin_dasboard/upload/product/';
+    const url = 'http://localhost/admin_dasborad/upload/product/';
 
     //Step 4 :
     const addToCart = (product) => {
