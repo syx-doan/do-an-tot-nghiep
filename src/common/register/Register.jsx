@@ -4,15 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { isEmpty, isEmail } from 'validator';
 import axiosClient from './../../utils/http';
 import { toast, ToastContainer } from 'react-toastify';
-import { any } from 'prop-types';
-import axiosApi from '~/utils/api_php';
 
 function Register() {
     const [fullname, setFullname] = useState('');
     const [password, setPassword] = useState('');
     const [confPassWord, setConfPassWord] = useState('');
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
     const navigate = useNavigate();
 
@@ -23,10 +20,6 @@ function Register() {
     const onChangeFullName = (e) => {
         const value = e.target.value;
         setFullname(value);
-    };
-    const onChangeUsername = (e) => {
-        const value = e.target.value;
-        setUsername(value);
     };
     const onChangePassWord = (e) => {
         const value = e.target.value;
@@ -68,10 +61,6 @@ function Register() {
         if (isEmpty(fullname)) {
             msg.fullname = 'Vui lòng nhập tên ';
         }
-
-        if (isEmpty(username)) {
-            msg.username = 'Vui lòng nhập tên tài khoản ';
-        }
         setValidateMsg(msg);
         if (Object.keys(msg).length > 0) return false;
         return true;
@@ -82,34 +71,26 @@ function Register() {
         const isValidate = validateAll();
 
         if (!isValidate) return;
-        axiosApi
-            .post('login', {
-                action: 'register',
-                email: email,
-                password: password,
-                fullname: fullname,
-                username: username
-            })
-            .then((response) => { 
-                // Code error register fail == 100
-                // Success == 200
-                // Not fix pls
-                console.log(response.data.code)
-                if (response.data.code == 200) {
-                    // localStorage.setItem('data-user', JSON.stringify(response.data));
-                    success();
-                    setTimeout(() => {
-                        navigate('/');
-                    }, 500);
-                    e.preventDefault()
-                }
+
+        try {
+            axiosClient.post('dangky', {
+                fullname,
+                password,
+                email,
             });
+            success();
+            setTimeout(() => {
+                navigate('/dangnhap');
+            }, 1000);
+            // console.log('aloalo')
+        } catch (error) {
+            alert('error');
+        }
 
         setFullname('');
         setEmail('');
         setPassword('');
         setConfPassWord('');
-        setUsername('');
     };
     return (
         <div>
@@ -155,30 +136,6 @@ function Register() {
                                             <div className="d-flex mt-2">
                                                 <div className="validateMsg">
                                                     {validateMsg.fullname}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-item">
-                                        <div className="row flex-column flex-wrap">
-                                            <div className="form-label col">
-                                                <label htmlFor="" className="">
-                                                    Tên người dùng
-                                                </label>
-                                            </div>
-                                            <div className="form-input col">
-                                                <div className="input-content">
-                                                    <input
-                                                        onChange={onChangeUsername}
-                                                        type="text"
-                                                        placeholder="Nhập tên người dùng"
-                                                        className="input-item"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="d-flex mt-2">
-                                                <div className="validateMsg">
-                                                    {validateMsg.username}
                                                 </div>
                                             </div>
                                         </div>

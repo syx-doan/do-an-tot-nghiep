@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
+import axiosClient from '~/utils/http';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
@@ -27,10 +28,20 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
-        success();
-        handleCancel();
-        showModalThanhToan();
+    const handleOk = async(data) => {
+        const newData = {
+            ...data,
+            carts:CartItem
+        }
+        try {
+            await axiosClient.post('thanhtoan', { data :newData});
+            // setIsLoading(true);
+            success();
+            handleCancel();
+            showModalThanhToan();
+        } catch (error) {
+            
+        }
     };
 
     const handleCancel = () => {

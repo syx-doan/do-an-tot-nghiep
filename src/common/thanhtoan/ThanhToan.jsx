@@ -10,8 +10,6 @@ import Spinner from './../spiner/Spiner';
 
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [district, setDistrict] = useState('');
     const [city, setCity] = useState('');
@@ -31,10 +29,10 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         });
     const validateAll = () => {
         const msg = {};
-        if (isEmpty(name)) {
+        if (isEmpty(dataUser.name)) {
             msg.name = 'Vui lòng nhập  tên  ';
         }
-        if (isEmpty(phone)) {
+        if (isEmpty(dataUser.phone)) {
             msg.phone = 'Vui lòng nhập  số điện thoại';
         }
 
@@ -52,20 +50,23 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         return true;
     };
     const handleThanhToan = () => {
-        const isValidate = validateAll();
-        if (!isValidate) return;
 
-        const data = { name, phone, address, district, city };
-        try {
-            axiosClient.post('thanhtoan', { data });
-            // setIsLoading(true);
-            setTimeout(() => {
-                // setIsLoading(false);
-                handleOk();
-            }, 1000);
-        } catch (error) {
-            errorThanhToan();
-        }
+        // const isValidate = validateAll();
+        // if (!isValidate) return;
+        const {id_user} = dataUser[0]
+        
+        const data = { id_user, address, district, city };
+        handleOk(data)
+        // try {
+        //     axiosClient.post('thanhtoan', { data });
+        //     // setIsLoading(true);
+        //     setTimeout(() => {
+        //         // setIsLoading(false);
+        //         handleOk();
+        //     }, 1000);
+        // } catch (error) {
+        //     errorThanhToan();
+        // }
     };
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
@@ -114,9 +115,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                         <h5 className="d-flex justify-content-center font-weight-bold thanhtoan">
                                             Thông tin khách hàng
                                         </h5>
-                                        <div className="d-flex mt-n1">
-                                            <div className="validateMsg">{validateMsg.phone}</div>
-                                        </div>
+                                       
                                         <label htmlFor="adr">
                                             <i className="fa fa-address-card-o" />
                                             Địa chỉ chi tiết (nhà/ngõ/ngách)

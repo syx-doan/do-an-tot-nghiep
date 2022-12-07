@@ -51,7 +51,7 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://172.16.10.235/admin_dasboard/upload/product/';
+    const url = 'http://localhost/admin_dasborad/upload/product/';
 
     //Step 4 :
     const addToCart = (product) => {
@@ -97,22 +97,7 @@ function App() {
         deleteProduct();
     };
 
-    // Stpe: 8detail
-    // const detail = (products) => {
-    //     const productExit = productDetail.find((item) => item.id_product === products.id_product);
-    //     if (productExit) {
-    //         setProductDetail(
-    //             productDetail.map((item) =>
-    //                 item.id_product === products.id_product ? { ...productExit } : item,
-    //             ),
-    //         );
-    //     } else {
-    //         setProductDetail([{ ...products }]);
-    //     }
-    // };
-
-    //
-    const detailTinTuc = (products) => {
+ const detailTinTuc = (products) => {
         const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {
             setProductDetail(
