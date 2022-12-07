@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
-import './binhluan.scss';
+// import './binhluan.scss';
 import ThemBinhLuan from './ThemBinhLuan';
 
 const BinhLuan = ({ url }) => {
