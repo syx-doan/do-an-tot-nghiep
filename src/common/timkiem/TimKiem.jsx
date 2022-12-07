@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-function TimKiem() {
+function TimKiem({ detailPro }) {
     const [posts, setPosts] = useState([]);
     const [searchName, setSearchName] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -59,11 +59,19 @@ function TimKiem() {
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
                                     suggestions.map((item, i) => (
-                                       
-                                        <Link to={`/`} className={cx('wrapper')}>
+                                        <Link to={`/product_detail`} className={cx('wrapper')}>
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>
-                                                    <span>{item.name}</span>
+                                                    <span
+                                                        onClick={() =>
+                                                            detailPro(
+                                                                item.id_product,
+                                                                item.category_id,
+                                                            )
+                                                        }
+                                                    >
+                                                        {item.name}
+                                                    </span>
                                                 </h4>
                                             </div>
                                         </Link>

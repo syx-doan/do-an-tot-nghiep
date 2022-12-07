@@ -27,18 +27,17 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
         setIsModalOpen(true);
     };
 
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
     const handleOk = () => {
         success();
         handleCancel();
         showModalThanhToan();
     };
 
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
-
     //
-
 
     const showModalThanhToan = () => {
         setIsModalThanhToanOpen(true);
@@ -66,10 +65,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
                         return (
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
-                                    <img
-                                        src={`${url}${item.image}`}
-                                        alt=""
-                                    />
+                                    <img src={`${url}${item.image}`} alt="" />
                                 </div>
                                 <div className="cart-details">
                                     <h3>{item.name}</h3>

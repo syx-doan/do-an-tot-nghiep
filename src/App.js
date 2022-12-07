@@ -23,8 +23,8 @@ function App() {
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
 
-    const [IdPro, setIdPro] = useState([]);
-    const [IdCate, setIdCate] = useState([]);
+    // const [IdPro, setIdPro] = useState([]);
+    // const [IdCate, setIdCate] = useState([]);
 
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
@@ -51,12 +51,13 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://172.16.10.235/admin_dasboard/upload/product/';
+    const url = 'http://172.16.10.88/admin_dasboard/upload/product/';
 
     //Step 4 :
+
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-
+        
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
@@ -68,6 +69,8 @@ function App() {
         } else {
             setCartItem([...CartItem, { ...product, qty: 1 }]);
         }
+
+        // sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
         success();
     };
 
@@ -98,20 +101,6 @@ function App() {
     };
 
     // Stpe: 8detail
-    // const detail = (products) => {
-    //     const productExit = productDetail.find((item) => item.id_product === products.id_product);
-    //     if (productExit) {
-    //         setProductDetail(
-    //             productDetail.map((item) =>
-    //                 item.id_product === products.id_product ? { ...productExit } : item,
-    //             ),
-    //         );
-    //     } else {
-    //         setProductDetail([{ ...products }]);
-    //     }
-    // };
-
-    //
     const detailTinTuc = (products) => {
         const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {
@@ -126,9 +115,14 @@ function App() {
     };
 
     const detailPro = (id_product, id_category) => {
-        setIdPro(id_product);
-        setIdCate(id_category);
-        console.log(IdPro, IdCate);
+        sessionStorage.setItem('data-idproduct', JSON.stringify(id_product));
+        sessionStorage.setItem('data-category', JSON.stringify(id_category));
+
+        //demo backtotop
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     };
 
     // Lay id_category
@@ -142,7 +136,7 @@ function App() {
 
     return (
         <>
-            <Header CartItem={CartItem} />
+            <Header CartItem={CartItem} detailPro={detailPro} />
             <ToastContainer />
 
             <Routes>
@@ -160,8 +154,6 @@ function App() {
                             addToCart={addToCart}
                             detailPro={detailPro}
                             url={url}
-                            IdPro={IdPro}
-                            IdCate={IdCate}
                         />
                     }
                 />
@@ -194,8 +186,6 @@ function App() {
                             categoryid={categoryid}
                             CategoryProduct={CategoryProduct}
                             url={url}
-                            IdPro={IdPro}
-                            IdCate={IdCate}
                         />
                     }
                 />
