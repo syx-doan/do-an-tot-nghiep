@@ -58,8 +58,14 @@ function TimKiem({ detailPro }) {
                             <Poper>
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
-                                    suggestions.map((item, i) => (
-                                        <Link to={`/product_detail`} className={cx('wrapper')}>
+                                    suggestions.map((item) => (
+                                        <Link key={item.id_product}
+                                            to={`product_detail`}
+                                            className={cx('wrapper')}
+                                            onClick={() =>
+                                                detailPro(item.id_product, item.category_id)
+                                            }
+                                        >
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>
                                                     <span

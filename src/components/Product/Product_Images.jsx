@@ -5,7 +5,6 @@ import axiosClient from '~/utils/http';
 
 const Product_Images = ({ url }) => {
     const [data, setData] = useState([]);
-
     const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const product_id = dataUser;
@@ -36,6 +35,8 @@ const Product_Images = ({ url }) => {
                             return <></>;
                         }
                     })}
+
+                    
                 </div>
             </div>
         </>

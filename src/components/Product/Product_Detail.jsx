@@ -15,10 +15,10 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
-    
+
 
     const product_id = dataUser;
-    
+
 
     const fetchPost = async () => {
         try {
@@ -53,7 +53,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         }
                                     })}
 
-                                    <Product_Images url={url} />
+                                    <Product_Images url={url} IdPro={product_id} />
 
                                     {/* icon */}
                                     <div className="product__content-action mt-5">

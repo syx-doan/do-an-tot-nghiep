@@ -14,7 +14,7 @@ Search.defaultProps = {
     handlerSearch: null,
 };
 
-function Search({ CartItem, IdPro, IdCate, detailPro }) {
+function Search({ CartItem, detailPro }) {
     return (
         <>
             <section className="search">
@@ -25,7 +25,7 @@ function Search({ CartItem, IdPro, IdCate, detailPro }) {
                         </Link>
                     </div>
 
-                    <TimKiem IdPro={IdPro} IdCate={IdCate} detailPro={detailPro} />
+                    <TimKiem detailPro={detailPro} />
                     <div className="icon f_flex width">
                         <Popover
                             style={{

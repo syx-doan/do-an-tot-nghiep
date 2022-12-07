@@ -8,6 +8,7 @@ const cx = classNames.bind(styles);
 
 function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
+
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
         if (dataUser && dataUser !== 'null') {

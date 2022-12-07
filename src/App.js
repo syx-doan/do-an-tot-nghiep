@@ -23,9 +23,6 @@ function App() {
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
 
-    // const [IdPro, setIdPro] = useState([]);
-    // const [IdCate, setIdCate] = useState([]);
-
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -100,7 +97,6 @@ function App() {
         deleteProduct();
     };
 
-    // Stpe: 8detail
     const detailTinTuc = (products) => {
         const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {

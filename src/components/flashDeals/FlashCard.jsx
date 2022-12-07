@@ -49,7 +49,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
         try {
             const response = await axiosClient('products');
             setData(response.data);
-            console.log(response);
         } catch (err) {
             console.error(err);
         }

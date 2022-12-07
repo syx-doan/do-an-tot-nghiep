@@ -12,7 +12,6 @@ const Cart = ({ url, detailPro }) => {
         try {
             const response = await axiosClient('newproducts');
             setData(response.data);
-            console.log(response);
         } catch (err) {
             console.error(err);
         }

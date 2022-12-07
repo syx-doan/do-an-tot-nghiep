@@ -2,10 +2,12 @@ import React from 'react';
 import { Modal } from 'antd';
 import './thanhtoan.scss';
 // import CartVisa from './../cartvisa/CartVisa';
+// import CartVisa from './../cartvisa/CartVisa';
 import { useState, useEffect } from 'react';
 import axiosClient from './../../utils/http';
 import { isEmpty } from 'validator';
 import { toast, ToastContainer } from 'react-toastify';
+// import Spinner from './../spiner/Spiner';
 // import Spinner from './../spiner/Spiner';
 
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
@@ -17,7 +19,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [city, setCity] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
     // const [isLoading, setIsLoading] = useState(false);
-
     const errorThanhToan = () =>
         toast.error('Vui lòng nhập đầy đủ thông tin', {
             position: 'top-right',
@@ -37,7 +38,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         if (isEmpty(phone)) {
             msg.phone = 'Vui lòng nhập  số điện thoại';
         }
-
         if (isEmpty(address)) {
             msg.address = 'Vui lòng nhập địa chỉ ';
         }
@@ -54,7 +54,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const handleThanhToan = () => {
         const isValidate = validateAll();
         if (!isValidate) return;
-
         const data = { name, phone, address, district, city };
         try {
             axiosClient.post('thanhtoan', { data });
@@ -75,7 +74,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
             setData(false);
         }
     }, []);
-
     return (
         <Modal
             title="Thanh toán"
@@ -89,20 +87,15 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         >
             <div className="thanhtoan">
                 <ToastContainer />
-
                 <div className="row">
                     <div class="checkout-wrap">
                         <ul class="checkout-bar">
                             <li class="visited first">
                                 <a href="!#">Đăng nhập</a>
                             </li>
-
                             <li class="previous visited">Thêm vào giỏ hàng</li>
-
                             <li class="active">Thanh toán</li>
-
                             <li class="next">Thanh toán thành công</li>
-
                             <li class="">Hoàn thành</li>
                         </ul>
                     </div>
@@ -198,5 +191,4 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         </Modal>
     );
 }
-
 export default ThanhToan;
