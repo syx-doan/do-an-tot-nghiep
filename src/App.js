@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
-import { Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
 import Cart from './common/giohang/Cart';
@@ -22,8 +22,6 @@ function App() {
     const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
-    const [IdPro, setIdPro] = useState([]);
-    const [IdCate, setIdCate] = useState([]);
 
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
@@ -50,7 +48,7 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://localhost/admin_dasborad/upload/product/';
+    const url = 'http://172.16.10.88/admin_dasboard/upload/product/';
 
     //Step 4 :
     const addToCart = (product) => {
@@ -110,9 +108,14 @@ function App() {
     };
 
     const detailPro = (id_product, id_category) => {
-        setIdPro(id_product);
-        setIdCate(id_category);
-        // console.log(IdPro, IdCate);
+        sessionStorage.setItem('data-idproduct', JSON.stringify(id_product));
+        sessionStorage.setItem('data-category', JSON.stringify(id_category));
+
+        //demo backtotop
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     };
 
     // Lay id_category
@@ -126,7 +129,7 @@ function App() {
 
     return (
         <>
-            <Header CartItem={CartItem} />
+            <Header CartItem={CartItem} detailPro={detailPro} />
             <ToastContainer />
 
             <Routes>
@@ -144,8 +147,6 @@ function App() {
                             addToCart={addToCart}
                             detailPro={detailPro}
                             url={url}
-                            IdPro={IdPro}
-                            IdCate={IdCate}
                         />
                     }
                 />
@@ -178,8 +179,6 @@ function App() {
                             categoryid={categoryid}
                             CategoryProduct={CategoryProduct}
                             url={url}
-                            IdPro={IdPro}
-                            IdCate={IdCate}
                         />
                     }
                 />
