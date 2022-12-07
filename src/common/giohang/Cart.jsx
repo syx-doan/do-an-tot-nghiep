@@ -13,8 +13,8 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
     const navigate = useNavigate();
 
-    const success = () =>
-        toast.success('Đặt hàng thành công ', {
+    const checkoutErr = () =>
+        toast.error('Đặt hàng thành công ', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -24,20 +24,27 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
             progress: undefined,
             theme: 'light',
         });
+        // hàm mở modal thanh toán
     const showModal = () => {
+       
         setIsModalOpen(true);
     };
 
-    const handleOk =  (data) => {
+
+    //hàm thanh toán giỏ hàng
+    const handleOk = (data) => {
         const newData = {
             ...data,
             carts: CartItem,
         };
         try {
-             axiosClient.post('thanhtoan', { data: newData });
-
+            axiosClient.post('thanhtoan', { data: newData });
+          
+            handleCancel();
             showModalThanhToan();
-        } catch (error) {}
+        } catch (error) {
+            checkoutErr()
+        }
     };
 
     const handleCancel = () => {
@@ -57,7 +64,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const handleCancelThanhToan = () => {
         setIsModalThanhToanOpen(false);
     };
-
+ 
     return (
         <section className="cart-items">
             <ToastContainer />

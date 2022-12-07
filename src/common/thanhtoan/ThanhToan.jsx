@@ -11,13 +11,10 @@ import Spinner from './../spiner/Spiner';
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
     const [address, setAddress] = useState('');
-    const [district, setDistrict] = useState('');
-    const [city, setCity] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
-    // const [isLoading, setIsLoading] = useState(false);
 
     const errorThanhToan = () =>
-        toast.error('Vui lòng nhập đầy đủ thông tin', {
+        toast.error('Vui lòng đăng nhập trước khi thanh toán', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -39,11 +36,13 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         return true;
     };
     const { id_user, fullname, phone } = dataUser[0];
+
     const handleThanhToan = () => {
+      
         const isValidate = validateAll();
         if (!isValidate) return;
 
-        const data = { id_user, address,fullname};
+        const data = { id_user, address, fullname };
         handleOk(data);
     };
     useEffect(() => {

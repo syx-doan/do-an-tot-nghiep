@@ -37,7 +37,7 @@ function App() {
             theme: 'light',
         });
     const deleteProduct = () =>
-        toast.success('Đã hủy sản phẩm', {
+        toast.error('Đã xóa sản phẩm khỏi giỏ hàng', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
