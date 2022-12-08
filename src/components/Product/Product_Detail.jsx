@@ -11,13 +11,18 @@ import InfoShop from './InfoShop';
 import Product_Images from './Product_Images';
 import SanPhamMoi from './SanPhamMoi';
 
-const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
+const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
+
+    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
+
+
+    const product_id = dataUser;
+
 
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            // console.log(response);
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -35,7 +40,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                             <div className="col p-5 t-12 m-12">
                                 <div className="product__content-left">
                                     {data.map((item) => {
-                                        if (item.id_product === IdPro) {
+                                        if (item.id_product === product_id) {
                                             return (
                                                 <img
                                                     className="mb-5"
@@ -48,7 +53,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                         }
                                     })}
 
-                                    <Product_Images url={url} IdPro={IdPro} />
+                                    <Product_Images url={url} IdPro={product_id} />
 
                                     {/* icon */}
                                     <div className="product__content-action mt-5">
@@ -86,7 +91,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                         <div className="product__content-heading">
                                             <h3 className="product__content-name">
                                                 {data.map((item) => {
-                                                    if (item.id_product === IdPro) {
+                                                    if (item.id_product === product_id) {
                                                         return <p>{item.name}</p>;
                                                     } else {
                                                         return <></>;
@@ -97,7 +102,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                         <div className="product__content-price">
                                             <div className="content-price--old">
                                                 {data.map((item) => {
-                                                    if (item.id_product === IdPro) {
+                                                    if (item.id_product === product_id) {
                                                         return (
                                                             <p>
                                                                 {item.price.toLocaleString('us-US')}
@@ -111,7 +116,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                             </div>
                                             <div className="content-price--new">
                                                 {data.map((item) => {
-                                                    if (item.id_product === IdPro) {
+                                                    if (item.id_product === product_id) {
                                                         return (
                                                             <p>
                                                                 {(
@@ -128,7 +133,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                                 <span class="vnd-class">₫</span>
                                             </div>
                                             {data.map((item) => {
-                                                if (item.id_product === IdPro) {
+                                                if (item.id_product === product_id) {
                                                     return (
                                                         <div className="content-price--discount">
                                                             {item.sale}% GIẢM
@@ -146,7 +151,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                             <div className="content-info--body">
                                                 <span className="content-info--text">
                                                     {data.map((item) => {
-                                                        if (item.id_product === IdPro) {
+                                                        if (item.id_product === product_id) {
                                                             return <p>{item.description}</p>;
                                                         } else {
                                                             return <></>;
@@ -193,7 +198,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                                 </div>
                                                 <div className="content-count--item">
                                                     {data.map((item) => {
-                                                        if (item.id_product === IdPro) {
+                                                        if (item.id_product === product_id) {
                                                             return (
                                                                 <p>
                                                                     {item.quantity} sản phẩm có sẵn
@@ -209,7 +214,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                     </div>
                                     <div className="product__content-cart">
                                         {data.map((item) => {
-                                            if (item.id_product === IdPro) {
+                                            if (item.id_product === product_id) {
                                                 return (
                                                     <button
                                                         className="content-cart-text"
@@ -225,7 +230,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                                         })}
                                         <Link to="/cart">
                                             {data.map((item) => {
-                                                if (item.id_product === IdPro) {
+                                                if (item.id_product === product_id) {
                                                     return (
                                                         <button
                                                             className="content-buy-text"
@@ -297,7 +302,7 @@ const Product_Detail = ({ addToCart, detailPro, url, IdPro, IdCate }) => {
                         <div className="f8row detail__product sm-gutter">
                             <BinhLuan />
 
-                            <SanPhamMoi detailPro={detailPro} url={url} IdCate={IdCate} />
+                            <SanPhamMoi detailPro={detailPro} url={url} />
                         </div>
                     </div>
                 </div>

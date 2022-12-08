@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
-const SanPhamMoi = ({ detailPro, url, IdCate }) => {
+const SanPhamMoi = ({ detailPro, url }) => {
     const [data, setData] = useState([]);
+
+    const dataUser1 = JSON.parse(sessionStorage.getItem('data-category'));
+    const IdCate = dataUser1;
 
     const fetchPost = async () => {
         try {
@@ -47,9 +50,7 @@ const SanPhamMoi = ({ detailPro, url, IdCate }) => {
                             </a>
                         );
                     } else {
-                        return (
-                            <></>
-                        )
+                        return <></>;
                     }
                 })}
             </div>

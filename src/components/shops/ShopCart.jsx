@@ -26,7 +26,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
 
     return (
         <>
-            {data.map((item ) => {
+            {data.map((item) => {
                 if (categoryid === undefined) {
                     return (
                         <div className="card " key={item.id_product}>
@@ -67,7 +67,10 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
+                                <p>
+                                    Giảm tới:{' '}
+                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
+                                </p>
                             </div>
                         </div>
                     );
@@ -84,7 +87,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     src={`${url}${item.image}`}
                                     className="card-img-top"
                                     alt="..."
-                                    onClick={() => detailPro(item)}
+                                    onClick={() => detailPro(item.id_product, item.category_id)}
                                 />
                             </Link>
 
@@ -111,7 +114,10 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
+                                <p>
+                                    Giảm tới:{' '}
+                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
+                                </p>
                             </div>
                         </div>
                     );

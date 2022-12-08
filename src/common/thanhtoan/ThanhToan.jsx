@@ -1,29 +1,18 @@
 import React from 'react';
 import { Modal } from 'antd';
 import './thanhtoan.scss';
-import CartVisa from './../cartvisa/CartVisa';
+// import CartVisa from './../cartvisa/CartVisa';
 import { useState, useEffect } from 'react';
-import axiosClient from './../../utils/http';
+
 import { isEmpty } from 'validator';
-import { toast, ToastContainer } from 'react-toastify';
-import Spinner from './../spiner/Spiner';
+import { ToastContainer } from 'react-toastify';
+
 
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
     const [address, setAddress] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
 
-    const errorThanhToan = () =>
-        toast.error('Vui lòng đăng nhập trước khi thanh toán', {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-        });
     const validateAll = () => {
         const msg = {};
 
