@@ -5,11 +5,9 @@ import axiosClient from '~/utils/http';
 
 const Product_Images = ({ url }) => {
     const [data, setData] = useState([]);
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
+    const IdPro = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
-    const IdPro = dataUser;
-
-    const fetchPost = async () => {
+    const fetchProduct_Image = async () => {
         try {
             const response = await axiosClient('product_image');
             setData(response.data);
@@ -18,8 +16,8 @@ const Product_Images = ({ url }) => {
         }
     };
     useEffect(() => {
-        fetchPost();
-    }, []);
+        fetchProduct_Image();
+    }, [data]);
     return (
         <>
             <div className="product__content-scroll">
@@ -32,11 +30,9 @@ const Product_Images = ({ url }) => {
                                 </div>
                             );
                         } else {
-                            return <></>;
+                            return '';
                         }
                     })}
-
-                    
                 </div>
             </div>
         </>

@@ -68,7 +68,7 @@ function TimKiem({ detailPro }) {
                                         >
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>
-                                                    <span>{item.name}</span>
+                                                    <span className={cx('search-title')}>{item.name}</span>
                                                 </h4>
                                             </div>
                                         </Link>

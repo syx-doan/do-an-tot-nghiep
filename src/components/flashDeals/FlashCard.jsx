@@ -104,8 +104,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                 </div>
                             </div>
                         );
-                    } else {
-                        return <></>;
                     }
                 })}
             </Slider>

@@ -14,13 +14,9 @@ import SanPhamMoi from './SanPhamMoi';
 const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
+    const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
-
-    const product_id = dataUser;
-
-
-    const fetchPost = async () => {
+    const fetchProducts = async () => {
         try {
             const response = await axiosClient('products');
             setData(response.data);
@@ -29,8 +25,8 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
         }
     };
     useEffect(() => {
-        fetchPost();
-    }, []);
+        fetchProducts();
+    }, [data]);
     return (
         <>
             <div className="f8wrapper">
@@ -53,7 +49,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         }
                                     })}
 
-                                    <Product_Images url={url} IdPro={product_id} />
+                                    <Product_Images url={url} />
 
                                     {/* icon */}
                                     <div className="product__content-action mt-5">
