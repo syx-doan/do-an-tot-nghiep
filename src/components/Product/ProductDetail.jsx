@@ -29,6 +29,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     useEffect(() => {
         fetchPost();
     }, [data]);
+    console.log(data);
     return (
         <>
             <div className="f8wrapper">

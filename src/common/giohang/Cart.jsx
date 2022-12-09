@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './giohang.css';
 import ThanhToan from '../thanhtoan/ThanhToan';
@@ -126,7 +127,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
                         </button>
                         <ThanhToan
                             handleOk={handleOk}
-                            // handleCancel={handleCancel}
+                            handleCancel={handleCancel}
                             isModalOpen={isModalOpen}
                         />
                         <ThanhToanThanhCong

@@ -10,8 +10,7 @@ const BinhLuan = ({ url }) => {
     const [comment, setComment] = useState([]);
     const [users, setUsers] = useState([]);
 
-    // const [limit, setLimit] = useState(5);
-    // const [bienDem, setBienDem] = useState(1);
+ 
 
     const dataIdProduct = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
@@ -25,7 +24,7 @@ const BinhLuan = ({ url }) => {
     };
     const fetchPost1 = async () => {
         try {
-            const response = await axiosClient('get');
+            const response = await axiosClient('users');
             setUsers(response.data);
         } catch (err) {
             console.error(err);
