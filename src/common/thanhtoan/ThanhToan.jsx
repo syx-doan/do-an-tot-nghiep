@@ -1,12 +1,9 @@
 import React from 'react';
 import { Modal } from 'antd';
 import './thanhtoan.scss';
-import CartVisa from './../cartvisa/CartVisa';
+// import CartVisa from './../cartvisa/CartVisa';
 import { useState, useEffect } from 'react';
-import axiosClient from './../../utils/http';
 import { isEmpty } from 'validator';
-import { toast, ToastContainer } from 'react-toastify';
-import Spinner from './../spiner/Spiner';
 
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
@@ -28,7 +25,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     if (dataUser) {
         var { id_user, fullname, phone } = dataUser[0];
     } else {
-        var { id_user, fullname, phone } = [];
+        const { id_user, fullname, phone } = [];
     }
 
     const handleThanhToan = () => {
@@ -37,8 +34,8 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
 
         const data = { id_user, address, fullname, note };
         handleOk(data);
-        setAddress('')
-        setNote('')
+        setAddress('');
+        setNote('');
     };
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
@@ -61,8 +58,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
             width="80%"
         >
             <div className="thanhtoan">
-                <ToastContainer />
-
                 <div className="row">
                     <div class="checkout-wrap">
                         <ul class="checkout-bar">
@@ -97,7 +92,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                         />
                                         <label htmlFor="adr">
                                             <i className="fa-solid fa-phone-volume mr-2" />
-                                            
                                             Số điện thoại
                                         </label>
                                         <input
