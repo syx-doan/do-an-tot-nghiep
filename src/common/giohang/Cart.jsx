@@ -37,6 +37,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
             ...data,
             carts: CartItem,
         };
+        console.log(newData);
         try {
             axiosClient.post('thanhtoan', { data: newData });
           
