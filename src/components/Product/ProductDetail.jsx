@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
-import Product_Images from './Product_Images';
+import Product_Images from './Anhmota';
 import SanPhamMoi from './SanPhamMoi';
 
 const Product_Detail = ({ addToCart, detailPro, url }) => {
@@ -16,9 +16,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
 
     const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
-
     const product_id = dataUser;
-
 
     const fetchPost = async () => {
         try {
@@ -30,7 +28,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     };
     useEffect(() => {
         fetchPost();
-    }, []);
+    }, [data]);
     return (
         <>
             <div className="f8wrapper">

@@ -31,13 +31,16 @@ const ThemBinhLuan = () => {
         e.preventDefault();
 
         if (dataUser) {
-            const idUser = dataUser[0].id_user;
-            axiosClient.post('comment', {
-                comment,
-                idProduct,
-                idUser,
-                newTimeString,
-            });
+            if (comment !== '') {
+                const idUser = dataUser[0].id_user;
+                axiosClient.post('comment', {
+                    comment,
+                    idProduct,
+                    idUser,
+                    newTimeString,
+                });
+                setComment('');
+            }
         }
 
         var reset = document.getElementsByTagName('form')[0];

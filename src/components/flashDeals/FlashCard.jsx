@@ -61,7 +61,7 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
     return (
         <>
             <Slider {...settings} className="flash-deal">
-                {data.map((item, index) => {
+                {data.map((item) => {
                     if (item.sale > 0) {
                         return (
                             <div className="card" key={item.id_product}>

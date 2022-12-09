@@ -14,7 +14,6 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            // console.log(response);
             setData(response.data);
         } catch (err) {
             console.error(err);

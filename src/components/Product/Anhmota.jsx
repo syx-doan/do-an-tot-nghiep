@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 
-const Product_Images = ({ url }) => {
+const Anhmota = ({ url }) => {
     const [data, setData] = useState([]);
     const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
@@ -19,7 +19,7 @@ const Product_Images = ({ url }) => {
     };
     useEffect(() => {
         fetchPost();
-    }, []);
+    }, [data]);
     return (
         <>
             <div className="product__content-scroll">
@@ -31,16 +31,12 @@ const Product_Images = ({ url }) => {
                                     <img src={`${url}${item.image}`} alt="" />
                                 </div>
                             );
-                        } else {
-                            return <></>;
                         }
                     })}
-
-                    
                 </div>
             </div>
         </>
     );
 };
 
-export default Product_Images;
+export default Anhmota;

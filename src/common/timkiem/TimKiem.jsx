@@ -25,6 +25,7 @@ function TimKiem({ detailPro }) {
         loadPosts();
     }, []);
     const inputRef = useRef();
+    //hàm tìm kiếm
     const onChangeHanler = (searchName) => {
         let matches = [];
         if (searchName.length > 0) {

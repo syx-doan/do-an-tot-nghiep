@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
-// import axiosClient from '~/utils/http';
+import axiosClient from '~/utils/http';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
@@ -13,8 +13,8 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
     const navigate = useNavigate();
 
-    const success = () =>
-        toast.success('Đặt hàng thành công ', {
+    const checkoutErr = () =>
+        toast.error('Đặt hàng thành công ', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -24,18 +24,32 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
             progress: undefined,
             theme: 'light',
         });
+    // hàm mở modal thanh toán
     const showModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
-        success();
-        // handleCancel();
-        showModalThanhToan();
+    //hàm thanh toán giỏ hàng
+    const handleOk = (data) => {
+        const newData = {
+            ...data,
+            carts: CartItem,
+        };
+        try {
+            axiosClient.post('thanhtoan', { data: newData });
+
+            handleCancel();
+            showModalThanhToan();
+        } catch (error) {
+            checkoutErr();
+        }
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
     };
 
     //
-
 
     const showModalThanhToan = () => {
         setIsModalThanhToanOpen(true);
@@ -63,10 +77,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
                         return (
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
-                                    <img
-                                        src={`${url}${item.image}`}
-                                        alt=""
-                                    />
+                                    <img src={`${url}${item.image}`} alt="" />
                                 </div>
                                 <div className="cart-details">
                                     <h3>{item.name}</h3>

@@ -18,7 +18,7 @@ const SanPhamMoi = ({ detailPro, url }) => {
     };
     useEffect(() => {
         fetchPost();
-    }, []);
+    }, [data]);
 
     return (
         <div className="col p-2-4 t-0 m-12">

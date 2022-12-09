@@ -11,12 +11,13 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-import Product_Detail from './components/Product/Product_Detail';
+
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 import Detail from './components/tintuc/Detail';
+import Product_Detail from './components/Product/ProductDetail';
 
 function App() {
     const [CartItem, setCartItem] = useState([]);
@@ -35,7 +36,7 @@ function App() {
             theme: 'light',
         });
     const deleteProduct = () =>
-        toast.success('Đã hủy sản phẩm', {
+        toast.error('Đã xóa sản phẩm khỏi giỏ hàng', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -48,13 +49,13 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://172.16.10.88/admin_dasboard/upload/product/';
+    const url = 'http://localhost/admin_dasboard/upload/product/';
 
     //Step 4 :
 
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-        
+
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>

@@ -10,6 +10,9 @@ const BinhLuan = ({ url }) => {
     const [comment, setComment] = useState([]);
     const [users, setUsers] = useState([]);
 
+    // const [limit, setLimit] = useState(5);
+    // const [bienDem, setBienDem] = useState(1);
+
     const dataIdProduct = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const fetchPost = async () => {
@@ -31,7 +34,7 @@ const BinhLuan = ({ url }) => {
     useEffect(() => {
         fetchPost();
         fetchPost1();
-    }, []);
+    }, [comment]);
     return (
         <div className="col p-9-6 t-12 m-12">
             <div className="f8row product__review">
