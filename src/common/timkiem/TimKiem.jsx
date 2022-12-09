@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useEffect, useRef } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -8,6 +7,7 @@ import Poper from './../components/poper/Poper';
 import { faCircleXmark, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import axiosClient from '~/utils/http';
 
 const cx = classNames.bind(styles);
 function TimKiem({ detailPro }) {
@@ -18,7 +18,7 @@ function TimKiem({ detailPro }) {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         const loadPosts = async () => {
-            const response = await axios.get('http://localhost:4000/api/products');
+            const response = await axiosClient.get('products');
             setPosts(response.data);
             setLoading(false);
         };

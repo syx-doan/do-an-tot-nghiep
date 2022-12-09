@@ -10,12 +10,17 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confPassWord, setConfPassWord] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
     const navigate = useNavigate();
 
     const onChangeEmail = (e) => {
         const value = e.target.value;
         setEmail(value);
+    };
+    const onChangePhone = (e) => {
+        const value = e.target.value;
+        setPhone(value);
     };
     const onChangeFullName = (e) => {
         const value = e.target.value;
@@ -54,6 +59,9 @@ function Register() {
         if (isEmpty(password)) {
             msg.password = 'Vui lòng nhập  mật khẩu';
         }
+        if (isEmpty(phone)) {
+            msg.phone = 'Vui lòng nhập số điện thoại';
+        }
         if (password !== confPassWord) {
             msg.confPassWord = 'Mật khẩu không giống nhau';
         }
@@ -77,6 +85,7 @@ function Register() {
                 fullname,
                 password,
                 email,
+                phone,
             });
             success();
             setTimeout(() => {
@@ -87,10 +96,11 @@ function Register() {
             alert('error');
         }
 
-        setFullname('');
-        setEmail('');
-        setPassword('');
-        setConfPassWord('');
+        // setFullname('');
+        // setEmail('');
+        // setPassword('');
+        // setConfPassWord('');
+        // setPhone('')
     };
     return (
         <div>
@@ -160,6 +170,30 @@ function Register() {
                                             <div className="d-flex mt-2">
                                                 <div className="validateMsg">
                                                     {validateMsg.email}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-item">
+                                        <div className="row flex-column flex-wrap">
+                                            <div className="form-label col">
+                                                <label htmlFor="" className="">
+                                                    Số điện thoại
+                                                </label>
+                                            </div>
+                                            <div className="form-input col">
+                                                <div className="input-content">
+                                                    <input
+                                                        onChange={onChangePhone}
+                                                        type="number"
+                                                        placeholder="Nhập email số điện thoại"
+                                                        className="input-item"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="d-flex mt-2">
+                                                <div className="validateMsg">
+                                                    {validateMsg.phone}
                                                 </div>
                                             </div>
                                         </div>

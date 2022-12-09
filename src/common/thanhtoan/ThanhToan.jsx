@@ -11,19 +11,9 @@ import Spinner from './../spiner/Spiner';
 function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
     const [address, setAddress] = useState('');
+    const [note, setNote] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
 
-    const errorThanhToan = () =>
-        toast.error('Vui lòng đăng nhập trước khi thanh toán', {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-        });
     const validateAll = () => {
         const msg = {};
 
@@ -35,15 +25,20 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         if (Object.keys(msg).length > 0) return false;
         return true;
     };
-    const { id_user, fullname, phone } = dataUser[0];
+    if (dataUser) {
+        var { id_user, fullname, phone } = dataUser[0];
+    } else {
+        var { id_user, fullname, phone } = [];
+    }
 
     const handleThanhToan = () => {
-      
         const isValidate = validateAll();
         if (!isValidate) return;
 
-        const data = { id_user, address, fullname };
+        const data = { id_user, address, fullname, note };
         handleOk(data);
+        setAddress('')
+        setNote('')
     };
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
@@ -90,7 +85,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                 <div className="row">
                                     <div className="col-50">
                                         <label htmlFor="adr">
-                                            <i className="fa fa-address-card-o" />
+                                            <i className="fa fa-address-card-o mr-2" />
                                             Tên nhận hàng
                                         </label>
                                         <input
@@ -101,7 +96,8 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                             placeholder="Nhập..."
                                         />
                                         <label htmlFor="adr">
-                                            <i className="fa fa-address-card-o" />
+                                            <i className="fa-solid fa-phone-volume mr-2" />
+                                            
                                             Số điện thoại
                                         </label>
                                         <input
@@ -112,7 +108,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                             placeholder="Nhập..."
                                         />
                                         <label htmlFor="adr">
-                                            <i className="fa fa-address-card-o" />
+                                            <i class="fa-solid fa-location-dot mr-2"></i>
                                             Địa chỉ chi tiết
                                         </label>
                                         <input
@@ -127,18 +123,27 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                         <div className="d-flex mt-n1">
                                             <div className="validateMsg">{validateMsg.address}</div>
                                         </div>
+                                        <label htmlFor="adr">
+                                            <i class="fa-solid fa-pen mr-2"></i>
+                                            Ghi chú
+                                        </label>
+                                        <textarea
+                                            onChange={(e) => {
+                                                setNote(e.target.value);
+                                            }}
+                                            style={{ width: '100%' }}
+                                            type="text"
+                                            id="adr"
+                                            name="address"
+                                            placeholder="Nhập..."
+                                        />
                                     </div>
-                                    {/*                                     
-                                    <div className="col-50">
+
+                                    {/* <div className="col-50">
                                         <h5 className="d-flex justify-content-center font-weight-bold thanhtoan">
                                             Phương thức thanh toán
                                         </h5>
-                                        <label className="d-flex align-items-center">
-                                            <input type="checkbox" name="nhanhang" />
-                                            <span className="ms-2">
-                                                Thanh toán sau khi nhận hàng
-                                            </span>
-                                        </label>
+                                      
                                         <p>Hoặc : </p>
                                         <h5 className="d-flex justify-content-center thethanhtoan">
                                             Thanh toán bằng thẻ visa
@@ -152,7 +157,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                         defaultChecked="checked"
                                         name="sameadr"
                                     />
-                                    Địa chỉ thanh toán mặc định
+                                    Thanh toán khi nhận hàng
                                 </label>
                             </form>
                         </div>
