@@ -54,7 +54,7 @@ function App() {
     //Step 4 :
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-
+console.log("con cac")
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
