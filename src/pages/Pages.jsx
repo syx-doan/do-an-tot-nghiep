@@ -13,7 +13,7 @@ const Pages = ({
     detailPro,
     detailTinTuc,
     url,
-    CategoryProduct,
+    CategoryId,
     categoryid,
     setCategory,
 }) => {
@@ -26,7 +26,7 @@ const Pages = ({
             <Shop
                 addToCart={addToCart}
                 detailPro={detailPro}
-                CategoryProduct={CategoryProduct}
+                CategoryId={CategoryId}
                 categoryid={categoryid}
                 setCategory={setCategory}
                 url={url}

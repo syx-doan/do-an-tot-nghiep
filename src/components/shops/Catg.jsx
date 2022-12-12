@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosClient from '~/utils/http';
 
-const Catg = ({ CategoryProduct }) => {
+const Catg = ({ CategoryId }) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -25,7 +25,7 @@ const Catg = ({ CategoryProduct }) => {
                 </div>
                 {data.map((value, index) => (
                     <div
-                        onClick={() => CategoryProduct(value.id_category)}
+                        onClick={() => CategoryId(value.id_category)}
                         className="box f_flex"
                         key={index}
                     >

@@ -16,14 +16,10 @@ Search.defaultProps = {
 
 function Search({ detailPro }) {
     const CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
-    // const [cartLength, setCartLength] = useState(0);
     var lenth = 0;
     if(CartItem) {
         var lenth = CartItem.length;
     }
-    // else {
-    //     var length = 0;
-    // }
     return (
         <>
             <section className="search">

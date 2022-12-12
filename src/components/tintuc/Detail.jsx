@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Detail = ({ productDetail, url }) => {
+const Detail = ({ tiTuc, url }) => {
     return (
         <>
             <div className="news">
                 <div className="image">
-                    {productDetail.map((item) => {
+                    {tiTuc.map((item) => {
                         return (
                             <>
                                 <img
@@ -19,7 +19,7 @@ const Detail = ({ productDetail, url }) => {
                     })}
                 </div>
                 <div className="content">
-                    {productDetail.map((item) => {
+                    {tiTuc.map((item) => {
                         return (
                             <>
                                 <h2>Tin tức về {item.title}</h2>
