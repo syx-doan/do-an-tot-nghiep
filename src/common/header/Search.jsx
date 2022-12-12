@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable no-redeclare */
 import logo from '../../assets/images/clickme.png';
 import { Link } from 'react-router-dom';
 import { Popover } from 'antd';
@@ -14,7 +14,16 @@ Search.defaultProps = {
     handlerSearch: null,
 };
 
-function Search({ CartItem, detailPro }) {
+function Search({ detailPro }) {
+    const CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
+    // const [cartLength, setCartLength] = useState(0);
+    var lenth = 0;
+    if(CartItem) {
+        var lenth = CartItem.length;
+    }
+    // else {
+    //     var length = 0;
+    // }
     return (
         <>
             <section className="search">
@@ -43,7 +52,7 @@ function Search({ CartItem, detailPro }) {
                         <div className="cart">
                             <Link to="/cart">
                                 <i className="fa fa-shopping-bag icon-circle"></i>
-                                <span>{CartItem.length === 0 ? '' : CartItem.length}</span>
+                                <span>{lenth}</span>
                             </Link>
                         </div>
                     </div>

@@ -55,6 +55,9 @@ function Register() {
         } else if (!isEmail(email)) {
             msg.email = 'Định dạng email chưa đúng';
         }
+        if (isEmpty(phone)) {
+            msg.phone = 'Vui lòng nhập số điện thoại';
+        }
 
         if (isEmpty(password)) {
             msg.password = 'Vui lòng nhập  mật khẩu';
@@ -81,7 +84,7 @@ function Register() {
         if (!isValidate) return;
 
         try {
-            axiosClient.post('insert', {
+            axiosClient.post('dangky', {
                 fullname,
                 password,
                 email,
@@ -223,6 +226,8 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
+
+
 
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">

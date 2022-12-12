@@ -1,13 +1,12 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 
-const Product_Images = ({ url }) => {
+const Anhmota = ({ url }) => {
     const [data, setData] = useState([]);
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
-
-    const IdPro = dataUser;
+    const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const fetchPost = async () => {
         try {
@@ -25,22 +24,18 @@ const Product_Images = ({ url }) => {
             <div className="product__content-scroll">
                 <div className="product__content-img--list">
                     {data.map((item) => {
-                        if (item.id_product === IdPro) {
+                        if (item.id_product === product_id) {
                             return (
                                 <div style={{ padding: 5 }}>
                                     <img src={`${url}${item.image}`} alt="" />
                                 </div>
                             );
-                        } else {
-                            return <></>;
                         }
                     })}
-
-                    
                 </div>
             </div>
         </>
     );
 };
 
-export default Product_Images;
+export default Anhmota;

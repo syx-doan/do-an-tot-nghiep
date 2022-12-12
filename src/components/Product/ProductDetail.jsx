@@ -8,29 +8,26 @@ import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
-import Product_Images from './Product_Images';
+import Product_Images from './Anhmota';
 import SanPhamMoi from './SanPhamMoi';
 
 const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
-
-
-    const product_id = dataUser;
-
+    const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            setData(response.data);
+            setData(response.data); 
         } catch (err) {
             console.error(err);
         }
     };
     useEffect(() => {
         fetchPost();
-    }, []);
+    }, [data]);
+    console.log(data);
     return (
         <>
             <div className="f8wrapper">
@@ -172,8 +169,8 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         <svg
                                                             enableBackground="new 0 0 10 10"
                                                             viewBox="0 0 10 10"
-                                                            x={0}
-                                                            y={0}
+                                                            x={1}
+                                                            y={1}
                                                             className="content-count-svg-icon"
                                                         >
                                                             <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5" />
@@ -188,8 +185,8 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         <svg
                                                             enableBackground="new 0 0 10 10"
                                                             viewBox="0 0 10 10"
-                                                            x={0}
-                                                            y={0}
+                                                            x={1}
+                                                            y={1}
                                                             className="content-count-svg-icon"
                                                         >
                                                             <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5" />
@@ -300,7 +297,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                         <InfoShop />
 
                         <div className="f8row detail__product sm-gutter">
-                            <BinhLuan />
+                            <BinhLuan url={url} />
 
                             <SanPhamMoi detailPro={detailPro} url={url} />
                         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -49,7 +50,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
         try {
             const response = await axiosClient('products');
             setData(response.data);
-            // console.log(response);
         } catch (err) {
             console.error(err);
         }
@@ -104,8 +104,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                 </div>
                             </div>
                         );
-                    } else {
-                        return <></>;
                     }
                 })}
             </Slider>

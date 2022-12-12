@@ -13,14 +13,12 @@ const ThemBinhLuan = () => {
 
     function formatDate(date) {
         if (!date) return;
-
         const hours = `0${date.getHours()}`.slice(-2);
         const minutes = `0${date.getMinutes()}`.slice(-2);
         const seconds = `0${date.getSeconds()}`.slice(-2);
         const ngay = `0${date.getDate()}`.slice(-2);
         const thang = `0${date.getMonth()}`.slice(-2);
         const nam = `${date.getFullYear()}`;
-
         return `${hours}:${minutes}:${seconds} - Ngày ${ngay}/${thang}/${nam}`;
     }
 
@@ -29,17 +27,18 @@ const ThemBinhLuan = () => {
 
     const handleSubmitBinhLuan = (e) => {
         e.preventDefault();
-
         if (dataUser) {
-            const idUser = dataUser[0].id_user;
-            axiosClient.post('comment', {
-                comment,
-                idProduct,
-                idUser,
-                newTimeString,
-            });
+            if (comment !== '') {
+                const idUser = dataUser[0].id_user;
+                axiosClient.post('comment', {
+                    comment,
+                    idProduct,
+                    idUser,
+                    newTimeString,
+                });
+                setComment('');
+            }
         }
-
         var reset = document.getElementsByTagName('form')[0];
         reset.reset();
     };

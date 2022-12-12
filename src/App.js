@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
@@ -11,15 +13,16 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-import Product_Detail from './components/Product/Product_Detail';
+
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 import Detail from './components/tintuc/Detail';
+import ProductDetail from './components/Product/ProductDetail';
 
 function App() {
-    const [CartItem, setCartItem] = useState([]);
+    // const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
 
@@ -48,10 +51,15 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://localhost/admin_dasborad/upload/product/';
-
+    const url = 'http://localhost/admin_dasboard/upload/product/';
 
     //Step 4 :
+
+    if (JSON.parse(sessionStorage.getItem('data-cart'))) {
+        var [CartItem, setCartItem] = useState(JSON.parse(sessionStorage.getItem('data-cart')));
+    } else {
+        var [CartItem, setCartItem] = useState([]);
+    }
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
 console.log("con cac")
@@ -68,6 +76,13 @@ console.log("con cac")
         }
         success();
     };
+
+    // clear
+    const clearCart = () => {
+        setCartItem([]);
+    }
+
+    sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
 
     // Stpe: 6
     const decreaseQty = (product) => {
@@ -130,7 +145,7 @@ console.log("con cac")
 
     return (
         <>
-            <Header CartItem={CartItem} detailPro={detailPro} />
+            <Header detailPro={detailPro} />
             <ToastContainer />
 
             <Routes>
@@ -143,7 +158,7 @@ console.log("con cac")
                 <Route
                     path="product_detail"
                     element={
-                        <Product_Detail
+                        <ProductDetail
                             productDetail={productDetail}
                             addToCart={addToCart}
                             detailPro={detailPro}
@@ -188,11 +203,11 @@ console.log("con cac")
                     exact
                     element={
                         <Cart
-                            CartItem={CartItem}
                             addToCart={addToCart}
                             decreaseQty={decreaseQty}
                             deleteQty={deleteQty}
                             url={url}
+                            clear={clearCart}
                         />
                     }
                 />

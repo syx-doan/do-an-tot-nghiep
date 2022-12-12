@@ -12,7 +12,7 @@ const BinhLuan = ({ url }) => {
 
     const dataIdProduct = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
-    const fetchPost = async () => {
+    const fetchComment = async () => {
         try {
             const response = await axiosClient('comments');
             setComment(response.data);
@@ -20,18 +20,18 @@ const BinhLuan = ({ url }) => {
             console.error(err);
         }
     };
-    const fetchPost1 = async () => {
+    const fetchUsers = async () => {
         try {
-            const response = await axiosClient('get');
+            const response = await axiosClient('users');
             setUsers(response.data);
         } catch (err) {
             console.error(err);
         }
     };
     useEffect(() => {
-        fetchPost();
-        fetchPost1();
-    }, []);
+        fetchComment();
+        fetchUsers();
+    }, [comment]);
     return (
         <div className="col p-9-6 t-12 m-12">
             <div className="f8row product__review">
