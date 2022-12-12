@@ -60,12 +60,14 @@ function TimKiem({ detailPro }) {
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
                                     suggestions.map((item) => (
-                                        <Link key={item.id_product}
-                                            to={`product_detail`}
+                                        <Link
+                                            key={item.id_product}
+                                            to={`product_detail/${item.id_product}`}
                                             className={cx('wrapper')}
-                                            onClick={() =>
-                                                detailPro(item.id_product, item.category_id)
-                                            }
+                                            onClick={() => {
+                                                detailPro(item.id_product, item.category_id);
+                                                // setShowREsult(false)
+                                            }}
                                         >
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>

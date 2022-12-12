@@ -150,6 +150,19 @@ function App() {
                     }
                 />
                 <Route
+                    path="product_detail/:id"
+                    element={
+                        <Product_Detail
+                            productDetail={productDetail}
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            url={url}
+                            IdPro={IdPro}
+                            IdCate={IdCate}
+                        />
+                    }
+                />
+                <Route
                     path="sanpham"
                     element={
                         <Shop
