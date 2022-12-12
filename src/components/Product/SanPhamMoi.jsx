@@ -5,8 +5,7 @@ import axiosClient from '~/utils/http';
 const SanPhamMoi = ({ detailPro, url }) => {
     const [data, setData] = useState([]);
 
-    const dataUser1 = JSON.parse(sessionStorage.getItem('data-category'));
-    const category_id = dataUser1;
+    const category_id = JSON.parse(sessionStorage.getItem('data-category'));
 
     const fetchPost = async () => {
         try {
@@ -18,7 +17,7 @@ const SanPhamMoi = ({ detailPro, url }) => {
     };
     useEffect(() => {
         fetchPost();
-    }, [data]);
+    }, []);
 
     return (
         <div className="col p-2-4 t-0 m-12">

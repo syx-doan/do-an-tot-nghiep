@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
@@ -17,10 +19,10 @@ import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 import Detail from './components/tintuc/Detail';
-import Product_Detail from './components/Product/ProductDetail';
+import ProductDetail from './components/Product/ProductDetail';
 
 function App() {
-    const [CartItem, setCartItem] = useState([]);
+    // const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
     const [categoryid, setCategoryid] = useState();
 
@@ -53,6 +55,11 @@ function App() {
 
     //Step 4 :
 
+    if (JSON.parse(sessionStorage.getItem('data-cart'))) {
+        var [CartItem, setCartItem] = useState(JSON.parse(sessionStorage.getItem('data-cart')));
+    } else {
+        var [CartItem, setCartItem] = useState([]);
+    }
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
@@ -67,10 +74,15 @@ function App() {
         } else {
             setCartItem([...CartItem, { ...product, qty: 1 }]);
         }
-
-        // sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
         success();
     };
+
+    // clear
+    const clearCart = () => {
+        setCartItem([]);
+    }
+
+    sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
 
     // Stpe: 6
     const decreaseQty = (product) => {
@@ -133,7 +145,7 @@ function App() {
 
     return (
         <>
-            <Header CartItem={CartItem} detailPro={detailPro} />
+            <Header detailPro={detailPro} />
             <ToastContainer />
 
             <Routes>
@@ -146,7 +158,7 @@ function App() {
                 <Route
                     path="product_detail"
                     element={
-                        <Product_Detail
+                        <ProductDetail
                             productDetail={productDetail}
                             addToCart={addToCart}
                             detailPro={detailPro}
@@ -191,11 +203,11 @@ function App() {
                     exact
                     element={
                         <Cart
-                            CartItem={CartItem}
                             addToCart={addToCart}
                             decreaseQty={decreaseQty}
                             deleteQty={deleteQty}
                             url={url}
+                            clear={clearCart}
                         />
                     }
                 />

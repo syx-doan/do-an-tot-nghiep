@@ -34,7 +34,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                 <label>{count}</label> <br />
                                 <i class="fa-solid fa-heart" onClick={increment}></i>
                             </div>
-                            <Link to="/product_detail">
+                            <Link to='/product_detail'>
                                 <img
                                     src={`${url}${item.image}`}
                                     className="card-img-top"

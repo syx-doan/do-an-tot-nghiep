@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -103,8 +104,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                 </div>
                             </div>
                         );
-                    } else {
-                        return <></>;
                     }
                 })}
             </Slider>

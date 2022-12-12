@@ -14,14 +14,12 @@ import SanPhamMoi from './SanPhamMoi';
 const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
-
-    const product_id = dataUser;
+    const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            setData(response.data);
+            setData(response.data); 
         } catch (err) {
             console.error(err);
         }

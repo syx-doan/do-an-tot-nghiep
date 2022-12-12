@@ -1,4 +1,4 @@
-
+/* eslint-disable no-redeclare */
 import React from 'react';
 import './giohang.css';
 import ThanhToan from '../thanhtoan/ThanhToan';
@@ -8,11 +8,19 @@ import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
 import axiosClient from '~/utils/http';
 
-const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
+const Cart = ({ clear, addToCart, decreaseQty, deleteQty, url }) => {
+    if(JSON.parse(sessionStorage.getItem('data-cart'))) {
+        var CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
+    } else {
+        var CartItem = [];
+    }
+
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
     const navigate = useNavigate();
+
+    const [dataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
 
     const checkoutErr = () =>
         toast.error('Đặt hàng thành công ', {
@@ -27,7 +35,11 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
         });
     // hàm mở modal thanh toán
     const showModal = () => {
-        setIsModalOpen(true);
+        if (dataUser) {
+            setIsModalOpen(true);
+        } else {
+            navigate('/dangnhap');
+        }
     };
 
     //hàm thanh toán giỏ hàng
@@ -129,6 +141,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty, url }) => {
                             handleOk={handleOk}
                             handleCancel={handleCancel}
                             isModalOpen={isModalOpen}
+                            clear={clear}
                         />
                         <ThanhToanThanhCong
                             handleOkThanhToan={handleOkThanhToan}

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -5,9 +6,7 @@ import axiosClient from '~/utils/http';
 
 const Anhmota = ({ url }) => {
     const [data, setData] = useState([]);
-    const dataUser = JSON.parse(sessionStorage.getItem('data-idproduct'));
-
-    const product_id = dataUser;
+    const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
 
     const fetchPost = async () => {
         try {
@@ -19,7 +18,7 @@ const Anhmota = ({ url }) => {
     };
     useEffect(() => {
         fetchPost();
-    }, [data]);
+    }, []);
     return (
         <>
             <div className="product__content-scroll">

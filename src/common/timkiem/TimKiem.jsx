@@ -60,25 +60,18 @@ function TimKiem({ detailPro }) {
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
                                     suggestions.map((item) => (
-                                        <Link key={item.id_product}
-                                            to={`product_detail`}
+                                        <Link
+                                            key={item.id_product}
+                                            to="product_detail"
                                             className={cx('wrapper')}
-                                            onClick={() =>
-                                                detailPro(item.id_product, item.category_id)
-                                            }
+                                            onClick={() => {
+                                                detailPro(item.id_product, item.category_id);
+                                                handleHideResult()
+                                            }}
                                         >
                                             <div className={cx('info')}>
                                                 <h4 className={cx('name')}>
-                                                    <span
-                                                        onClick={() =>
-                                                            detailPro(
-                                                                item.id_product,
-                                                                item.category_id,
-                                                            )
-                                                        }
-                                                    >
-                                                        {item.name}
-                                                    </span>
+                                                    <span>{item.name}</span>
                                                 </h4>
                                             </div>
                                         </Link>

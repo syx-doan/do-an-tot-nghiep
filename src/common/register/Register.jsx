@@ -206,31 +206,6 @@ function Register() {
                                         <div className="row flex-column flex-wrap">
                                             <div className="form-label col">
                                                 <label htmlFor="" className="">
-                                                    Nhập phone
-                                                </label>
-                                            </div>
-                                            <div className="form-input col">
-                                                <div className="input-content">
-                                                    <input
-                                                        onChange={onChangePhone}
-                                                        type="phone"
-                                                        placeholder="Nhập sdt của bạn"
-                                                        className="input-item"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="d-flex mt-2">
-                                                <div className="validateMsg">
-                                                    {validateMsg.phone}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-item">
-                                        <div className="row flex-column flex-wrap">
-                                            <div className="form-label col">
-                                                <label htmlFor="" className="">
                                                     Mật khẩu
                                                 </label>
                                             </div>
