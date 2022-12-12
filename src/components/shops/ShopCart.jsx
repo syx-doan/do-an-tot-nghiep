@@ -14,6 +14,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
+            console.log(response.data);
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -36,7 +37,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                             </div>
                             <Link to='/product_detail'>
                                 <img
-                                    src={`${url}${item.image}`}
+                                    src={`${url}/product/${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item.id_product, item.category_id)}

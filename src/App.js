@@ -18,7 +18,7 @@ import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
-import Detail from './components/tintuc/Detail';
+import Detail from './components/tintuc/tintucchitiet/Detail';
 import ProductDetail from './components/Product/ProductDetail';
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
 
     //Step 2 :
 
-    const url = 'http://localhost/admin_dasboard/upload/product/';
+    const url = 'http://localhost/admin_dasborad/upload';
 
     //Step 4 :
 
@@ -62,7 +62,7 @@ function App() {
     }
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-console.log("con cac")
+        console.log('con cac');
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
@@ -80,7 +80,7 @@ console.log("con cac")
     // clear
     const clearCart = () => {
         setCartItem([]);
-    }
+    };
 
     sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
 
