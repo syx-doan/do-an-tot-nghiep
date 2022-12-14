@@ -2,13 +2,17 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './tintuc.css';
+import './tintuc.css'
 import { useState } from 'react';
 import axiosClient from '~/utils/http';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+// import styles from './tintuc.module.scss';
+// import classNames from 'classnames/bind';
 
-const Ttcard = ({ handleTinTuc, url }) => {
+// const cx = classNames.bind(styles);
+
+const Ttcard = ({ detailTinTuc, url }) => {
     const [data, setData] = useState([]);
     
     const fetchPost = async () => {
@@ -28,7 +32,7 @@ const Ttcard = ({ handleTinTuc, url }) => {
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
     };
     return (
         <>
@@ -36,9 +40,9 @@ const Ttcard = ({ handleTinTuc, url }) => {
                 {data.map((value, index) => {
                     return (
                         <>
-                            <div className="box tintuc" key={index}>
+                            <div className="tintuc" key={index}>
                                 <Link to="/tintuc">
-                                    <div className="img">
+                                    <div className="image">
                                         <img
                                             src={`${url}/product/${value.image}`}
                                             alt=""

@@ -27,6 +27,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
         <>
             {data.map((item) => {
                 if (categoryid === undefined) {
+                    const priceSale = (item.price * item.sale) / 100;
                     return (
                         <div className="card " key={item.id_product}>
                             <span className="discount">{item.sale}% Off</span>
@@ -34,7 +35,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                 <label>{count}</label> <br />
                                 <i class="fa-solid fa-heart" onClick={increment}></i>
                             </div>
-                            <Link to='/product_detail'>
+                            <Link to="/product_detail">
                                 <img
                                     src={`${url}/product/${item.image}`}
                                     className="card-img-top"
@@ -56,7 +57,8 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
                                     <p className="price">
-                                        Giá tiền: {item.price.toLocaleString('us-US')} đ
+                                        Giá tiền: {(item.price - priceSale).toLocaleString('us-US')}{' '}
+                                        đ
                                     </p>
                                     <button
                                         className="btn-add"
@@ -66,10 +68,8 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>
-                                    Giảm tới:{' '}
-                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
-                                </p>
+                                <p>Giá gốc: {item.price.toLocaleString('us-US')} đ</p>
+                                <p>Giảm tới: {priceSale.toLocaleString('us-US')} đ</p>
                             </div>
                         </div>
                     );
@@ -114,10 +114,10 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <div className='hehe'>
+                                <h6>
                                     Giảm tới:{' '}
                                     {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
-                                </div>
+                                </h6>
                             </div>
                         </div>
                     );
