@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -49,7 +50,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
         try {
             const response = await axiosClient('products');
             setData(response.data);
-            console.log(response);
         } catch (err) {
             console.error(err);
         }
@@ -62,7 +62,7 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
     return (
         <>
             <Slider {...settings} className="flash-deal">
-                {data.map((item, index) => {
+                {data.map((item) => {
                     if (item.sale > 0) {
                         return (
                             <div className="card" key={item.id_product}>
@@ -104,8 +104,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                 </div>
                             </div>
                         );
-                    } else {
-                        return <></>;
                     }
                 })}
             </Slider>

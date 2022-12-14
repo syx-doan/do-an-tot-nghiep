@@ -62,11 +62,11 @@ function TimKiem({ detailPro }) {
                                     suggestions.map((item) => (
                                         <Link
                                             key={item.id_product}
-                                            to={`product_detail/${item.id_product}`}
+                                            to="product_detail"
                                             className={cx('wrapper')}
                                             onClick={() => {
                                                 detailPro(item.id_product, item.category_id);
-                                                // setShowREsult(false)
+                                                handleHideResult();
                                             }}
                                         >
                                             <div className={cx('info')}>

@@ -14,7 +14,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            // console.log(response);
+            console.log(response.data);
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -26,8 +26,55 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
 
     return (
         <>
-            {data.map((item ) => {
+            {data.map((item) => {
                 if (categoryid === undefined) {
+                    return (
+                        <div className="card " key={item.id_product}>
+                            <span className="discount">{item.sale}% Off</span>
+                            <div className="product-like">
+                                <label>{count}</label> <br />
+                                <i class="fa-solid fa-heart" onClick={increment}></i>
+                            </div>
+                            <Link to='/product_detail'>
+                                <img
+                                    src={`${url}/product/${item.image}`}
+                                    className="card-img-top"
+                                    alt="..."
+                                    onClick={() => detailPro(item.id_product, item.category_id)}
+                                />
+                            </Link>
+
+                            <div className="card-body">
+                                <h5 className="card-title product-name" title={item.name}>
+                                    {item.name}
+                                </h5>
+                                <div className="rate">
+                                    <i className="fa fa-star"></i>
+                                    <i className="fa fa-star"></i>
+                                    <i className="fa fa-star"></i>
+                                    <i className="fa fa-star"></i>
+                                    <i className="fa fa-star"></i>
+                                </div>
+                                <div className="d-flex justify-content-between mt-2">
+                                    <p className="price">
+                                        Giá tiền: {item.price.toLocaleString('us-US')} đ
+                                    </p>
+                                    <button
+                                        className="btn-add"
+                                        href="!#"
+                                        onClick={() => addToCart(item)}
+                                    >
+                                        <i className="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <p>
+                                    Giảm tới:{' '}
+                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
+                                </p>
+                            </div>
+                        </div>
+                    );
+                } else if (categoryid === item.category_id) {
                     return (
                         <div className="card " key={item.id_product}>
                             <span className="discount">{item.sale}% Off</span>
@@ -67,51 +114,10 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
-                            </div>
-                        </div>
-                    );
-                } else if (categoryid === item.category_id) {
-                    return (
-                        <div className="card " key={item.id_product}>
-                            <span className="discount">{item.sale}% Off</span>
-                            <div className="product-like">
-                                <label>{count}</label> <br />
-                                <i class="fa-solid fa-heart" onClick={increment}></i>
-                            </div>
-                            <Link to="/product_detail">
-                                <img
-                                    src={`${url}${item.image}`}
-                                    className="card-img-top"
-                                    alt="..."
-                                    onClick={() => detailPro(item)}
-                                />
-                            </Link>
-
-                            <div className="card-body">
-                                <h5 className="card-title product-name" title={item.name}>
-                                    {item.name}
-                                </h5>
-                                <div className="rate">
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                </div>
-                                <div className="d-flex justify-content-between mt-2">
-                                    <p className="price">
-                                        Giá tiền: {item.price.toLocaleString('us-US')} đ
-                                    </p>
-                                    <button
-                                        className="btn-add"
-                                        href="!#"
-                                        onClick={() => addToCart(item)}
-                                    >
-                                        <i className="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <p>Giảm tới: {(item.price * item.sale / 100).toLocaleString('us-US')} đ</p>
+                                <p>
+                                    Giảm tới:{' '}
+                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
+                                </p>
                             </div>
                         </div>
                     );

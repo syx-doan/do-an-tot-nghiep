@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+
 import React from 'react';
 import { Modal } from 'antd';
 import './thanhtoan.scss';
@@ -5,7 +7,7 @@ import './thanhtoan.scss';
 import { useState, useEffect } from 'react';
 import { isEmpty } from 'validator';
 
-function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
+function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
     const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
     const [address, setAddress] = useState('');
     const [note, setNote] = useState('');
@@ -25,6 +27,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
     if (dataUser) {
         var { id_user, fullname, phone } = dataUser[0];
     } else {
+        // eslint-disable-next-line no-unused-vars
         const { id_user, fullname, phone } = [];
     }
 
@@ -36,6 +39,8 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
         handleOk(data);
         setAddress('');
         setNote('');
+        // sessionStorage.clear();
+        clear();
     };
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
@@ -88,7 +93,7 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                             type="text"
                                             id="adr"
                                             name="address"
-                                            placeholder="Nhập..."
+                                            placeholder=""
                                         />
                                         <label htmlFor="adr">
                                             <i className="fa-solid fa-phone-volume mr-2" />
@@ -99,11 +104,11 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                             type="text"
                                             id="adr"
                                             name="address"
-                                            placeholder="Nhập..."
+                                            placeholder=""
                                         />
                                         <label htmlFor="adr">
                                             <i class="fa-solid fa-location-dot mr-2"></i>
-                                            Địa chỉ chi tiết
+                                            Địa chỉ giao hàng
                                         </label>
                                         <input
                                             onChange={(e) => {
@@ -132,18 +137,6 @@ function ThanhToan({ handleCancel, isModalOpen, handleOk }) {
                                             placeholder="Nhập..."
                                         />
                                     </div>
-
-                                    {/* <div className="col-50">
-                                        <h5 className="d-flex justify-content-center font-weight-bold thanhtoan">
-                                            Phương thức thanh toán
-                                        </h5>
-                                      
-                                        <p>Hoặc : </p>
-                                        <h5 className="d-flex justify-content-center thethanhtoan">
-                                            Thanh toán bằng thẻ visa
-                                        </h5>
-                                        <CartVisa />
-                                    </div> */}
                                 </div>
                                 <label>
                                     <input
