@@ -17,7 +17,6 @@ import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 import Detail from './components/tintuc/Detail';
-
 function App() {
     const [CartItem, setCartItem] = useState([]);
     const [productDetail, setProductDetail] = useState([]);
