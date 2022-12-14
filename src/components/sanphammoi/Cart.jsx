@@ -26,18 +26,7 @@ const Cart = ({ url, detailPro }) => {
             <div className="content grid3 product">
                 {data.map((val, index) => {
                     return (
-                        // <div className="box" key={index}>
-                        //     <div className="img">
-                        //         <Link to="/product_detail">
-                        //             <img
-                        //                 src={`${url}/product/${val.image}`}
-                        //                 alt=""
-                        //                 onClick={() => detailPro(val.id_product, val.category_id)}
-                        //             />
-                        //         </Link>
-                        //     </div>
-                        //     <h5 className="d-flex justify-content-center mt-2">{val.name}</h5>
-                        // </div>
+                    
                         <figure className="snip1278">
                             <h4></h4>
                             <div className="image">

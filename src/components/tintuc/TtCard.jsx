@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 // const cx = classNames.bind(styles);
 
-const Ttcard = ({ detailTinTuc, url }) => {
+const Ttcard = ({ handleTinTuc, url }) => {
     const [data, setData] = useState([]);
     
     const fetchPost = async () => {
@@ -44,7 +44,7 @@ const Ttcard = ({ detailTinTuc, url }) => {
                                 <Link to="/tintuc">
                                     <div className="image">
                                         <img
-                                            src={`${url}/product/${value.image}`}
+                                            src={`${url}/news/${value.image}`}
                                             alt=""
                                             width="100"
                                             height="70px"
