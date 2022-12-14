@@ -130,7 +130,6 @@ function App() {
     // Chi tiết tin tức
     const handleTinTuc = (idNew) => {
         sessionStorage.setItem('id-new', JSON.stringify(idNew));
-
         // backtotop
         window.scrollTo({
             top: 0,

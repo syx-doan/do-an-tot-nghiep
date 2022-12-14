@@ -100,7 +100,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
-                                </div> 
+                                </div>
                                 {/* <p className='giacu'>Giảm tới: {item.price.toLocaleString('us-US')} đ</p> */}
                                 <div className="d-flex justify-content-between mt-2">
                                     <p className="price">
@@ -114,6 +114,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
+                                <p>Giá gốc: {item.price.toLocaleString('us-US')} đ</p>
                                 <h6>
                                     Giảm tới:{' '}
                                     {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
