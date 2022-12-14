@@ -36,7 +36,6 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
     const settings = {
         dots: false,
         infinite: true,
-
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -69,7 +68,7 @@ const FlashCard = ({ url, addToCart, detailPro }) => {
                                 <span className="discount">{item.sale}% Off</span>
                                 <Link to="/product_detail">
                                     <img
-                                        src={`${url}${item.image}`}
+                                        src={`${url}/product/${item.image}`}
                                         className="card-img-top"
                                         alt="..."
                                         onClick={() => detailPro(item.id_product, item.category_id)}
