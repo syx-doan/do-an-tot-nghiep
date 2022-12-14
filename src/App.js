@@ -1,10 +1,11 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 import Header from './common/header/Header';
 import Pages from './pages/Pages';
-import Data from './components/Data';
 import Cart from './common/giohang/Cart';
 import Footer from './common/footer/Footer';
 import Register from './common/register/Register';
@@ -12,13 +13,19 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-import Product_Detail from './components/Product/Product_Detail';
+
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
+import Detail from './components/tintuc/tintucchitiet/Detail';
+import ProductDetail from './components/Product/ProductDetail';
 
 function App() {
+    // const [CartItem, setCartItem] = useState([]);
+    const [productDetail, setProductDetail] = useState([]);
+    const [categoryid, setCategoryid] = useState();
+
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -31,7 +38,7 @@ function App() {
             theme: 'light',
         });
     const deleteProduct = () =>
-        toast.success('Đã hủy sản phẩm', {
+        toast.error('Đã xóa sản phẩm khỏi giỏ hàng', {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -41,17 +48,21 @@ function App() {
             progress: undefined,
             theme: 'light',
         });
-    const { productItems } = Data;
 
     //Step 2 :
-    const [CartItem, setCartItem] = useState([]);
 
-    const [productDetail, setProductDetail] = useState([]);
+    const url = 'http://localhost/admin_dasborad/upload';
 
     //Step 4 :
+
+    if (JSON.parse(sessionStorage.getItem('data-cart'))) {
+        var [CartItem, setCartItem] = useState(JSON.parse(sessionStorage.getItem('data-cart')));
+    } else {
+        var [CartItem, setCartItem] = useState([]);
+    }
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-
+        console.log('con cac');
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
@@ -65,6 +76,13 @@ function App() {
         }
         success();
     };
+
+    // clear
+    const clearCart = () => {
+        setCartItem([]);
+    };
+
+    sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
 
     // Stpe: 6
     const decreaseQty = (product) => {
@@ -92,31 +110,42 @@ function App() {
         deleteProduct();
     };
 
-    // Stpe: 8detail
-    const detailPro = (products) => {
-        const productExit = productDetail.find((item) => item.id_product === products.id_product);
+    const detailTinTuc = (products) => {
+        const productExit = productDetail.find((item) => item.id_news === products.id_news);
         if (productExit) {
             setProductDetail(
                 productDetail.map((item) =>
-                    item.id_product === products.id_product ? { ...productExit, qty: 1 } : item,
+                    item.id_news === products.id_news ? { ...productExit } : item,
                 ),
             );
         } else {
-            setProductDetail([{ ...products, qty: 1 }]);
+            setProductDetail([{ ...products }]);
         }
-        console.log(productDetail);
+    };
+
+    const detailPro = (id_product, id_category) => {
+        sessionStorage.setItem('data-idproduct', JSON.stringify(id_product));
+        sessionStorage.setItem('data-category', JSON.stringify(id_category));
+
+        //demo backtotop
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     };
 
     // Lay id_category
-    const [categoryid, setCategoryid] = useState();
-
     const CategoryProduct = (id) => {
         setCategoryid(id);
     };
 
+    const setCategory = () => {
+        setCategoryid(undefined);
+    };
+
     return (
         <>
-            <Header CartItem={CartItem} />
+            <Header detailPro={detailPro} />
             <ToastContainer />
 
             <Routes>
@@ -128,7 +157,14 @@ function App() {
                 <Route path="lienhe" element={<LienHe />} />
                 <Route
                     path="product_detail"
-                    element={<Product_Detail productDetail={productDetail} addToCart={addToCart} />}
+                    element={
+                        <ProductDetail
+                            productDetail={productDetail}
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            url={url}
+                        />
+                    }
                 />
                 <Route
                     path="sanpham"
@@ -138,11 +174,14 @@ function App() {
                             detailPro={detailPro}
                             CategoryProduct={CategoryProduct}
                             categoryid={categoryid}
+                            setCategory={setCategory}
+                            url={url}
                         />
                     }
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
+                <Route path="tintuc" element={<Detail productDetail={productDetail} url={url} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -150,9 +189,12 @@ function App() {
                     exact
                     element={
                         <Pages
-                            productItems={productItems}
                             addToCart={addToCart}
                             detailPro={detailPro}
+                            detailTinTuc={detailTinTuc}
+                            categoryid={categoryid}
+                            CategoryProduct={CategoryProduct}
+                            url={url}
                         />
                     }
                 />
@@ -161,15 +203,16 @@ function App() {
                     exact
                     element={
                         <Cart
-                            CartItem={CartItem}
                             addToCart={addToCart}
                             decreaseQty={decreaseQty}
                             deleteQty={deleteQty}
+                            url={url}
+                            clear={clearCart}
                         />
                     }
                 />
             </Routes>
-           
+
             <Footer />
         </>
     );

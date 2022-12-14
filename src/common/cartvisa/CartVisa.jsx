@@ -25,7 +25,7 @@ const CartVisa = () => {
                         <input
                             placeholder="ex: 1234-5678-9876-5432"
                             maxlength={16}
-                            type="text"
+                            type="number"
                             className="form-control"
                             value={number}
                             name="number"

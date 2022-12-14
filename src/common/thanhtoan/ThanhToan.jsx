@@ -1,14 +1,61 @@
+/* eslint-disable no-redeclare */
+
 import React from 'react';
 import { Modal } from 'antd';
-import CartVisa from '../cartvisa/CartVisa';
 import './thanhtoan.scss';
+// import CartVisa from './../cartvisa/CartVisa';
+import { useState, useEffect } from 'react';
+import { isEmpty } from 'validator';
 
-function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
+function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
+    const [dataUser, setData] = useState(JSON.parse(localStorage.getItem('data-user')));
+    const [address, setAddress] = useState('');
+    const [note, setNote] = useState('');
+    const [validateMsg, setValidateMsg] = useState('');
+
+    const validateAll = () => {
+        const msg = {};
+
+        if (isEmpty(address)) {
+            msg.address = 'Vui lòng nhập địa chỉ ';
+        }
+
+        setValidateMsg(msg);
+        if (Object.keys(msg).length > 0) return false;
+        return true;
+    };
+    if (dataUser) {
+        var { id_user, fullname, phone } = dataUser[0];
+    } else {
+        // eslint-disable-next-line no-unused-vars
+        const { id_user, fullname, phone } = [];
+    }
+
+    const handleThanhToan = () => {
+        const isValidate = validateAll();
+        if (!isValidate) return;
+
+        const data = { id_user, address, fullname, note };
+        handleOk(data);
+        setAddress('');
+        setNote('');
+        // sessionStorage.clear();
+        clear();
+    };
+    useEffect(() => {
+        const dataUser = JSON.parse(localStorage.getItem('data-user'));
+        if (dataUser && dataUser !== 'null') {
+            setData(dataUser);
+        } else {
+            setData(false);
+        }
+    }, []);
+
     return (
         <Modal
             title="Thanh toán"
             open={isModalOpen}
-            onOk={handleOk}
+            onOk={handleThanhToan}
             onCancel={handleCancel}
             forceRender
             mask
@@ -37,70 +84,58 @@ function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
                             <form action="/action_page.php">
                                 <div className="row">
                                     <div className="col-50">
-                                        <h5>Địa chỉ thanh toán</h5>
-                                        <label htmlFor="fname">
-                                            <i className="fa fa-user" /> Tên khách hàng
+                                        <label htmlFor="adr">
+                                            <i className="fa fa-address-card-o mr-2" />
+                                            Tên nhận hàng
                                         </label>
                                         <input
-                                        required
+                                            value={fullname}
                                             type="text"
-                                            id="fname"
-                                            name="firstname"
-                                            placeholder="Nhập tên..."
-                                        />
-                                        <label htmlFor="phone">
-                                            <i className="fa fa-phone" /> Số điện thọai
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="phone"
-                                            name="phone"
-                                            placeholder="Nhập số điện thoại..."
+                                            id="adr"
+                                            name="address"
+                                            placeholder=""
                                         />
                                         <label htmlFor="adr">
-                                            <i className="fa fa-address-card-o" />
-                                            Địa chỉ chi tiết (nhà/ngõ/ngách)
+                                            <i className="fa-solid fa-phone-volume mr-2" />
+                                            Số điện thoại
                                         </label>
                                         <input
+                                            value={phone}
+                                            type="text"
+                                            id="adr"
+                                            name="address"
+                                            placeholder=""
+                                        />
+                                        <label htmlFor="adr">
+                                            <i class="fa-solid fa-location-dot mr-2"></i>
+                                            Địa chỉ giao hàng
+                                        </label>
+                                        <input
+                                            onChange={(e) => {
+                                                setAddress(e.target.value);
+                                            }}
                                             type="text"
                                             id="adr"
                                             name="address"
                                             placeholder="Nhập..."
                                         />
-                                        <label htmlFor="quan">
-                                            <i className="fa fa-institution" />
-                                            Quận/Huyện
+                                        <div className="d-flex mt-n1">
+                                            <div className="validateMsg">{validateMsg.address}</div>
+                                        </div>
+                                        <label htmlFor="adr">
+                                            <i class="fa-solid fa-pen mr-2"></i>
+                                            Ghi chú
                                         </label>
-                                        <input
+                                        <textarea
+                                            onChange={(e) => {
+                                                setNote(e.target.value);
+                                            }}
+                                            style={{ width: '100%' }}
                                             type="text"
-                                            id="city"
-                                            name="city"
+                                            id="adr"
+                                            name="address"
                                             placeholder="Nhập..."
                                         />
-                                        <label htmlFor="city">
-                                            <i className="fa fa-institution" />
-                                            Tỉnh/ Thành Phố
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="city"
-                                            name="city"
-                                            placeholder="Nhập..."
-                                        />
-                                    </div>
-                                    <div className="col-50">
-                                        <h5>Phương thức thanh toán</h5>
-                                        <label className="d-flex align-items-center">
-                                            <input type="checkbox" name="nhanhang" />
-                                            <span className="ms-2">
-                                                Thanh toán sau khi nhận hàng
-                                            </span>
-                                        </label>
-                                        <p>Hoặc : </p>
-                                        <h5 className="d-flex justify-content-center thethanhtoan">
-                                            Thanh toán bằng thẻ visa
-                                        </h5>
-                                        <CartVisa />
                                     </div>
                                 </div>
                                 <label>
@@ -109,7 +144,7 @@ function ThanhToan({ handleCancel, handleOk, isModalOpen }) {
                                         defaultChecked="checked"
                                         name="sameadr"
                                     />
-                                    Địa chỉ thanh toán mặc định
+                                    Thanh toán khi nhận hàng
                                 </label>
                             </form>
                         </div>

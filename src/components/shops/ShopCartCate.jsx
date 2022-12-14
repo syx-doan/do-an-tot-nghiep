@@ -65,3 +65,4 @@ const ShopCartCate = ({ addToCart }) => {
 };
 
 export default ShopCartCate;
+

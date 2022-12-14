@@ -1,37 +1,62 @@
+/* eslint-disable no-redeclare */
 import React from 'react';
 import './giohang.css';
 import ThanhToan from '../thanhtoan/ThanhToan';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
+import axiosClient from '~/utils/http';
 
-const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
+const Cart = ({ clear, addToCart, decreaseQty, deleteQty, url }) => {
+    if(JSON.parse(sessionStorage.getItem('data-cart'))) {
+        var CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
+    } else {
+        var CartItem = [];
+    }
+
     const totalPrice = CartItem.reduce((price, item) => price + item.qty * item.price, 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalThanhToanOpen, setIsModalThanhToanOpen] = useState(false);
     const navigate = useNavigate();
 
-    // const success = () =>
-    //     toast.success('Đặt hàng thành công ', {
-    //         position: 'top-right',
-    //         autoClose: 5000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: 'light',
-    //     });
+    const [dataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
+
+    const checkoutErr = () =>
+        toast.error('Đặt hàng thành công ', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+    // hàm mở modal thanh toán
     const showModal = () => {
-        setIsModalOpen(true);
+        if (dataUser) {
+            setIsModalOpen(true);
+        } else {
+            navigate('/dangnhap');
+        }
     };
 
-    const handleOk = () => {
-        // success();
-        // navigate('/thanhtoanthanhcong');
-        handleCancel();
-        showModalThanhToan();
+    //hàm thanh toán giỏ hàng
+    const handleOk = (data) => {
+        const newData = {
+            ...data,
+            carts: CartItem,
+        };
+        console.log(newData);
+        try {
+            axiosClient.post('thanhtoan', { data: newData });
+
+            handleCancel();
+            showModalThanhToan();
+        } catch (error) {
+            checkoutErr();
+        }
     };
 
     const handleCancel = () => {
@@ -40,23 +65,11 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
 
     //
 
-    // const successThanhToan = () =>
-    //     toast.success('Đặt hàng thành công ', {
-    //         position: 'top-right',
-    //         autoClose: 5000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: 'light',
-    //     });
     const showModalThanhToan = () => {
         setIsModalThanhToanOpen(true);
     };
 
     const handleOkThanhToan = () => {
-        // successThanhToan();
         navigate('/sanpham');
     };
 
@@ -78,10 +91,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                         return (
                             <div className="cart-list product d_flex" key={item.id_product}>
                                 <div className="img">
-                                    <img
-                                        src={`http://172.16.10.231/admin_dasboard/upload/product/${item.image}`}
-                                        alt=""
-                                    />
+                                    <img src={`${url}${item.image}`} alt="" />
                                 </div>
                                 <div className="cart-details">
                                     <h3>{item.name}</h3>
@@ -132,6 +142,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty, deleteQty }) => {
                             handleOk={handleOk}
                             handleCancel={handleCancel}
                             isModalOpen={isModalOpen}
+                            clear={clear}
                         />
                         <ThanhToanThanhCong
                             handleOkThanhToan={handleOkThanhToan}
