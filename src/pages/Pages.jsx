@@ -11,22 +11,23 @@ const Pages = ({
     addToCart,
     CartItem,
     detailPro,
-    detailTinTuc,
+    handleTinTuc,
     url,
-    CategoryProduct,
+    CategoryId,
     categoryid,
     setCategory,
+    tiTuc
 }) => {
     return (
         <>
             <Home CartItem={CartItem} />
             <FlashDeals url={url} addToCart={addToCart} detailPro={detailPro} />
             <NewSanPham url={url} detailPro={detailPro} />
-            <Discount detailTinTuc={detailTinTuc} url={url} />
+            <Discount handleTinTuc={handleTinTuc} tiTuc={tiTuc} url={url} />
             <Shop
                 addToCart={addToCart}
                 detailPro={detailPro}
-                CategoryProduct={CategoryProduct}
+                CategoryId={CategoryId}
                 categoryid={categoryid}
                 setCategory={setCategory}
                 url={url}

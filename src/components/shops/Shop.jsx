@@ -2,12 +2,12 @@ import React from 'react';
 import Catg from './Catg';
 import ShopCart from './ShopCart';
 import './shop.css';
-const Shop = ({ addToCart, detailPro, CategoryProduct, categoryid, setCategory, url }) => {
+const Shop = ({ addToCart, detailPro, CategoryId, categoryid, setCategory, url }) => {
     return (
         <>
             <section className="shop background">
                 <div className="container d_flex">
-                    <Catg CategoryProduct={CategoryProduct} />
+                    <Catg CategoryId={CategoryId} />
                     <div className="contentWidth">
                         <div className="heading d_flex">
                             <div className="heading-left row1  f_flex">
@@ -22,7 +22,6 @@ const Shop = ({ addToCart, detailPro, CategoryProduct, categoryid, setCategory, 
                             <ShopCart
                                 addToCart={addToCart}
                                 detailPro={detailPro}
-                                CategoryProduct={CategoryProduct}
                                 categoryid={categoryid}
                                 url={url}
                             />

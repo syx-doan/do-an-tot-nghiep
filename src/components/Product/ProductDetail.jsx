@@ -19,7 +19,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('products');
-            setData(response.data); 
+            setData(response.data);
         } catch (err) {
             console.error(err);
         }
@@ -27,7 +27,6 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     useEffect(() => {
         fetchPost();
     }, [data]);
-    console.log(data);
     return (
         <>
             <div className="f8wrapper">
@@ -41,7 +40,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                             return (
                                                 <img
                                                     className="mb-5"
-                                                    src={`${url}${item.image}`}
+                                                    src={`${url}/product/${item.image}`}
                                                     alt=""
                                                 />
                                             );

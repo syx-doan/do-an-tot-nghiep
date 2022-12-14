@@ -27,7 +27,7 @@ const Anhmota = ({ url }) => {
                         if (item.id_product === product_id) {
                             return (
                                 <div style={{ padding: 5 }}>
-                                    <img src={`${url}${item.image}`} alt="" />
+                                    <img src={`${url}/product/${item.image}`} alt="" />
                                 </div>
                             );
                         }

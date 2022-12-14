@@ -18,14 +18,12 @@ import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
-import Detail from './components/tintuc/tintucchitiet/Detail';
+
 import ProductDetail from './components/Product/ProductDetail';
+import Detail from './components/tintuc/tintucchitiet/Detail';
 
 function App() {
-    // const [CartItem, setCartItem] = useState([]);
-    const [productDetail, setProductDetail] = useState([]);
-    const [categoryid, setCategoryid] = useState();
-
+    //Thông báo
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
@@ -49,12 +47,10 @@ function App() {
             theme: 'light',
         });
 
-    //Step 2 :
+    //Step 2 : Đường dẫn ảnh
+    const url = 'http://localhost/admin_dasboard/upload/';
 
-    const url = 'http://localhost/admin_dasborad/upload';
-
-    //Step 4 :
-
+    //Step 4 : Thêm SP vào giỏ hàng, tăng số lượng SP trong giỏ hàng
     if (JSON.parse(sessionStorage.getItem('data-cart'))) {
         var [CartItem, setCartItem] = useState(JSON.parse(sessionStorage.getItem('data-cart')));
     } else {
@@ -62,7 +58,6 @@ function App() {
     }
     const addToCart = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
-        console.log('con cac');
         if (productExit) {
             setCartItem(
                 CartItem.map((item) =>
@@ -76,15 +71,14 @@ function App() {
         }
         success();
     };
+    sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
 
-    // clear
+    // Xóa giỏ hàng khi thanh toán
     const clearCart = () => {
         setCartItem([]);
     };
 
-    sessionStorage.setItem('data-cart', JSON.stringify(CartItem));
-
-    // Stpe: 6
+    // Stpe: Giảm số lượng SP giỏ hàng
     const decreaseQty = (product) => {
         const productExit = CartItem.find((item) => item.id_product === product.id_product);
 
@@ -101,7 +95,7 @@ function App() {
         }
     };
 
-    // Stpe: 7
+    // Stpe: Xóa sản phẩm trong giỏ hàng
     const deleteQty = (product) => {
         const index = CartItem.findIndex((x) => x.id === product.id);
         const newCartItem = [...CartItem];
@@ -110,37 +104,38 @@ function App() {
         deleteProduct();
     };
 
-    const detailTinTuc = (products) => {
-        const productExit = productDetail.find((item) => item.id_news === products.id_news);
-        if (productExit) {
-            setProductDetail(
-                productDetail.map((item) =>
-                    item.id_news === products.id_news ? { ...productExit } : item,
-                ),
-            );
-        } else {
-            setProductDetail([{ ...products }]);
-        }
-    };
-
+    // Lấy id SP và DM cho trang SPCT
     const detailPro = (id_product, id_category) => {
         sessionStorage.setItem('data-idproduct', JSON.stringify(id_product));
         sessionStorage.setItem('data-category', JSON.stringify(id_category));
 
-        //demo backtotop
+        // backtotop
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         });
     };
 
-    // Lay id_category
-    const CategoryProduct = (id) => {
+    // Lay id_category cho trang sản phẩm
+    const [categoryid, setCategoryid] = useState();
+    const CategoryId = (id) => {
         setCategoryid(id);
     };
 
+    // View all SP
     const setCategory = () => {
         setCategoryid(undefined);
+    };
+
+    // Chi tiết tin tức
+    const handleTinTuc = (idNew) => {
+        sessionStorage.setItem('id-new', JSON.stringify(idNew));
+
+        // backtotop
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     };
 
     return (
@@ -158,12 +153,7 @@ function App() {
                 <Route
                     path="product_detail"
                     element={
-                        <ProductDetail
-                            productDetail={productDetail}
-                            addToCart={addToCart}
-                            detailPro={detailPro}
-                            url={url}
-                        />
+                        <ProductDetail addToCart={addToCart} detailPro={detailPro} url={url} />
                     }
                 />
                 <Route
@@ -172,7 +162,7 @@ function App() {
                         <Shop
                             addToCart={addToCart}
                             detailPro={detailPro}
-                            CategoryProduct={CategoryProduct}
+                            CategoryId={CategoryId}
                             categoryid={categoryid}
                             setCategory={setCategory}
                             url={url}
@@ -181,7 +171,7 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
-                <Route path="tintuc" element={<Detail productDetail={productDetail} url={url} />} />
+                <Route path="tintuc" element={<Detail url={url} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -191,9 +181,9 @@ function App() {
                         <Pages
                             addToCart={addToCart}
                             detailPro={detailPro}
-                            detailTinTuc={detailTinTuc}
+                            handleTinTuc={handleTinTuc}
                             categoryid={categoryid}
-                            CategoryProduct={CategoryProduct}
+                            CategoryId={CategoryId}
                             url={url}
                         />
                     }

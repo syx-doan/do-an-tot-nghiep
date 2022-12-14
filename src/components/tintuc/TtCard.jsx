@@ -8,9 +8,9 @@ import axiosClient from '~/utils/http';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Ttcard = ( {detailTinTuc, url} ) => {
+const Ttcard = ({ handleTinTuc, url }) => {
     const [data, setData] = useState([]);
-
+    
     const fetchPost = async () => {
         try {
             const response = await axiosClient('news');
@@ -40,11 +40,11 @@ const Ttcard = ( {detailTinTuc, url} ) => {
                                 <Link to="/tintuc">
                                     <div className="img">
                                         <img
-                                            src={`http://localhost/admin_dasborad/upload/news/${value.image}`}
+                                            src={`${url}/product/${value.image}`}
                                             alt=""
                                             width="100"
                                             height="70px"
-                                            onClick={() => detailTinTuc(value)}
+                                            onClick={() => handleTinTuc(value.id_news)}
                                         />
                                     </div>
                                 </Link>

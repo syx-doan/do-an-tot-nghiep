@@ -18,6 +18,7 @@ const Logout = () => {
     const handleLogout = () => {
         success();
         localStorage.clear();
+        sessionStorage.clear();
         window.location.href = '/';
     };
 
