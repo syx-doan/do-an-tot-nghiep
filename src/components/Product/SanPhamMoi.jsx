@@ -31,7 +31,7 @@ const SanPhamMoi = ({ detailPro, url }) => {
                                 <Link to="/product_detail">
                                     <img
                                         className="detail__top-img"
-                                        src={`${url}${val.image}`}
+                                        src={`${url}/product/${val.image}`}
                                         alt="Avatar"
                                         onClick={() => detailPro(val.id_product, val.category_id)}
                                     />

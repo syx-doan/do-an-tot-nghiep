@@ -68,7 +68,7 @@ const BinhLuan = ({ url }) => {
                                                     className="review__pane-action--left"
                                                     style={{ fontSize: 15 }}
                                                 >
-                                                    {item.comment}
+                                                    {item.content}
                                                 </div>
                                                 <div className="review__pane-action--right">
                                                     <div

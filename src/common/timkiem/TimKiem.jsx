@@ -66,7 +66,7 @@ function TimKiem({ detailPro }) {
                                             className={cx('wrapper')}
                                             onClick={() => {
                                                 detailPro(item.id_product, item.category_id);
-                                                handleHideResult()
+                                                handleHideResult();
                                             }}
                                         >
                                             <div className={cx('info')}>

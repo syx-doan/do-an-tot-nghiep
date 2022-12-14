@@ -30,7 +30,7 @@ const Cart = ({ url, detailPro }) => {
                             <div className="img">
                                 <Link to="/product_detail">
                                     <img
-                                        src={`${url}/${val.image}`}
+                                        src={`${url}/product/${val.image}`}
                                         alt=""
                                         onClick={() => detailPro(val.id_product, val.category_id)}
                                     />

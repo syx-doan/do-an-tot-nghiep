@@ -18,11 +18,11 @@ import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
-import Detail from './components/tintuc/Detail';
+
 import ProductDetail from './components/Product/ProductDetail';
+import Detail from './components/tintuc/tintucchitiet/Detail';
 
 function App() {
-    
     //Thông báo
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
@@ -48,7 +48,7 @@ function App() {
         });
 
     //Step 2 : Đường dẫn ảnh
-    const url = 'http://localhost/admin_dasboard/upload/product/';
+    const url = 'http://localhost/admin_dasboard/upload/';
 
     //Step 4 : Thêm SP vào giỏ hàng, tăng số lượng SP trong giỏ hàng
     if (JSON.parse(sessionStorage.getItem('data-cart'))) {
@@ -104,27 +104,6 @@ function App() {
         deleteProduct();
     };
 
-    // Chi tiết tin tức
-    const [tiTuc, setTinTuc] = useState([]);
-    const detailTinTuc = (products) => {
-        const productExit = tiTuc.find((item) => item.id_news === products.id_news);
-        if (productExit) {
-            setTinTuc(
-                tiTuc.map((item) =>
-                    item.id_news === products.id_news ? { ...productExit } : item,
-                ),
-            );
-        } else {
-            setTinTuc([{ ...products }]);
-        }
-
-        // backtotop
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    };
-
     // Lấy id SP và DM cho trang SPCT
     const detailPro = (id_product, id_category) => {
         sessionStorage.setItem('data-idproduct', JSON.stringify(id_product));
@@ -146,6 +125,17 @@ function App() {
     // View all SP
     const setCategory = () => {
         setCategoryid(undefined);
+    };
+
+    // Chi tiết tin tức
+    const handleTinTuc = (idNew) => {
+        sessionStorage.setItem('id-new', JSON.stringify(idNew));
+
+        // backtotop
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     };
 
     return (
@@ -181,7 +171,7 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
-                <Route path="tintuc" element={<Detail tiTuc={tiTuc} url={url} />} />
+                <Route path="tintuc" element={<Detail url={url} />} />
                 <Route path="donhang" element={<DonHang />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
                 <Route
@@ -191,7 +181,7 @@ function App() {
                         <Pages
                             addToCart={addToCart}
                             detailPro={detailPro}
-                            detailTinTuc={detailTinTuc}
+                            handleTinTuc={handleTinTuc}
                             categoryid={categoryid}
                             CategoryId={CategoryId}
                             url={url}
