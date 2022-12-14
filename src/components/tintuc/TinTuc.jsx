@@ -8,7 +8,7 @@ const TinTuc = ( {handleTinTuc, url} ) => {
         <div className='container'>
           <div className='heading d_flex'>
             <div className='heading-left row1  f_flex'>
-              <img src={iconNews} alt=""/>
+              <img src={iconNews} className="iconnews"alt=""/>
               <h2>Tin tức</h2>
             </div>
             <div className='heading-right row1 '>

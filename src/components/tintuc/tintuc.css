@@ -9,6 +9,12 @@
     /* width: 220px; */
     height: 270px;
 }
+.heading img {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+  }
+
 .tintuc h6 {
     font-style: italic;
     margin-top: 5px;
