@@ -35,7 +35,7 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
                 </p>
                 <p>Thời gian dự kiến giao là 3-5 ngày(Tính từ ngày đặt hàng)</p>
                 <Link to="/sanpham">
-                    <button className={cx('button content-buy-text')}>Tiếp tục mua hàng</button>
+                    <button className={cx('content-buy-text')}>Tiếp tục mua hàng</button>
                 </Link>
             </div>
         </Modal>

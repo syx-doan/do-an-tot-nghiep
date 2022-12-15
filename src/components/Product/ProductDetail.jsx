@@ -15,6 +15,15 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
+    
+    const [bien, setBien] = useState(100);
+    const more = () => {
+        if (bien === 100) {
+            setBien(2000);
+        } else {
+            setBien(100);
+        }
+    };
 
     const fetchPost = async () => {
         try {
@@ -145,16 +154,26 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         <div className="product__content-info">
                                             <div className="content-info--title">Mô tả</div>
                                             <div className="content-info--body">
-                                                <span className="content-info--text">
+                                                <span className="content-info--text ">
                                                     {data.map((item) => {
                                                         if (item.id_product === product_id) {
-                                                            return <p>{item.description}</p>;
+                                                            return (
+                                                                <p>
+                                                                    {item.description.substr(
+                                                                        0,
+                                                                        bien,
+                                                                    )}
+                                                                </p>
+                                                            );
                                                         } else {
                                                             return <></>;
                                                         }
                                                     })}
                                                 </span>
-                                                <a href="#" className="content-info--link">
+                                                <a
+                                                    className="content-info--link"
+                                                    onClick={() => more()}
+                                                >
                                                     Xem thêm
                                                 </a>
                                             </div>

@@ -1,17 +1,19 @@
 import React from 'react';
-import styles from './modalLogin.module.scss';
+import styles from '../modalLogin/modalLogin.module.scss';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
 import { Modal } from 'antd';
 
 const cx = classNames.bind(styles);
 
-const ModalLogin = ({ handleCancelLogin, handleOkLogin, isModalOpenLogin }) => {
+const ModalHuyDon = ({ handleCancelLogin, handleOkLogin, isModalOpenLogin }) => {
+    const handleOkHuyDon = () => {
+        handleOkLogin();
+    };
     return (
         <Modal
-            title="Yêu cầu đăng nhập"
+            title="Xác nhận hủy đơn"
             open={isModalOpenLogin}
-            onOk={handleOkLogin}
+            onOk={handleOkHuyDon}
             onCancel={handleCancelLogin}
             forceRender
             mask
@@ -24,14 +26,12 @@ const ModalLogin = ({ handleCancelLogin, handleOkLogin, isModalOpenLogin }) => {
                 </div>
 
                 <h1>
-                    <b>Đăng nhập để thanh toán</b>
+                    <b>Bạn xác định muốn hủy đơn hàng này</b>
                 </h1>
-                <Link to="/dangnhap">
-                    <button className={cx('content-buy-text')}>Đăng nhập</button>
-                </Link>
+                <button className={cx('content-buy-text')} onClick={() => handleOkHuyDon()}>Hủy đơn</button>
             </div>
         </Modal>
     );
 };
 
-export default ModalLogin;
+export default ModalHuyDon;
