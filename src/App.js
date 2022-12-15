@@ -157,6 +157,17 @@ function App() {
                     }
                 />
                 <Route
+                    path="product_detail"
+                    element={
+                        <ProductDetail
+                            addToCart={addToCart}
+                            detailPro={detailPro}
+                            url={url}
+                           
+                        />
+                    }
+                />
+                <Route
                     path="sanpham"
                     element={
                         <Shop

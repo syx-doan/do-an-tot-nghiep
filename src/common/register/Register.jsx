@@ -99,11 +99,6 @@ function Register() {
             alert('error');
         }
 
-        // setFullname('');
-        // setEmail('');
-        // setPassword('');
-        // setConfPassWord('');
-        // setPhone('')
     };
     return (
         <div>

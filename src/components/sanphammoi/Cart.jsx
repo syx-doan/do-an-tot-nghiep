@@ -38,7 +38,7 @@ const Cart = ({ url, detailPro, addToCart }) => {
                                 <Link to={'/product_detail'}>
                                     <img
                                         src={`${url}/product/${val.image}`}
-                                        alt="sq-sample6"
+                                        alt=""
                                         onClick={() => detailPro(val.id_product, val.category_id)}
                                     />
                                 </Link>
