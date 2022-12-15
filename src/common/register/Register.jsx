@@ -10,12 +10,17 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confPassWord, setConfPassWord] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [validateMsg, setValidateMsg] = useState('');
     const navigate = useNavigate();
 
     const onChangeEmail = (e) => {
         const value = e.target.value;
         setEmail(value);
+    };
+    const onChangePhone = (e) => {
+        const value = e.target.value;
+        setPhone(value);
     };
     const onChangeFullName = (e) => {
         const value = e.target.value;
@@ -50,9 +55,15 @@ function Register() {
         } else if (!isEmail(email)) {
             msg.email = 'Định dạng email chưa đúng';
         }
+        if (isEmpty(phone)) {
+            msg.phone = 'Vui lòng nhập số điện thoại';
+        }
 
         if (isEmpty(password)) {
             msg.password = 'Vui lòng nhập  mật khẩu';
+        }
+        if (isEmpty(phone)) {
+            msg.phone = 'Vui lòng nhập số điện thoại';
         }
         if (password !== confPassWord) {
             msg.confPassWord = 'Mật khẩu không giống nhau';
@@ -73,7 +84,12 @@ function Register() {
         if (!isValidate) return;
 
         try {
-            axiosClient.post('dangky', {fullname, password,email,});
+            axiosClient.post('dangky', {
+                fullname,
+                password,
+                email,
+                phone,
+            });
             success();
             setTimeout(() => { navigate('/dangnhap');}, 1000);
             // console.log('aloalo')
@@ -81,10 +97,6 @@ function Register() {
             alert('error');
         }
 
-        setFullname('');
-        setEmail('');
-        setPassword('');
-        setConfPassWord('');
     };
     return (
         <div>
@@ -158,6 +170,30 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="form-item">
+                                        <div className="row flex-column flex-wrap">
+                                            <div className="form-label col">
+                                                <label htmlFor="" className="">
+                                                    Số điện thoại
+                                                </label>
+                                            </div>
+                                            <div className="form-input col">
+                                                <div className="input-content">
+                                                    <input
+                                                        onChange={onChangePhone}
+                                                        type="number"
+                                                        placeholder="Nhập email số điện thoại"
+                                                        className="input-item"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="d-flex mt-2">
+                                                <div className="validateMsg">
+                                                    {validateMsg.phone}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">
@@ -183,6 +219,8 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
+
+
 
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">

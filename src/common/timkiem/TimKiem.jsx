@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useEffect, useRef } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -8,9 +7,10 @@ import Poper from './../components/poper/Poper';
 import { faCircleXmark, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import axiosClient from '~/utils/http';
 
 const cx = classNames.bind(styles);
-function TimKiem() {
+function TimKiem({ detailPro, url }) {
     const [posts, setPosts] = useState([]);
     const [searchName, setSearchName] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -18,13 +18,14 @@ function TimKiem() {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         const loadPosts = async () => {
-            const response = await axios.get('http://localhost:4000/api/products');
+            const response = await axiosClient.get('products');
             setPosts(response.data);
             setLoading(false);
         };
         loadPosts();
     }, []);
     const inputRef = useRef();
+    //hàm tìm kiếm
     const onChangeHanler = (searchName) => {
         let matches = [];
         if (searchName.length > 0) {
@@ -58,10 +59,24 @@ function TimKiem() {
                             <Poper>
                                 <h4 className={cx('search-title')}>Sản Phẩm</h4>
                                 {suggestions &&
-                                    suggestions.map((item, i) => (
-                                       
-                                        <Link to={`/`} className={cx('wrapper')}>
-                                            <div className={cx('info')}>
+                                    suggestions.map((item) => (
+                                        <Link
+                                            key={item.id_product}
+                                            to="product_detail"
+                                            className={cx('wrapper')}
+                                            onClick={(e) => {
+                                              
+                                                detailPro(item.id_product, item.category_id);
+                                                handleHideResult();
+                                            }}
+                                        >
+                                            <div className={cx('info','d-flex')}>
+                                                <div className={cx('img')}>
+                                                    <img
+                                                        src={`http://localhost/admin_dasborad/upload/product/${item.image}`}
+                                                        alt=""
+                                                    />
+                                                </div>
                                                 <h4 className={cx('name')}>
                                                     <span>{item.name}</span>
                                                 </h4>

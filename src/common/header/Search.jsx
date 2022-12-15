@@ -1,4 +1,4 @@
-import React  from 'react';
+/* eslint-disable no-redeclare */
 import logo from '../../assets/images/clickme.png';
 import { Link } from 'react-router-dom';
 import { Popover } from 'antd';
@@ -14,7 +14,12 @@ Search.defaultProps = {
     handlerSearch: null,
 };
 
-function Search({ CartItem, ...props }) {
+function Search({ detailPro }) {
+    const CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
+    var lenth = 0;
+    if(CartItem) {
+        var lenth = CartItem.length;
+    }
     return (
         <>
             <section className="search">
@@ -25,7 +30,7 @@ function Search({ CartItem, ...props }) {
                         </Link>
                     </div>
 
-                    <TimKiem />
+                    <TimKiem detailPro={detailPro} />
                     <div className="icon f_flex width">
                         <Popover
                             style={{
@@ -43,7 +48,7 @@ function Search({ CartItem, ...props }) {
                         <div className="cart">
                             <Link to="/cart">
                                 <i className="fa fa-shopping-bag icon-circle"></i>
-                                <span>{CartItem.length === 0 ? '' : CartItem.length}</span>
+                                <span>{lenth}</span>
                             </Link>
                         </div>
                     </div>

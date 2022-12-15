@@ -23,4 +23,4 @@ const NewSanPham = ( {url, detailPro} ) => {
   )
 }
 
-export default NewSanPham
+export default NewSanPham;

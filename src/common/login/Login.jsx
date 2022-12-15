@@ -77,10 +77,10 @@ function Login() {
                     // console.log(response);
                 } else {
                     setIsLoading(true);
+                    success();
                     setTimeout(() => {
                         // setIsLoading(false);
                         localStorage.setItem('data-user', JSON.stringify(response.data));
-                        success();
                         window.location.href = '/';
                     }, 1000);
                 }

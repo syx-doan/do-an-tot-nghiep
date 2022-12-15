@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
-const SanPhamMoi = ({ detailPro, url, IdCate }) => {
+const SanPhamLienQuan = ({ detailPro, url }) => {
     const [data, setData] = useState([]);
+
+    const category_id = JSON.parse(sessionStorage.getItem('data-category'));
 
     const fetchPost = async () => {
         try {
@@ -23,13 +25,13 @@ const SanPhamMoi = ({ detailPro, url, IdCate }) => {
                 <div className="detail__top-product--head">Sản Phẩm Bán Chạy</div>
 
                 {data.map((val) => {
-                    if (val.category_id === IdCate) {
+                    if (val.category_id === category_id) {
                         return (
                             <a href className="detail__top-product--link">
                                 <Link to="/product_detail">
                                     <img
                                         className="detail__top-img"
-                                        src={`${url}${val.image}`}
+                                        src={`${url}/product/${val.image}`}
                                         alt="Avatar"
                                         onClick={() => detailPro(val.id_product, val.category_id)}
                                     />
@@ -47,9 +49,7 @@ const SanPhamMoi = ({ detailPro, url, IdCate }) => {
                             </a>
                         );
                     } else {
-                        return (
-                            <></>
-                        )
+                        return <></>;
                     }
                 })}
             </div>
@@ -57,4 +57,4 @@ const SanPhamMoi = ({ detailPro, url, IdCate }) => {
     );
 };
 
-export default SanPhamMoi;
+export default SanPhamLienQuan;

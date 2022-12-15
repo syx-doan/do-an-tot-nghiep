@@ -8,9 +8,9 @@ const cx = classNames.bind(styles);
 
 function ThongTinCaNhan() {
     const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('data-user')));
+
     useEffect(() => {
         const dataUser = JSON.parse(localStorage.getItem('data-user'));
-        // console.log(dataUser, 'here1');
         if (dataUser && dataUser !== 'null') {
             setDataUser(dataUser);
         } else {
@@ -37,6 +37,8 @@ function ThongTinCaNhan() {
                             );
                         })}
                         <Link to={'/cart'}> Xem giỏ hàng</Link>
+                        <br/>
+                        <Link to={'/donhang'}> Xem đơn hàng</Link>
                     </div>
                 </div>
             ) : (
