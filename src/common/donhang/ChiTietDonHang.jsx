@@ -24,9 +24,22 @@ const ChiTietDonHang = ({ url }) => {
             console.error(err);
         }
     };
-
-    const [name, setName] = useState(15);
-    const [description, setDescription] = useState(100);
+    var [name, setName] = useState(15);
+    var [description, setDescription] = useState(100);
+    var moreName = () => {
+        if (name === 15) {
+            setName(2000);
+        } else {
+            setName(15);
+        }
+    };
+    var moreDescription = () => {
+        if (description === 100) {
+            setDescription(2000);
+        } else {
+            setDescription(100);
+        }
+    };
 
     useEffect(() => {
         fetchProducts();
@@ -48,20 +61,6 @@ const ChiTietDonHang = ({ url }) => {
                         </thead>
                         <tbody>
                             {data.map((item) => {
-                                const moreName = () => {
-                                    if (name === 15) {
-                                        setName(2000);
-                                    } else {
-                                        setName(15);
-                                    }
-                                };
-                                const moreDescription = () => {
-                                    if (description === 100) {
-                                        setDescription(2000);
-                                    } else {
-                                        setDescription(100);
-                                    }
-                                };
                                 if (item.id_bill === idBill) {
                                     return (
                                         <>
@@ -90,7 +89,9 @@ const ChiTietDonHang = ({ url }) => {
                                                                 </td>
                                                                 <td
                                                                     className="table4"
-                                                                    onClick={() => moreDescription()}
+                                                                    onClick={() =>
+                                                                        moreDescription()
+                                                                    }
                                                                 >
                                                                     {value.description.substr(
                                                                         0,

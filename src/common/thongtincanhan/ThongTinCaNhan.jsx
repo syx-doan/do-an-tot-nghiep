@@ -36,7 +36,7 @@ function ThongTinCaNhan() {
                                 </>
                             );
                         })}
-                        <Link to={'/cart'}> Xem giỏ hàng</Link>
+                        <Link to={'/user'}> Xem tài khoản</Link>
                         <br/>
                         <Link to={'/donhang'}> Xem đơn hàng</Link>
                     </div>

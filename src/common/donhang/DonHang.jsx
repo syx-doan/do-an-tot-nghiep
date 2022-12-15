@@ -67,11 +67,12 @@ const DonHang = ({ handleIdBill }) => {
                         <thead>
                             <tr>
                                 <th className="table1">Mã ĐH</th>
-                                <th className="table2">Trạng thái</th>
-                                <th className="table3">Địa chỉ</th>
-                                <th className="table4">Ghi chú</th>
-                                <th className="table5">Tổng tiền</th>
-                                <th className="table6">Action</th>
+                                <th className="table2">Date</th>
+                                <th className="table3">Trạng thái</th>
+                                <th className="table4">Địa chỉ</th>
+                                <th className="table5">Ghi chú</th>
+                                <th className="table6">Tổng tiền</th>
+                                <th className="table7">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,10 +91,11 @@ const DonHang = ({ handleIdBill }) => {
                                         <>
                                             <tr>
                                                 <td className="table1">{item.id_bill}</td>
-                                                <td className="table2">{role}</td>
-                                                <td className="table3">{item.address}</td>
-                                                <td className="table4">{item.note}</td>
-                                                <td className="table5">
+                                                <td className="table2">{item.date}</td>
+                                                <td className="table3">{role}</td>
+                                                <td className="table4">{item.address}</td>
+                                                <td className="table5">{item.note}</td>
+                                                <td className="table6">
                                                     {billDetail.map((value) => {
                                                         if (item.id_bill === value.id_bill) {
                                                             sum += value.price * value.total;
@@ -101,7 +103,7 @@ const DonHang = ({ handleIdBill }) => {
                                                     })}
                                                     {sum.toLocaleString('us-US')} vnđ
                                                 </td>
-                                                <td className="table6">
+                                                <td className="table7">
                                                     <Link to="/donhangchitiet">
                                                         <button
                                                             className="button"

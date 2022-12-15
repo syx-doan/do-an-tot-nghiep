@@ -13,7 +13,7 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-
+import User from './common/EditUser/EditUser';
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
@@ -49,7 +49,7 @@ function App() {
         });
 
     //Step 2 : Đường dẫn ảnh
-    const url = 'http://localhost/admin_dasborad/upload/';
+    const url = 'http://localhost/admin_dasboard/upload/';
 
     //Step 4 : Thêm SP vào giỏ hàng, tăng số lượng SP trong giỏ hàng
     if (JSON.parse(sessionStorage.getItem('data-cart'))) {
@@ -177,6 +177,7 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
+                <Route path="user" element={<User url={url} />} />
                 <Route path="tintuc" element={<Detail url={url} />} />
                 <Route path="donhang" element={<DonHang handleIdBill={handleIdBill} />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />

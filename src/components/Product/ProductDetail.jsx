@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 import BinhLuan from '../BinhLuan/BinhLuan';
 import InfoShop from './InfoShop';
-import Product_Images from './Anhmota';
+import AnhMoTa from './Anhmota';
 import SanPhamMoi from './SanPhamMoi';
 
 const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
-    
+
     const [bien, setBien] = useState(100);
     const more = () => {
         if (bien === 100) {
@@ -58,7 +58,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         }
                                     })}
 
-                                    <Product_Images url={url} IdPro={product_id} />
+                                    <AnhMoTa url={url} IdPro={product_id} />
 
                                     {/* icon */}
                                     <div className="product__content-action mt-5">

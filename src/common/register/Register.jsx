@@ -32,9 +32,6 @@ function Register() {
     };
     const onChangeConfPassWord = (e) => {
         setConfPassWord(e.target.value);
-        // if( password !== confPassWord){
-        //     setValidateMsg(validateMsg.confPassWord)
-        // }
     };
 
     const success = () =>

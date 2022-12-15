@@ -16,14 +16,13 @@ const Pages = ({
     CategoryId,
     categoryid,
     setCategory,
-    tiTuc
 }) => {
     return (
         <>
             <Home CartItem={CartItem} />
             <FlashDeals url={url} addToCart={addToCart} detailPro={detailPro} />
-            <NewSanPham url={url} detailPro={detailPro} />
-            <Discount handleTinTuc={handleTinTuc} tiTuc={tiTuc} url={url} />
+            <NewSanPham url={url} addToCart={addToCart} detailPro={detailPro} />
+            <Discount handleTinTuc={handleTinTuc} url={url} />
             <Shop
                 addToCart={addToCart}
                 detailPro={detailPro}

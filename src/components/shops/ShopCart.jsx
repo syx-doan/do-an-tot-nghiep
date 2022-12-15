@@ -83,7 +83,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`${url}${item.image}`}
+                                    src={`${url}/product/${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item.id_product, item.category_id)}
@@ -100,7 +100,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
-                                </div> 
+                                </div>
                                 {/* <p className='giacu'>Giảm tới: {item.price.toLocaleString('us-US')} đ</p> */}
                                 <div className="d-flex justify-content-between mt-2">
                                     <p className="price">
