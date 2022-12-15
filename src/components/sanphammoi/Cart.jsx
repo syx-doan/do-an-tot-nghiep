@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axiosClient from '~/utils/http';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Cart = ({ url, detailPro }) => {
+const Cart = ({ url, detailPro, addToCart }) => {
     const [data, setData] = useState([]);
 
     const fetchPost = async () => {
@@ -20,31 +21,27 @@ const Cart = ({ url, detailPro }) => {
     useEffect(() => {
         fetchPost();
     }, []);
-
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+    };
     return (
-        <>
-            <div className="content grid3 product">
+        <div>
+            <Slider {...settings}>
                 {data.map((val, index) => {
                     return (
-                        // <div className="box" key={index}>
-                        //     <div className="img">
-                        //         <Link to="/product_detail">
-                        //             <img
-                        //                 src={`${url}/product/${val.image}`}
-                        //                 alt=""
-                        //                 onClick={() => detailPro(val.id_product, val.category_id)}
-                        //             />
-                        //         </Link>
-                        //     </div>
-                        //     <h5 className="d-flex justify-content-center mt-2">{val.name}</h5>
-                        // </div>
                         <figure className="snip1278">
-                            <h4></h4>
                             <div className="image">
-                                <img
-                                    src={`${url}/product/${val.image}`}
-                                    alt="sq-sample6"
-                                />
+                                <Link to={'/product_detail'}>
+                                    <img
+                                        src={`${url}/product/${val.image}`}
+                                        alt="sq-sample6"
+                                        onClick={() => detailPro(val.id_product, val.category_id)}
+                                    />
+                                </Link>
                             </div>
                             <div className="rating">
                                 <i className="ion-ios-star" />
@@ -56,17 +53,17 @@ const Cart = ({ url, detailPro }) => {
                             <figcaption>
                                 <p>{val.name}</p>
                                 <div className="price">
-                                    <s>{val.price}</s>
+                                    <h6>{val.price.toLocaleString('us-US')} </h6>
                                 </div>
                             </figcaption>
-                            <a href="#" className="add-to-cart">
+                            <button  className="add-to-cart" onClick={() => addToCart(val)}>
                                 Add to Cart
-                            </a>
+                            </button>
                         </figure>
                     );
                 })}
-            </div>
-        </>
+            </Slider>
+        </div>
     );
 };
 
