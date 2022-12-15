@@ -56,7 +56,7 @@ const Cart = ({ url, detailPro, addToCart }) => {
                                     <h6>{val.price.toLocaleString('us-US')} </h6>
                                 </div>
                             </figcaption>
-                            <button  className="add-to-cart" onClick={() => addToCart(val)}>
+                            <button className="add-to-cart" onClick={() => addToCart(val)}>
                                 Add to Cart
                             </button>
                         </figure>

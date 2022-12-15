@@ -9,7 +9,6 @@ const cx = classNames.bind(styles);
 const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalOpenThanhToan }) => {
     return (
         <Modal
-            title="Thanh toán thành công"
             open={isModalOpenThanhToan}
             onOk={handleOkThanhToan}
             onCancel={handleCancelThanhToan}

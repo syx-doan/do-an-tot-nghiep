@@ -1,6 +1,6 @@
 .shop .category {
     padding: 30px;
-    height: 90vh;
+    height: 100vh;
 }
 .chead h1 {
     font-size: 20px;
@@ -133,6 +133,24 @@
     font-weight: 500;
     text-decoration: underline;
 }
-.hehe{
-    font-size: 20px !important;
+.giamgia{
+    width: 100px;
+    font-size: 13px;
+    text-decoration:line-through;
+    /* color: #ed1912; */
+    font-weight: 700;
+}
+.giamtoi{
+    width: 90px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #b61d18;
+}
+.icon-sale{
+    /* width: 100px; */
+    color: #ed1912;
+    font-size: 16px;
+}
+.giamtoiwidth{
+    /* width: 120px; */
 }

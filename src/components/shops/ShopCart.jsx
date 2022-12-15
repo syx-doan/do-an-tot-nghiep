@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from './../../utils/http';
+import './shop.css';
 
 const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     const [count, setCount] = useState(0);
@@ -25,9 +26,9 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
 
     return (
         <>
-            {data.map((item) => {
+            {data.slice(0, 9).map((item) => {
+                const priceSale = (item.price * item.sale) / 100;
                 if (categoryid === undefined) {
-                    const priceSale = (item.price * item.sale) / 100;
                     return (
                         <div className="card " key={item.id_product}>
                             <span className="discount">{item.sale}% Off</span>
@@ -56,10 +57,20 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="price">
-                                        Giá tiền: {(item.price - priceSale).toLocaleString('us-US')}{' '}
-                                        đ
+                                    <p className="giamgia">
+                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
                                     </p>
+                                    {priceSale && priceSale >= 0 ? (
+                                        <div className="d-flex giamtoiwidth">
+                                            <i class="fa-solid fa-fire icon-sale"></i>
+                                            <p className="giamtoi">
+                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        ''
+                                    )}
+
                                     <button
                                         className="btn-add"
                                         href="!#"
@@ -68,8 +79,9 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giá gốc: {item.price.toLocaleString('us-US')} đ</p>
-                                <p>Giảm tới: {priceSale.toLocaleString('us-US')} đ</p>
+                                <p className="price">
+                                    Giá tiền: {(item.price - priceSale).toLocaleString('us-US')} đ
+                                </p>
                             </div>
                         </div>
                     );
@@ -83,7 +95,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                             </div>
                             <Link to="/product_detail">
                                 <img
-                                    src={`${url}${item.image}`}
+                                    src={`${url}/product/${item.image}`}
                                     className="card-img-top"
                                     alt="..."
                                     onClick={() => detailPro(item.id_product, item.category_id)}
@@ -101,11 +113,21 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                     <i className="fa fa-star"></i>
                                 </div>
-                                {/* <p className='giacu'>Giảm tới: {item.price.toLocaleString('us-US')} đ</p> */}
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="price">
-                                        Giá tiền: {item.price.toLocaleString('us-US')} đ
+                                    <p className="giamgia">
+                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
                                     </p>
+                                    {priceSale && priceSale >= 0 ? (
+                                        <div className="d-flex giamtoiwidth">
+                                            <i class="fa-solid fa-fire icon-sale"></i>
+                                            <p className="giamtoi">
+                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        ''
+                                    )}
+
                                     <button
                                         className="btn-add"
                                         href="!#"
@@ -114,11 +136,9 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <p>Giá gốc: {item.price.toLocaleString('us-US')} đ</p>
-                                <h6>
-                                    Giảm tới:{' '}
-                                    {((item.price * item.sale) / 100).toLocaleString('us-US')} đ
-                                </h6>
+                                <p className="price">
+                                    Giá tiền: {(item.price - priceSale).toLocaleString('us-US')} đ
+                                </p>
                             </div>
                         </div>
                     );
