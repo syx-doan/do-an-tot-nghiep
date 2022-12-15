@@ -49,7 +49,7 @@ function App() {
         });
 
     //Step 2 : Đường dẫn ảnh
-    const url = 'http://localhost/admin_dasboard/upload/';
+    const url = 'http://localhost/admin_dasborad/upload/';
 
     //Step 4 : Thêm SP vào giỏ hàng, tăng số lượng SP trong giỏ hàng
     if (JSON.parse(sessionStorage.getItem('data-cart'))) {

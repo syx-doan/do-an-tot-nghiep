@@ -13,7 +13,7 @@ const Shop = ({ addToCart, detailPro, CategoryId, categoryid, setCategory, url }
                             <div className="heading-left row1  f_flex">
                                 <h2>Sản phẩm</h2>
                             </div>
-                            <div className="heading-right row1 ">
+                            <div className="heading-right row1 viewall">
                                 <span onClick={() => setCategory()}>View all</span>
                                 <i className="fa-solid fa-caret-right"></i>
                             </div>

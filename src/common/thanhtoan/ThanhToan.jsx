@@ -30,12 +30,26 @@ function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
         // eslint-disable-next-line no-unused-vars
         const { id_user, fullname, phone } = [];
     }
+    function formatDate(date) {
+        if (!date) return;
+        const hours = `0${date.getHours()}`.slice(-2);
+        const minutes = `0${date.getMinutes()}`.slice(-2);
+        const seconds = `0${date.getSeconds()}`.slice(-2);
+        const ngay = `0${date.getDate()}`.slice(-2);
+        const thang = `0${date.getMonth()}`.slice(-2);
+        const nam = `${date.getFullYear()}`;
+        return `${hours}:${minutes}:${seconds} - Ngày ${ngay}/${thang}/${nam}`;
+    }
+
+    const now = new Date();
+    const newTimeString = formatDate(now);
+
 
     const handleThanhToan = () => {
         const isValidate = validateAll();
         if (!isValidate) return;
 
-        const data = { id_user, address, fullname, note };
+        const data = { id_user, address, fullname, note,newTimeString };
         handleOk(data);
         setAddress('');
         setNote('');
