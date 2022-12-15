@@ -40,7 +40,7 @@ img {
     display: flex;
 }
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: black;
 }
 
@@ -149,7 +149,6 @@ button {
     margin: 10px;
 }
 
-
 .price button {
     background: none;
     color: #26d95d;
@@ -167,8 +166,8 @@ button {
 }
 .product-like {
     position: absolute;
-     top: 1%;
-     right: 10%;
+    top: 1%;
+    right: 10%;
     margin: 10px;
     opacity: 0;
     transition: 0.5s;

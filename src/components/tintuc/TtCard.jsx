@@ -68,7 +68,7 @@ const Ttcard = ({ handleTinTuc, url }) => {
                                 <Link to="/tintuc">
                                     <div className="image">
                                         <img
-                                            src={`${url}/product/${value.image}`}
+                                            src={`${url}/news/${value.image}`}
                                             alt=""
                                             width="100"
                                             height="70px"
