@@ -19,7 +19,7 @@ import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
-import ProductDetail from './components/Product/ProductDetail';
+import ProductDetail from './components/Product/sanphamchitiet/ProductDetail';
 import Detail from './components/tintuc/tintucchitiet/Detail';
 
 function App() {

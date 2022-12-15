@@ -24,7 +24,7 @@ const Cart = ({ url, detailPro, addToCart }) => {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
         autoplay: true,
     };
@@ -33,7 +33,7 @@ const Cart = ({ url, detailPro, addToCart }) => {
             <Slider {...settings}>
                 {data.map((val, index) => {
                     return (
-                        <figure className="snip1278">
+                        <figure className="snip1278" key={index}>
                             <div className="image">
                                 <Link to={'/product_detail'}>
                                     <img
@@ -56,7 +56,7 @@ const Cart = ({ url, detailPro, addToCart }) => {
                                     <h6>{val.price.toLocaleString('us-US')} </h6>
                                 </div>
                             </figcaption>
-                            <button  className="add-to-cart" onClick={() => addToCart(val)}>
+                            <button className="add-to-cart" onClick={() => addToCart(val)}>
                                 Add to Cart
                             </button>
                         </figure>
