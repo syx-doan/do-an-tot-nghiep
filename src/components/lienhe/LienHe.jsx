@@ -1,8 +1,43 @@
 import React from 'react';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './lienhe.css';
-function LienHe() {
+import { toast, ToastContainer } from 'react-toastify';
+const LienHe = () => {
+    const success = () =>
+        toast.success('Gửi thành công ', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm('service_3mhteog', 'template_sc5vey6', form.current, '4RoqjGtJgPi2sMdLY')
+            .then(
+                (result) => {
+                    console.log(result.text);
+                },
+                (error) => {
+                    console.log(error.text);
+                },
+            );
+        success();
+
+        e.target.reset();
+    };
+
     return (
         <div className="lienhe">
+            <ToastContainer />
+
             <div className="contact-section">
                 <div className="contact-info">
                     <div>
@@ -24,19 +59,32 @@ function LienHe() {
                 </div>
                 <div className="contact-form">
                     <h2>Liên hệ với chúng tôi</h2>
-                    <form className="contact" action="" method="post">
+                    <form
+                        ref={form}
+                        onSubmit={sendEmail}
+                        className="contact"
+                        action=""
+                        method="post"
+                    >
                         <input
                             type="text"
-                            name="name"
+                            name="user_name"
                             className="text-box"
                             placeholder="Họ và tên"
                             required=""
                         />
                         <input
                             type="email"
-                            name="email"
+                            name="user_email"
                             className="text-box"
-                            placeholder="Email"
+                            placeholder="Email của bạn"
+                            required=""
+                        />
+                        <input
+                            type="text"
+                            name="subject"
+                            className="text-box"
+                            placeholder="Tiêu đề"
                             required=""
                         />
                         <textarea
@@ -46,14 +94,7 @@ function LienHe() {
                             required=""
                             defaultValue={''}
                         />
-                        <button
-                            onClick={(e) => e.preventDefault()}
-                            // type="submit"
-                            name="submit"
-                            className="send-btn"
-                            defaultValue="Gửi"
-                        >
-                            {' '}
+                        <button name="submit" className="send-btn" defaultValue="Gửi">
                             Gửi
                         </button>
                     </form>
@@ -61,6 +102,5 @@ function LienHe() {
             </div>
         </div>
     );
-}
-
+};
 export default LienHe;
