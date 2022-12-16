@@ -1,4 +1,3 @@
-/* eslint-disable no-redeclare */
 
 import React from 'react';
 import { Modal } from 'antd';
@@ -53,6 +52,7 @@ function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
         handleOk(data);
         setAddress('');
         setNote('');
+        // sessionStorage.clear();
         clear();
     };
     useEffect(() => {

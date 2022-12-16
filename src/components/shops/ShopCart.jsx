@@ -57,11 +57,11 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
+                                    <p className="giamgia">
+                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
+                                    </p>
                                     {priceSale && priceSale >= 0 ? (
                                         <>
-                                            <p className="giamgia">
-                                                Giá gốc: {item.price.toLocaleString('us-US')} đ
-                                            </p>
                                             <div className="d-flex giamtoiwidth">
                                                 <i class="fa-solid fa-fire icon-sale"></i>
                                                 <p className="giamtoi">
@@ -116,11 +116,11 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
+                                    <p className="giamgia">
+                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
+                                    </p>
                                     {priceSale && priceSale > 0 ? (
                                         <>
-                                            <p className="giamgia">
-                                                Giá gốc: {item.price.toLocaleString('us-US')} đ
-                                            </p>
                                             <div className="d-flex giamtoiwidth">
                                                 <i class="fa-solid fa-fire icon-sale"></i>
                                                 <p className="giamtoi">

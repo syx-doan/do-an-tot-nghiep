@@ -13,7 +13,7 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-import User from './common/EditUser/EditUser';
+import User from './common/thongtincanhan/EditUser/EditUser';
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
