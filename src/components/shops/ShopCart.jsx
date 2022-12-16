@@ -57,16 +57,18 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="giamgia">
-                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
-                                    </p>
                                     {priceSale && priceSale >= 0 ? (
-                                        <div className="d-flex giamtoiwidth">
-                                            <i class="fa-solid fa-fire icon-sale"></i>
-                                            <p className="giamtoi">
-                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                        <>
+                                            <p className="giamgia">
+                                                Giá gốc: {item.price.toLocaleString('us-US')} đ
                                             </p>
-                                        </div>
+                                            <div className="d-flex giamtoiwidth">
+                                                <i class="fa-solid fa-fire icon-sale"></i>
+                                                <p className="giamtoi">
+                                                    Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                                </p>
+                                            </div>
+                                        </>
                                     ) : (
                                         ''
                                     )}
@@ -114,16 +116,18 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <i className="fa fa-star"></i>
                                 </div>
                                 <div className="d-flex justify-content-between mt-2">
-                                    <p className="giamgia">
-                                        Giá gốc: {item.price.toLocaleString('us-US')} đ
-                                    </p>
-                                    {priceSale && priceSale >= 0 ? (
-                                        <div className="d-flex giamtoiwidth">
-                                            <i class="fa-solid fa-fire icon-sale"></i>
-                                            <p className="giamtoi">
-                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                    {priceSale && priceSale > 0 ? (
+                                        <>
+                                            <p className="giamgia">
+                                                Giá gốc: {item.price.toLocaleString('us-US')} đ
                                             </p>
-                                        </div>
+                                            <div className="d-flex giamtoiwidth">
+                                                <i class="fa-solid fa-fire icon-sale"></i>
+                                                <p className="giamtoi">
+                                                    Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                                </p>
+                                            </div>
+                                        </>
                                     ) : (
                                         ''
                                     )}

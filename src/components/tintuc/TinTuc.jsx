@@ -11,10 +11,6 @@ const TinTuc = ({ handleTinTuc, url }) => {
                             <img src={iconNews} alt="" />
                             <h2>Tin tức</h2>
                         </div>
-                        <div className="heading-right row1 ">
-                            <span>View all</span>
-                            <i className="fa-solid fa-caret-right"></i>
-                        </div>
                     </div>
                     <Ttcard handleTinTuc={handleTinTuc} url={url} />
                 </div>

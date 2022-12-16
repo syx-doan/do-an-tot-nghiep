@@ -53,7 +53,6 @@ function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
         handleOk(data);
         setAddress('');
         setNote('');
-        // sessionStorage.clear();
         clear();
     };
     useEffect(() => {

@@ -2,12 +2,12 @@ import React from "react"
 import "./mainPage.css"
 import SliderHome from "./Slider"
 
-const Home = () => {
+const Home = ({url}) => {
   return (
     <>
       <section className='home'>
         <div className='container d_flex'>
-          <SliderHome />
+          <SliderHome url={url} />
         </div>
       </section>
     </>

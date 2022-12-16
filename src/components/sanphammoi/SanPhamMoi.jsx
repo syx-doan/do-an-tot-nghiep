@@ -4,7 +4,7 @@ import Cart from "./Cart"
 import "./newsanpham.scss"
 import iconNew from "../../assets/images/icons/new.png"
 
-const NewSanPham = ( {url, detailPro} ) => {
+const NewSanPham = ( {url, addToCart, detailPro} ) => {
   return (
     <>
       <section className='NewArrivals background'>
@@ -16,7 +16,7 @@ const NewSanPham = ( {url, detailPro} ) => {
             </div>
           </div>
 
-          <Cart url={url} detailPro={detailPro} />
+          <Cart url={url} addToCart={addToCart} detailPro={detailPro} />
         </div>
       </section>
     </>

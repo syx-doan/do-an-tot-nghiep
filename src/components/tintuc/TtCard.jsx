@@ -31,7 +31,7 @@ const Ttcard = ({ handleTinTuc, url }) => {
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
     };
     return (
         <>
