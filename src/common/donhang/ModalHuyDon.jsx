@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../modalLogin/modalLogin.module.scss';
+// import styles from '../modalLogin/modalLogin.module.scss';
+import styles from '../components/modalLogin/modalLogin.module.scss'
 import classNames from 'classnames/bind';
 import { Modal } from 'antd';
 

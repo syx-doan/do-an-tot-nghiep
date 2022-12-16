@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
 const cx = classNames.bind(styles);
-function TimKiem({ detailPro }) {
+function TimKiem({ detailPro, url }) {
     const [posts, setPosts] = useState([]);
     const [searchName, setSearchName] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -64,12 +64,19 @@ function TimKiem({ detailPro }) {
                                             key={item.id_product}
                                             to="product_detail"
                                             className={cx('wrapper')}
-                                            onClick={() => {
+                                            onClick={(e) => {
+                                              
                                                 detailPro(item.id_product, item.category_id);
                                                 handleHideResult();
                                             }}
                                         >
-                                            <div className={cx('info')}>
+                                            <div className={cx('info','d-flex')}>
+                                                <div className={cx('img')}>
+                                                    <img
+                                                        src={`http://localhost/admin_dasborad/upload/product/${item.image}`}
+                                                        alt=""
+                                                    />
+                                                </div>
                                                 <h4 className={cx('name')}>
                                                     <span>{item.name}</span>
                                                 </h4>

@@ -6,24 +6,15 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
-import BinhLuan from '../BinhLuan/BinhLuan';
-import InfoShop from './InfoShop';
-import AnhMoTa from './Anhmota';
-import SanPhamMoi from './SanPhamMoi';
+import BinhLuan from '../../BinhLuan/BinhLuan';
+import InfoShop from '../InfoShop';
+import Anhmota from '../Anhmota';
+import SanPhamLienQuan from '../SanPhamLienQuan';
 
 const Product_Detail = ({ addToCart, detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const product_id = JSON.parse(sessionStorage.getItem('data-idproduct'));
-
-    const [bien, setBien] = useState(100);
-    const more = () => {
-        if (bien === 100) {
-            setBien(2000);
-        } else {
-            setBien(100);
-        }
-    };
 
     const fetchPost = async () => {
         try {
@@ -58,9 +49,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         }
                                     })}
 
-                                    <AnhMoTa url={url} IdPro={product_id} />
-
-                                    {/* icon */}
+                                    <Anhmota url={url} IdPro={product_id} />
                                     <div className="product__content-action mt-5">
                                         <div className="product__content--share">
                                             <span className="product__content-share--text">
@@ -154,76 +143,18 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                         <div className="product__content-info">
                                             <div className="content-info--title">Mô tả</div>
                                             <div className="content-info--body">
-                                                <span className="content-info--text ">
+                                                <span className="content-info--text">
                                                     {data.map((item) => {
                                                         if (item.id_product === product_id) {
-                                                            return (
-                                                                <p>
-                                                                    {item.description.substr(
-                                                                        0,
-                                                                        bien,
-                                                                    )}
-                                                                </p>
-                                                            );
+                                                            return <p>{item.description}</p>;
                                                         } else {
                                                             return <></>;
                                                         }
                                                     })}
                                                 </span>
-                                                <a
-                                                    className="content-info--link"
-                                                    onClick={() => more()}
-                                                >
+                                                <a href="#" className="content-info--link">
                                                     Xem thêm
                                                 </a>
-                                            </div>
-                                        </div>
-
-                                        <div className="product__content-count">
-                                            <div className="content-count--title">Số lượng</div>
-                                            <div className="content-count--control">
-                                                <div className="content-count--item">
-                                                    <button className="content-count--button">
-                                                        <svg
-                                                            enableBackground="new 0 0 10 10"
-                                                            viewBox="0 0 10 10"
-                                                            x={1}
-                                                            y={1}
-                                                            className="content-count-svg-icon"
-                                                        >
-                                                            <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5" />
-                                                        </svg>
-                                                    </button>
-                                                    <input
-                                                        type="number"
-                                                        className="content-count--input"
-                                                        defaultValue={1}
-                                                    />
-                                                    <button className="content-count--button">
-                                                        <svg
-                                                            enableBackground="new 0 0 10 10"
-                                                            viewBox="0 0 10 10"
-                                                            x={1}
-                                                            y={1}
-                                                            className="content-count-svg-icon"
-                                                        >
-                                                            <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div className="content-count--item">
-                                                    {data.map((item) => {
-                                                        if (item.id_product === product_id) {
-                                                            return (
-                                                                <p>
-                                                                    {item.quantity} sản phẩm có sẵn
-                                                                </p>
-                                                            );
-                                                        } else {
-                                                            return <></>;
-                                                        }
-                                                    })}
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -317,10 +248,10 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                         <div className="f8row detail__product sm-gutter">
                             <BinhLuan url={url} />
 
-                            <SanPhamMoi detailPro={detailPro} url={url} />
+                            <SanPhamLienQuan detailPro={detailPro} url={url} />
                         </div>
                     </div>
-                </div>
+                </div>x
             </div>
         </>
     );

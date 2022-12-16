@@ -19,7 +19,7 @@ import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
 import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
-import ProductDetail from './components/Product/ProductDetail';
+import ProductDetail from './components/Product/sanphamchitiet/ProductDetail';
 import Detail from './components/tintuc/tintucchitiet/Detail';
 import ChiTietDonHang from './common/donhang/ChiTietDonHang';
 
@@ -131,7 +131,6 @@ function App() {
     // Chi tiết tin tức
     const handleTinTuc = (idNew) => {
         sessionStorage.setItem('id-new', JSON.stringify(idNew));
-
         // backtotop
         window.scrollTo({
             top: 0,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
 
-const SanPhamMoi = ({ detailPro, url }) => {
+const SanPhamLienQuan = ({ detailPro, url }) => {
     const [data, setData] = useState([]);
 
     const category_id = JSON.parse(sessionStorage.getItem('data-category'));
@@ -57,4 +57,4 @@ const SanPhamMoi = ({ detailPro, url }) => {
     );
 };
 
-export default SanPhamMoi;
+export default SanPhamLienQuan;

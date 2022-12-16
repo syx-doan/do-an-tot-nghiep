@@ -88,9 +88,7 @@ function Register() {
                 phone,
             });
             success();
-            setTimeout(() => {
-                navigate('/dangnhap');
-            }, 1000);
+            setTimeout(() => { navigate('/dangnhap');}, 1000);
             // console.log('aloalo')
         } catch (error) {
             alert('error');

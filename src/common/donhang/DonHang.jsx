@@ -91,7 +91,7 @@ const DonHang = ({ handleIdBill }) => {
                                         <>
                                             <tr>
                                                 <td className="table1">{item.id_bill}</td>
-                                                <td className="table2">{item.date}</td>
+                                                <td className="table2">{item.ngaydathang}</td>
                                                 <td className="table3">{role}</td>
                                                 <td className="table4">{item.address}</td>
                                                 <td className="table5">{item.note}</td>

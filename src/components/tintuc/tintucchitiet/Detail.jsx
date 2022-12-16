@@ -16,6 +16,7 @@ const Detail = ({ url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('news');
+            console.log(response)
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -35,9 +36,7 @@ const Detail = ({ url }) => {
                                     <img src={`${url}/news/${item.image}`} alt="" />
                                 </div>
                                 <div className={cx('blog-slider__content')}>
-                                    <span className={cx('blog-slider__code')}>
-                                        26 December 2019
-                                    </span>
+                                    <span className={cx('blog-slider__code')}>{item.date}</span>
                                     <div className={cx('blog-slider__title')}>{item.title}</div>
                                     <div className={cx('blog-slider__text')}>{item.content}</div>
                                     <button href="#!" className={cx('blog-slider__button')}>

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import ThanhToanThanhCong from '../ThanhToanThanhCong/ThanhToanThanhCong';
 import axiosClient from '~/utils/http';
-import ModalLogin from '../modalLogin/ModalLogin';
+import ModalLogin from '../components/modalLogin/ModalLogin';
 
 const Cart = ({ clear, addToCart, decreaseQty, deleteQty, url }) => {
     if (JSON.parse(sessionStorage.getItem('data-cart'))) {

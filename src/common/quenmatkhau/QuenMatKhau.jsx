@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
 import './quenmatkhau.module.scss';
 import { isEmpty, isEmail } from 'validator';
+import { useState } from 'react';
 
 function QuenMatKhau() {
     const [email, setEmail] = useState('');

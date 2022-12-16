@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './modalLogin.module.scss';
+import styles from './modalLogin.module.scss'
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { Modal } from 'antd';
@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 const ModalLogin = ({ handleCancelLogin, handleOkLogin, isModalOpenLogin }) => {
     return (
         <Modal
-            title="Yêu cầu đăng nhập"
+            // title="Thanh toán thành công"
             open={isModalOpenLogin}
             onOk={handleOkLogin}
             onCancel={handleCancelLogin}
@@ -27,7 +27,7 @@ const ModalLogin = ({ handleCancelLogin, handleOkLogin, isModalOpenLogin }) => {
                     <b>Đăng nhập để thanh toán</b>
                 </h1>
                 <Link to="/dangnhap">
-                    <button className={cx('content-buy-text')}>Đăng nhập</button>
+                    <button className={cx('btn-13','custom-btn','mt-5')}>Đăng nhập</button>
                 </Link>
             </div>
         </Modal>
