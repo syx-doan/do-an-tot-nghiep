@@ -26,7 +26,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
 
     return (
         <>
-            {data.slice(0, 9).map((item) => {
+            {data.map((item) => {
                 const priceSale = (item.price * item.sale) / 100;
                 if (categoryid === undefined) {
                     return (

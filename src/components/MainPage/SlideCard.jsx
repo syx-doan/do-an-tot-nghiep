@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axiosClient from './../../utils/http';
 
-const SlideCard = () => {
+const SlideCard = ({ url }) => {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchPost = async () => {
@@ -43,7 +43,10 @@ const SlideCard = () => {
                                     </button>
                                 </div>
                                 <div className="right">
-                                    <img src={value.image} alt="" />
+                                    <img
+                                        src={`	http://localhost/admin_dasboard/upload/slider/${value.image}`}
+                                        alt=""
+                                    />
                                 </div>
                             </div>
                         </>
