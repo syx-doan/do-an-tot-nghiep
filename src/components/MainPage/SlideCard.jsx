@@ -43,10 +43,7 @@ const SlideCard = ({ url }) => {
                                     </button>
                                 </div>
                                 <div className="right">
-                                    <img
-                                        src={`	http://localhost/admin_dasboard/upload/slider/${value.image}`}
-                                        alt=""
-                                    />
+                                    <img src={`${url}/slider/${value.image}`} alt="" />
                                 </div>
                             </div>
                         </>

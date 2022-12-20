@@ -13,7 +13,7 @@ import Login from './common/login/Login';
 import { toast, ToastContainer } from 'react-toastify';
 import GioiThieu from './components/gioiThieu/GioiThieu';
 import LienHe from './components/lienhe/LienHe';
-
+import User from './common/thongtincanhan/EditUser/EditUser';
 import Shop from './components/shops/Shop';
 import ThanhToanThanhCong from './common/ThanhToanThanhCong/ThanhToanThanhCong';
 import DonHang from './common/donhang/DonHang';
@@ -21,6 +21,7 @@ import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
 import ProductDetail from './components/Product/sanphamchitiet/ProductDetail';
 import Detail from './components/tintuc/tintucchitiet/Detail';
+import ChiTietDonHang from './common/donhang/ChiTietDonHang';
 
 function App() {
     //Thông báo
@@ -137,6 +138,11 @@ function App() {
         });
     };
 
+    // Lấy id đơn hàng
+    const handleIdBill = (id) => {
+        sessionStorage.setItem('id-bill', JSON.stringify(id));
+    }
+
     return (
         <>
             <Header detailPro={detailPro} />
@@ -170,9 +176,11 @@ function App() {
                 />
                 <Route path="gioithieu" element={<GioiThieu />} />
                 <Route path="lienhe" element={<LienHe />} />
+                <Route path="user" element={<User url={url} />} />
                 <Route path="tintuc" element={<Detail url={url} />} />
-                <Route path="donhang" element={<DonHang />} />
+                <Route path="donhang" element={<DonHang handleIdBill={handleIdBill} />} />
                 <Route path="thanhtoanthanhcong" element={<ThanhToanThanhCong />} />
+                <Route path="donhangchitiet" element={<ChiTietDonHang url={url} />} />
                 <Route
                     path="/"
                     exact

@@ -61,12 +61,14 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                         Giá gốc: {item.price.toLocaleString('us-US')} đ
                                     </p>
                                     {priceSale && priceSale >= 0 ? (
-                                        <div className="d-flex giamtoiwidth">
-                                            <i class="fa-solid fa-fire icon-sale"></i>
-                                            <p className="giamtoi">
-                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
-                                            </p>
-                                        </div>
+                                        <>
+                                            <div className="d-flex giamtoiwidth">
+                                                <i class="fa-solid fa-fire icon-sale"></i>
+                                                <p className="giamtoi">
+                                                    Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                                </p>
+                                            </div>
+                                        </>
                                     ) : (
                                         ''
                                     )}
@@ -117,13 +119,15 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                                     <p className="giamgia">
                                         Giá gốc: {item.price.toLocaleString('us-US')} đ
                                     </p>
-                                    {priceSale && priceSale >= 0 ? (
-                                        <div className="d-flex giamtoiwidth">
-                                            <i class="fa-solid fa-fire icon-sale"></i>
-                                            <p className="giamtoi">
-                                                Giảm tới: {priceSale.toLocaleString('us-US')} đ
-                                            </p>
-                                        </div>
+                                    {priceSale && priceSale > 0 ? (
+                                        <>
+                                            <div className="d-flex giamtoiwidth">
+                                                <i class="fa-solid fa-fire icon-sale"></i>
+                                                <p className="giamtoi">
+                                                    Giảm tới: {priceSale.toLocaleString('us-US')} đ
+                                                </p>
+                                            </div>
+                                        </>
                                     ) : (
                                         ''
                                     )}

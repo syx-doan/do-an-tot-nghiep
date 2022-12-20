@@ -17,7 +17,7 @@ Search.defaultProps = {
 function Search({ detailPro }) {
     const CartItem = JSON.parse(sessionStorage.getItem('data-cart'));
     var lenth = 0;
-    if(CartItem) {
+    if (CartItem) {
         var lenth = CartItem.length;
     }
     return (

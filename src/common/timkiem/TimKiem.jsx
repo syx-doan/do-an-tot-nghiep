@@ -73,7 +73,7 @@ function TimKiem({ detailPro, url }) {
                                             <div className={cx('info','d-flex')}>
                                                 <div className={cx('img')}>
                                                     <img
-                                                        src={`http://localhost/admin_dasborad/upload/product/${item.image}`}
+                                                        src={`http://localhost/admin_dasboard/upload/product/${item.image}`}
                                                         alt=""
                                                     />
                                                 </div>

@@ -1,4 +1,3 @@
-/* eslint-disable no-redeclare */
 
 import React from 'react';
 import { Modal } from 'antd';
