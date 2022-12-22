@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axiosClient from '~/utils/http';
-
 const Catg = ({ CategoryId }) => {
     const [data, setData] = useState([]);
-
     const fetchPost = async () => {
         try {
             const response = await axiosClient('category');
+
             setData(response.data);
         } catch (err) {
             console.error(err);

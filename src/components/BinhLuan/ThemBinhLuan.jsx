@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axiosClient from '~/utils/http';
 
+import classNames from 'classnames/bind';
+import styles from '../BinhLuan/binhluan/binhluan.module.scss';
+const cx = classNames.bind(styles);
+
 const ThemBinhLuan = () => {
     const dataUser = JSON.parse(localStorage.getItem('data-user'));
     const [comment, setComment] = useState('');
@@ -46,24 +50,24 @@ const ThemBinhLuan = () => {
     if (dataUser) {
         return (
             <>
-                <form className="form-inline" action="#">
-                    <div className="form-group mx-sm-3 mb-2">
-                        <div className="inforuser">
-                            <i class="fa-solid fa-user icon-user"></i>
+                <form className={cx('form-inline')} action="">
+                    <div className={cx('form-group mx-sm-3 mb-2')}>
+                        <div className={cx('inforuser')}>
+                            <i className={cx('fa-solid fa-user icon-user')}></i>
                         </div>
                         <input
                             onChange={onChangeBinhLuan}
                             type="text"
-                            className="form-control input-binhluan"
+                            className={cx('form-control input-binhluan')}
                             id="binhluan"
                             placeholder="Bình luận"
                         />
                         <button
                             type="button"
                             onClick={handleSubmitBinhLuan}
-                            className="btn-binhluan"
+                            className={cx('btn-binhluan')}
                         >
-                            Bình luận
+                            <b>Bình luận</b>
                         </button>
                     </div>
                 </form>
