@@ -15,11 +15,12 @@ const Logout = () => {
             progress: undefined,
             theme: 'light',
         });
-    const handleLogout = () => {
-        success();
+    const handleLogout = async ()  => {
         localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = '/';
+         sessionStorage.clear();
+         window.location.href = '/';
+        await success();
+        
     };
 
     return (

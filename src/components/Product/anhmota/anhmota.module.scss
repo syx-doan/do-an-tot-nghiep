@@ -1,0 +1,15 @@
+.product__content-scroll {
+    position: relative;
+}
+
+.product__content-img--list {
+    margin: 10px 0;
+    height: 69px;
+    max-width: 100%;
+    display: -webkit-box;
+    overflow-x: auto;
+}
+
+.product__content-img--list::-webkit-scrollbar {
+    display: none;
+}
