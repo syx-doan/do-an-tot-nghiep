@@ -180,7 +180,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         }
                                                     })}
                                                 </span>
-                                                <a href="#" className={cx('content-info--link')}>
+                                                <a href className={cx('content-info--link')}>
                                                     Xem thêm
                                                 </a>
                                             </div>
