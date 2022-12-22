@@ -153,7 +153,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
         try {
             const response = await axiosClient('products');
             const data = response.data;
-            const slice = data.slice(offset - 1, offset - 1 + postsPerPage);
+            const slice = data.slice((offset - 1) * postsPerPage, offset * postsPerPage);
             const postData = getPostData(slice);
 
             // Using Hooks to set value

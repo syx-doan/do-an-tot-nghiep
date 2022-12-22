@@ -21,7 +21,7 @@ import QuenMatKhau from './common/quenmatkhau/QuenMatKhau';
 
 import ProductDetail from './components/Product/sanphamchitiet/ProductDetail';
 import Detail from './components/tintuc/tintucchitiet/Detail';
-import ChiTietDonHang from './common/donhang/ChiTietDonHang';
+import ChiTietDonHang from './common/donhang/chitietdonhang/ChiTietDonHang';
 
 function App() {
     //Thông báo
