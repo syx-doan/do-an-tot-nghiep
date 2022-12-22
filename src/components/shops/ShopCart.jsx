@@ -145,7 +145,6 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
                         );
                     }
                 })}
-                <br></br>
             </>
         );
     };
@@ -154,7 +153,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
         try {
             const response = await axiosClient('products');
             const data = response.data;
-            const slice = data.slice((offset - 1) * postsPerPage, offset * postsPerPage);
+            const slice = data.slice(offset - 1, offset - 1 + postsPerPage);
             const postData = getPostData(slice);
 
             // Using Hooks to set value
@@ -167,8 +166,7 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     };
     useEffect(() => {
         fetchPost();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [offset, data]);
+    }, [offset]);
     const handlePageClick = (e) => {
         const selectedPage = e.selected;
         setOffset(selectedPage + 1);
@@ -177,7 +175,6 @@ const ShopCart = ({ addToCart, detailPro, categoryid, url }) => {
     return (
         <>
             {data}
-
             <ReactPaginate
                 previousLabel={'prev'}
                 nextLabel={'next'}

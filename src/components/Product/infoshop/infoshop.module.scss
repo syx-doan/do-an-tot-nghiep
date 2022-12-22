@@ -8,6 +8,20 @@
     margin-right: -16px;
 }
 
+.f8wrapper p {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box
+}
+
+.shop__content p{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box
+}
+
 .product__review {
     margin-bottom: 20px;
 }
@@ -111,13 +125,13 @@
 .product-caterogy--name,
 .detail__content-name {
     color: #aaa;
-    font-size: 1.6rem;
+    font-size: 1rem;
     line-height: 1.6rem;
 }
 
 .shop__content-cmt--number {
     color: var(--primary-color);
-    font-size: 1.6rem;
+    font-size: 1rem;
     line-height: 1.6rem;
     padding-left: 8px;
 }

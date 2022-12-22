@@ -61,7 +61,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                     <div className={cx('product__content-action mt-5')}>
                                         <div className={cx('product__content--share')}>
                                             <span className={cx('product__content-share--text')}>
-                                                Chia sẽ:
+                                                <p>Chia sẽ:</p>
                                             </span>
                                             <button
                                                 className={cx(
@@ -97,7 +97,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                 />
                                             </svg>
                                             <span className={cx('product__content-like--text')}>
-                                                Đã thích (9.9k)
+                                                <p> Đã thích (9.9k)</p>
                                             </span>
                                         </div>
                                     </div>
@@ -130,7 +130,9 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         return <></>;
                                                     }
                                                 })}
-                                                <span class="vnd-class">₫</span>
+                                                <span class="vnd-class">
+                                                    <p>₫</p>
+                                                </span>
                                             </div>
                                             <div className={cx('content-price--new')}>
                                                 {data.map((item) => {
@@ -148,7 +150,9 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         return <></>;
                                                     }
                                                 })}
-                                                <span class="vnd-class">₫</span>
+                                                <span class="vnd-class">
+                                                    <p>₫</p>
+                                                </span>
                                             </div>
                                             {data.map((item) => {
                                                 if (item.id_product === product_id) {
@@ -158,7 +162,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                                 'content-price--discount',
                                                             )}
                                                         >
-                                                            {item.sale}% GIẢM
+                                                            <p> {item.sale}% GIẢM</p>
                                                         </div>
                                                     );
                                                 } else {
@@ -169,7 +173,9 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                     </div>
                                     <div className={cx('product__content-body hide-on-mobile')}>
                                         <div className={cx('product__content-info')}>
-                                            <div className={cx('content-info--title')}>Mô tả</div>
+                                            <div className={cx('content-info--title')}>
+                                                <p>Mô tả</p>
+                                            </div>
                                             <div className={cx('content-info--body')}>
                                                 <span className={cx('content-info--text')}>
                                                     {data.map((item) => {
@@ -181,7 +187,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                     })}
                                                 </span>
                                                 <a href className={cx('content-info--link')}>
-                                                    Xem thêm
+                                                    <p>Xem thêm</p>
                                                 </a>
                                             </div>
                                         </div>
@@ -194,12 +200,14 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                         className={cx('content-cart-text')}
                                                         onClick={() => addToCart(item)}
                                                     >
-                                                        <i
-                                                            className={cx(
-                                                                'content-cart-icon fas fa-cart-plus',
-                                                            )}
-                                                        />
-                                                        Thêm vào giỏ hàng
+                                                        <p>
+                                                            <i
+                                                                className={cx(
+                                                                    'content-cart-icon fas fa-cart-plus',
+                                                                )}
+                                                            />
+                                                            Thêm vào giỏ hàng
+                                                        </p>
                                                     </button>
                                                 );
                                             } else {
@@ -214,7 +222,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                             className={cx('content-buy-text')}
                                                             onClick={() => addToCart(item)}
                                                         >
-                                                            Mua luôn
+                                                            <p>Mua luôn</p>
                                                         </button>
                                                     );
                                                 } else {
@@ -236,15 +244,17 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                 )}
                                             />
                                             <h3 className={cx('refund-text show-on-mobile')}>
-                                                Miễn phí trả hàng
+                                                <p>Miễn phí trả hàng</p>
                                             </h3>
                                             <h3 className={cx('refund-text show-on-pc')}>
-                                                7 ngày miễn phí trả hàng
+                                                <p>7 ngày miễn phí trả hàng</p>
                                             </h3>
                                             <div className={cx('content-refund--detail-free')}>
                                                 <div className={cx('refund-detail__header')}>
-                                                    Hoàn toàn yên tâm khi mua hàng ở Shopee Mall với
-                                                    ưu đãi miễn phí trả hàng lên đến 7 ngày.
+                                                    <p>
+                                                        Hoàn toàn yên tâm khi mua hàng ở Shopee Mall
+                                                        với ưu đãi miễn phí trả hàng lên đến 7 ngày.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,15 +265,18 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                 )}
                                             />
                                             <h3 className={cx('refund-text show-on-pc')}>
-                                                Hàng chính hãng 100%
+                                                <p>Hàng chính hãng 100%</p>
                                             </h3>
                                             <h3 className={cx('refund-text show-on-mobile')}>
-                                                Chính hãng 100%
+                                                <p>Chính hãng 100%</p>
                                             </h3>
                                             <div className={cx('content-refund--detail-real')}>
                                                 <div className={cx('refund-detail__header')}>
-                                                    Nhận lại gấp đôi số tiền mà bạn đã thanh toán
-                                                    cho sản phẩm không chính hãng từ Shopee Mall.
+                                                    <p>
+                                                        Nhận lại gấp đôi số tiền mà bạn đã thanh
+                                                        toán cho sản phẩm không chính hãng từ Shopee
+                                                        Mall.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -278,15 +291,18 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                 )}
                                             />
                                             <h3 className={cx('refund-text show-on-pc')}>
-                                                Miễn phí vận chuyển
+                                                <p>Miễn phí vận chuyển</p>
                                             </h3>
                                             <h3 className={cx('refund-text show-on-mobile')}>
-                                                Giao miễn phí
+                                                <p>Giao miễn phí</p>
                                             </h3>
                                             <div className={cx('content-refund--detail-ship')}>
                                                 <div className={cx('refund-detail__header')}>
-                                                    Ưu đãi miễn phí vận chuyển lên tới 40,000 VNĐ
-                                                    cho đơn hàng của Shopee Mall từ 150,000 VNĐ.
+                                                    <p>
+                                                        Ưu đãi miễn phí vận chuyển lên tới 40,000
+                                                        VNĐ cho đơn hàng của Shopee Mall từ 150,000
+                                                        VNĐ.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

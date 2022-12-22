@@ -20,7 +20,7 @@ const Catg = ({ CategoryId }) => {
         <>
             <div className="category">
                 <div className="chead d_flex">
-                  <h1>Danh mục sản phẩm</h1>
+                    <h1>Danh mục sản phẩm</h1>
                 </div>
                 {data.map((value, index) => (
                     <div

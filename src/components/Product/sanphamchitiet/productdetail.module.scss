@@ -1,4 +1,4 @@
-:root{
+.f8wrapper{
     --primary-color: #63a6db;
     --white-color: #fff;
     --black-color: #000;
@@ -11,17 +11,12 @@
     --header-sort-bar-height: 46px;
 }
 
-*{
-    box-sizing: inherit;
-}
-
-html{
+.f8wrapper p {
     font-size: 62.5%;
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
-
 
 /* Responsive */
 .grid__row{
