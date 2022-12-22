@@ -152,6 +152,7 @@
     color: #ed1912;
     font-size: 16px;
 }
+
 /* //pagiton */
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
@@ -203,24 +204,4 @@ display:inline-block;
 	width:auto!important;
 	padding:0 0.8rem 0 2rem!important;
   position:relative;
-}
-.next:after,.prev:before {
-  content:'';
-  position:absolute;
-  font-family:FontAwesome;
-  font-weight:400;
-}
-.prev:before{
-	left:.5rem;
-}
-.next:after{
-	right:.5rem;
-}
-.prev:before {
-    vertical-align: middle;
-    content: "\f060";
-}
-.next:after {
-    vertical-align: middle;
-    content: "\f061";
 }

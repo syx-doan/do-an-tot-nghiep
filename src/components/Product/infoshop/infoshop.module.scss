@@ -1,0 +1,137 @@
+/* Info shop */
+.shop__content,
+.detail__product,
+.product__review {
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+.f8wrapper p {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box
+}
+
+.shop__content p{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box
+}
+
+.product__review {
+    margin-bottom: 20px;
+}
+
+.shop__content-all {
+    display: flex;
+    align-items: center;
+    height: 130px;
+    background-color: #fff;
+    padding: 25px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.shop__content-img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.shop__content-control {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop__content-name {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.shop__content-live {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.shop__content-svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    position: relative;
+}
+
+.shop__content-action--btn {
+    color: #d0011b;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+.shop__content-action--btn:hover {
+    background-color: rgba(208, 1, 27, 0.12);
+}
+
+.shop__content-action--link-shop {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    display: inline-block;
+    line-height: 3.4rem;
+    border-radius: 2px;
+}
+
+.shop__content-action--link-shop:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.shop__content-border {
+    width: 1px;
+    height: 100%;
+    background-color: #eee;
+    margin: 0 50px;
+}
+
+.shop__content-last {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop__content-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop__content-first {
+    display: flex;
+}
+
+.shop__content-text--top {
+    margin-bottom: 20px;
+}
+
+.shop__content-cmt,
+.product-caterogy--name,
+.detail__content-name {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.6rem;
+}
+
+.shop__content-cmt--number {
+    color: var(--primary-color);
+    font-size: 1rem;
+    line-height: 1.6rem;
+    padding-left: 8px;
+}

@@ -118,6 +118,15 @@
             transform: scale(0.5);
             transform: translateY(-200%);
             transition: opacity 0.2s, transform 0.8s;
+            //giới hạn dòng được hiển thị
+            display: -webkit-box;
+            max-height: 300px;
+           -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            -webkit-line-clamp: 5;
+            line-height: 1.6rem;
             table {
                 text-align: left;
                 width: 100%;

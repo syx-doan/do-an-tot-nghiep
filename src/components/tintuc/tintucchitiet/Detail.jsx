@@ -39,7 +39,7 @@ const Detail = ({ url }) => {
                                     <span className={cx('blog-slider__code')}>{item.date}</span>
                                     <div className={cx('blog-slider__title')}>{item.title}</div>
                                     <div className={cx('blog-slider__text')}>{item.content}</div>
-                                    <button href="#!" className={cx('blog-slider__button')}>
+                                    <button href className={cx('blog-slider__button')}>
                                         READ MORE
                                     </button>
                                 </div>

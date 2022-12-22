@@ -72,7 +72,7 @@ const User = ({ url }) => {
                                         if (item.image) {
                                             return (
                                                 <img
-                                                    src={`${url}/product/${item.image}`}
+                                                    src={`${url}/users/${item.image}`}
                                                     alt=""
                                                     style={{ width: 500, padding: 50 }}
                                                 />
