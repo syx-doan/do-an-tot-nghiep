@@ -162,7 +162,7 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                                 'content-price--discount',
                                                             )}
                                                         >
-                                                            <p> {item.sale}% GIẢM</p>
+                                                            {item.sale}% GIẢM
                                                         </div>
                                                     );
                                                 } else {
@@ -320,7 +320,6 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                         </div>
                     </div>
                 </div>
-                x
             </div>
         </>
     );

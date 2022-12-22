@@ -294,3 +294,16 @@ display:inline-block;
     vertical-align: middle;
     content: "\f061";
 }
+
+.view_all {
+    padding: 10px;
+    background-color: rgb(38, 159, 233);
+    border-radius: 5px 5px;
+    text-align: center;
+}
+
+.view_all :hover {
+    padding: 15px;
+    border-radius: 5px 5px;
+    text-align: center;
+}

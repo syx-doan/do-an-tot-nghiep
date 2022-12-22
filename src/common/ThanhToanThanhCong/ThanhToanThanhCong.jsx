@@ -25,7 +25,6 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
                 <h1>
                     <b>Thanh toán thành công</b>
                 </h1>
-                <p>Mã đơn hàng của bạn là <span className={cx('idsanpham')}>232132423232</span>.</p>
                 <p>
                     Xem đơn hàng của bạn tại{' '}
                     <Link className={cx('link')} to="/donhang">
@@ -33,9 +32,6 @@ const ThanhToanThanhCong = ({ handleCancelThanhToan, handleOkThanhToan, isModalO
                     </Link>
                 </p>
                 <p>Thời gian dự kiến giao là 3-5 ngày(Tính từ ngày đặt hàng)</p>
-                <Link to="/sanpham">
-                    <button className={cx('content-buy-text')}>Tiếp tục mua hàng</button>
-                </Link>
             </div>
         </Modal>
     );

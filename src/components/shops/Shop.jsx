@@ -14,8 +14,9 @@ const Shop = ({ addToCart, detailPro, CategoryId, categoryid, setCategory, url }
                                 <h2>Sản phẩm</h2>
                             </div>
                             <div className="heading-right row1 viewall">
-                                <span onClick={() => setCategory()}>View all</span>
-                                <i className="fa-solid fa-caret-right"></i>
+                                <span className="view_all" onClick={() => setCategory()}>
+                                    <b style={{ color: 'black' }}>View all</b>
+                                </span>
                             </div>
                         </div>
                         <div className="product-content  grid1">

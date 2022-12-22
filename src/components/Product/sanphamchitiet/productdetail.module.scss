@@ -2828,7 +2828,7 @@ i.home-product-item__like-icon-fill {
     margin-left: 8px;
     border-radius: 2px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .product__content-discount,
@@ -3160,6 +3160,14 @@ i.home-product-item__like-icon-fill {
     cursor: pointer;
     text-align: center;
     margin-right: 20px;
+}
+
+.content-cart-text p {
+    margin-top: 10px;
+}
+
+.content-buy-text p {
+    margin-top: 10px;
 }
 
 .content-cart-text:hover {
