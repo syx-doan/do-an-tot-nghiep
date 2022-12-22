@@ -28,6 +28,7 @@
     "react-credit-cards": "^0.8.3",
     "react-custom-chat": "^0.6.1",
     "react-dom": "^18.2.0",
+    "react-js-pagination": "^3.0.3",
     "react-paginate": "^8.1.4",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.0",
