@@ -1,7 +1,7 @@
-
 import './quenmatkhau.module.scss';
 import { isEmpty, isEmail } from 'validator';
 import { useState } from 'react';
+import axiosClient from '~/utils/http';
 
 function QuenMatKhau() {
     const [email, setEmail] = useState('');
@@ -27,8 +27,17 @@ function QuenMatKhau() {
         e.preventDefault();
         const isValidate = validateAll();
         if (!isValidate) return;
-        
-        console.log(e);
+        axiosClient
+            .get('quenmatkhau', {
+                email: email,
+            })
+            .then((response) => {
+                if (response) {
+                    console.log(response);
+                } else {
+                    console.log('error');
+                }
+            });
     };
     return (
         <div>

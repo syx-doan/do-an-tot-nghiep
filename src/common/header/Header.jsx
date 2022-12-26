@@ -7,9 +7,11 @@ import Navbar from './Navbar';
 const Header = ({ detailPro }) => {
     return (
         <>
+        <div className='haeder_all'>
             <Head />
             <Search detailPro={detailPro} />
             <Navbar />
+        </div>
         </>
     );
 };

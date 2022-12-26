@@ -50,9 +50,15 @@ const User = ({ url }) => {
         } catch (error) {
             alert('error');
         }
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = '/dangnhap';
+        axiosClient
+            .post('login', {
+                email: email,
+                password: password,
+            })
+            .then((response) => {
+                localStorage.setItem('data-user', JSON.stringify(response.data));
+            });
+        window.location.reload();
     };
     return (
         <>

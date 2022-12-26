@@ -16,7 +16,7 @@ const Detail = ({ url }) => {
     const fetchPost = async () => {
         try {
             const response = await axiosClient('news');
-            console.log(response)
+            console.log(response);
             setData(response.data);
         } catch (err) {
             console.error(err);

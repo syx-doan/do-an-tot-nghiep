@@ -311,7 +311,9 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                             </div>
                         </div>
 
-                        <InfoShop />
+                        <div className={cx('shop__content')}>
+                            <InfoShop />
+                        </div>
 
                         <div className={cx('f8row detail__product sm-gutter')}>
                             <BinhLuan url={url} />

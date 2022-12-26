@@ -28,7 +28,7 @@ function App() {
     const success = () =>
         toast.success('Đã thêm vào giỏ hàng', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -39,7 +39,7 @@ function App() {
     const deleteProduct = () =>
         toast.error('Đã xóa sản phẩm khỏi giỏ hàng', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

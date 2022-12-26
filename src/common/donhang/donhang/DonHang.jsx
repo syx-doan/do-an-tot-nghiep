@@ -62,83 +62,114 @@ const DonHang = ({ handleIdBill }) => {
     return (
         <>
             <div className="donhang">
-                <div className="content">
-                    <table className="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th className="table1">Mã ĐH</th>
-                                <th className="table2">Date</th>
-                                <th className="table3">Trạng thái</th>
-                                <th className="table4">Địa chỉ</th>
-                                <th className="table5">Ghi chú</th>
-                                <th className="table6">Tổng tiền</th>
-                                <th className="table7">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map((item) => {
-                                if (item.id_user === idUser[0].id_user) {
-                                    var role = '';
-                                    if (item.status === 0) {
-                                        role = 'Đang xử lý';
-                                    } else if (item.status === 1) {
-                                        role = 'Đã giao';
-                                    } else if (item.status === 2) {
-                                        role = 'Đã hủy đơn';
-                                    }
-                                    var sum = 0;
-                                    return (
-                                        <>
+                <section className="ftco-section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h3 className="h5 mb-4 text-center">Đơn hàng</h3>
+                                <div className="table-wrap">
+                                    <table className="table">
+                                        <thead className="thead-primary">
                                             <tr>
-                                                <td className="table1">{item.id_bill}</td>
-                                                <td className="table2">{item.ngaydathang}</td>
-                                                <td className="table3">{role}</td>
-                                                <td className="table4">{item.address}</td>
-                                                <td className="table5">{item.note}</td>
-                                                <td className="table6">
-                                                    {billDetail.map((value) => {
-                                                        if (item.id_bill === value.id_bill) {
-                                                            sum += value.price * value.total;
-                                                        }
-                                                    })}
-                                                    {sum.toLocaleString('us-US')} vnđ
-                                                </td>
-                                                <td className="table7">
-                                                    <Link to="/donhangchitiet">
-                                                        <button
-                                                            className="button"
-                                                            onClick={() =>
-                                                                handleIdBill(item.id_bill)
-                                                            }
-                                                        >
-                                                            <i class="fa fa-duotone fa-eye"></i>
-                                                            Xem
-                                                        </button>
-                                                    </Link>
-                                                    -
-                                                    <button
-                                                        className="button"
-                                                        onClick={() => showModalLogin(item)}
-                                                    >
-                                                        <i class="fa fa-sharp fa-solid fa-trash"></i>
-                                                        Hủy
-                                                    </button>
-                                                </td>
+                                                <th>#</th>
+                                                <th>Ngày đặt hàng</th>
+                                                <th>Trạng thái </th>
+                                                <th>Địa chỉ</th>
+                                                <th>Ghi chú</th>
+                                                <th>Tổng tiền</th>
+                                                <th></th>
                                             </tr>
-                                        </>
-                                    );
-                                } else {
-                                    return <></>;
-                                }
-                            })}
-                        </tbody>
-                    </table>
-                    <ModalHuyDon
-                        isModalOpenLogin={isModalOpenLogin}
-                        handleOkLogin={handleOkLogin}
-                        handleCancelLogin={handleCancelLogin}
-                    />
-                </div>
+                                        </thead>
+                                        <tbody>
+                                            {data.map((item) => {
+                                                if (item.id_user === idUser[0].id_user) {
+                                                    var role = '';
+                                                    if (item.status === 0) {
+                                                        role = 'Đang xử lý';
+                                                    } else if (item.status === 1) {
+                                                        role = 'Đã giao';
+                                                    } else if (item.status === 2) {
+                                                        role = 'Đã hủy đơn';
+                                                    }
+                                                    var sum = 0;
+                                                    return (
+                                                        <>
+                                                            <tr>
+                                                                <td>{item.id_bill}</td>
+                                                                <td>{item.ngaydathang}</td>
+                                                                <td
+                                                                    className={`table${item.status}`}
+                                                                >
+                                                                    {role}
+                                                                </td>
+                                                                <td>{item.address}</td>
+                                                                <td>{item.note}</td>
+                                                                <td>
+                                                                    {billDetail.map((value) => {
+                                                                        if (
+                                                                            item.id_bill ===
+                                                                            value.id_bill
+                                                                        ) {
+                                                                            sum +=
+                                                                                value.price *
+                                                                                value.total;
+                                                                        }
+                                                                    })}
+                                                                    {sum.toLocaleString('us-US')}{' '}
+                                                                    vnđ
+                                                                </td>
+                                                                <td className="action">
+                                                                    <Link
+                                                                        to="/donhangchitiet"
+                                                                        className="xemchitiet"
+                                                                    >
+                                                                        <button
+                                                                            type="button"
+                                                                            class="eyes"
+                                                                            data-dismiss="alert"
+                                                                            aria-label="Eyes"
+                                                                            onClick={() =>
+                                                                                handleIdBill(
+                                                                                    item.id_bill,
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            <i class="fa fa-eye"></i>
+                                                                            Xem
+                                                                        </button>
+                                                                    </Link>
+                                                                    <button
+                                                                        type="button"
+                                                                        class="close"
+                                                                        data-dismiss="alert"
+                                                                        aria-label="Close"
+                                                                        onClick={() =>
+                                                                            showModalLogin(item)
+                                                                        }
+                                                                    >
+                                                                        <i class="fa fa-close"></i>
+                                                                        Huỷ
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </>
+                                                    );
+                                                } else {
+                                                    return <></>;
+                                                }
+                                            })}
+                                        </tbody>
+                                    </table>
+                                    <ModalHuyDon
+                                        isModalOpenLogin={isModalOpenLogin}
+                                        handleOkLogin={handleOkLogin}
+                                        handleCancelLogin={handleCancelLogin}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </>
     );
