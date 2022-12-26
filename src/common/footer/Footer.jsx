@@ -28,10 +28,12 @@ const Footer = () => {
                     <div className="box-footer">
                         <h3>Sản phẩm</h3>
                         <ul className="paddingleft">
-                            <li>Điện thoại</li>
-                            <li>Máy tính</li>
-                            <li>Laptop</li>
-                            <li>Tai nghe</li>
+                            <li>Tủ lạnh</li>
+                            <li>Máy gặt</li>
+                            <li>Tivi</li>
+                            <li>Máy hút bụi</li>
+                            <li>Máy lọc nước</li>
+                            <li>Bếp điện</li>
                         </ul>
                     </div>
                     <div className="box-footer">

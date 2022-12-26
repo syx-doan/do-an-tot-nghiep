@@ -1,9 +1,12 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames/bind';
 import axiosClient from '~/utils/http';
-import './donhang.scss';
+import styles from './donhang.module.scss';
 import ModalHuyDon from '../ModalHuyDon';
+
+const cx = classNames.bind(styles);
 const DonHang = ({ handleIdBill }) => {
     const [data, setData] = useState([]);
     const [billDetail, setBillDetail] = useState([]);
@@ -61,15 +64,15 @@ const DonHang = ({ handleIdBill }) => {
     }, [data]);
     return (
         <>
-            <div className="donhang">
-                <section className="ftco-section">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <h3 className="h5 mb-4 text-center">Đơn hàng</h3>
-                                <div className="table-wrap">
-                                    <table className="table">
-                                        <thead className="thead-primary">
+            <div className={cx("donhang")}>
+                <section className={cx("ftco-section")}>
+                    <div className={cx("container")}>
+                        <div className={cx("row")}>
+                            <div className={cx("col-md-12")}>
+                                <h3 className={cx("h5 mb-4 text-center")}>Đơn hàng</h3>
+                                <div className={cx("table-wrap")}>
+                                    <table className={cx("table")}>
+                                        <thead className={cx("thead-primary")}>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Ngày đặt hàng</th>
@@ -118,11 +121,11 @@ const DonHang = ({ handleIdBill }) => {
                                                                     {sum.toLocaleString('us-US')}{' '}
                                                                     vnđ
                                                                 </td>
-                                                                <td className="action">
+                                                                <td className={cx("action")}>
                                                                     <Link to="/donhangchitiet">
                                                                         <button
                                                                             type="button"
-                                                                            class="eyes"
+                                                                            className={cx("eyes")}
                                                                             data-dismiss="alert"
                                                                             aria-label="Eyes"
                                                                             onClick={() =>
@@ -137,7 +140,7 @@ const DonHang = ({ handleIdBill }) => {
                                                                     </Link>
                                                                     <button
                                                                         type="button"
-                                                                        class="close"
+                                                                        className={cx("close")}
                                                                         data-dismiss="alert"
                                                                         aria-label="Close"
                                                                         onClick={() =>
