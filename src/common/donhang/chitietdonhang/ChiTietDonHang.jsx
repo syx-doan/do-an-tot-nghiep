@@ -35,7 +35,7 @@ const ChiTietDonHang = ({ url }) => {
     }, []);
     return (
         <>
-            <div className={cx('donhanglink')}>
+            <div className={cx('beautiful-button')}>
                 <Link to={'/donhang'}>
                     <i className="fa-solid fa-backward iconback"></i>
                     <span>Đơn hàng</span>
