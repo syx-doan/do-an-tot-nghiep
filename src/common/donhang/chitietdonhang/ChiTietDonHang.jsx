@@ -25,17 +25,6 @@ const ChiTietDonHang = ({ url }) => {
             console.error(err);
         }
     };
-    // var [name, setName] = useState(15);
-    // var [description, setDescription] = useState(100);
- 
-    // };
-    // var moreDescription = () => {
-    //     if (description === 100) {
-    //         setDescription(2000);
-    //     } else {
-    //         setDescription(100);
-    //     }
-    // };
 
     useEffect(() => {
         fetchProducts();
@@ -43,7 +32,7 @@ const ChiTietDonHang = ({ url }) => {
     }, []);
     return (
         <>
-            <div className='donhanglink'>
+            <div className='beautiful-button'>
                 <Link to={"/donhang"}>
                 <i class="fa-solid fa-backward iconback"></i>
                  <span>Đơn hàng</span></Link>
