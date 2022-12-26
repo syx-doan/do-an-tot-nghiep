@@ -31,6 +31,15 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
     useEffect(() => {
         fetchPost();
     }, [data]);
+
+    const [dau, setDau] = useState(200);
+    const readMore = () => {
+        if (dau === 200) {
+            setDau(2000);
+        } else {
+            setDau(200);
+        }
+    };
     return (
         <>
             <div className={cx('f8wrapper')}>
@@ -180,14 +189,21 @@ const Product_Detail = ({ addToCart, detailPro, url }) => {
                                                 <span className={cx('content-info--text')}>
                                                     {data.map((item) => {
                                                         if (item.id_product === product_id) {
-                                                            return <p>{item.description}</p>;
+                                                            return (
+                                                                <p>
+                                                                    {item.description.substr(
+                                                                        0,
+                                                                        dau,
+                                                                    )}
+                                                                </p>
+                                                            );
                                                         } else {
                                                             return <></>;
                                                         }
                                                     })}
                                                 </span>
                                                 <a href className={cx('content-info--link')}>
-                                                    <p>Xem thêm</p>
+                                                    <p onClick={() => readMore()}>Xem thêm</p>
                                                 </a>
                                             </div>
                                         </div>

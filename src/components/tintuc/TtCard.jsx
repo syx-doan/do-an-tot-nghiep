@@ -38,7 +38,7 @@ const Ttcard = ({ handleTinTuc, url }) => {
             <Slider {...settings}>
                 {data.map((value, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('container')}> 
                                     <div className={cx('top')}>

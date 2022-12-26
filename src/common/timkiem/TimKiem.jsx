@@ -65,12 +65,11 @@ function TimKiem({ detailPro, url }) {
                                             to="product_detail"
                                             className={cx('wrapper')}
                                             onClick={(e) => {
-                                              
                                                 detailPro(item.id_product, item.category_id);
                                                 handleHideResult();
                                             }}
                                         >
-                                            <div className={cx('info','d-flex')}>
+                                            <div className={cx('info', 'd-flex')}>
                                                 <div className={cx('img')}>
                                                     <img
                                                         src={`http://localhost/admin_dasboard/upload/product/${item.image}`}

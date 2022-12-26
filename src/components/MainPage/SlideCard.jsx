@@ -10,7 +10,6 @@ const SlideCard = ({ url }) => {
         const fetchPost = async () => {
             try {
                 const response = await axiosClient('slider');
-                console.log(response);
                 setData(response.data);
             } catch (err) {
                 console.error(err);

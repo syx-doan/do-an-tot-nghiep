@@ -36,7 +36,7 @@ function ThanhToan({ clear, handleCancel, isModalOpen, handleOk }) {
         const ngay = `0${date.getDate()}`.slice(-2);
         const thang = `0${date.getMonth()}`.slice(-2);
         const nam = `${date.getFullYear()}`;
-        return `${nam}/${ngay}/${thang}`;
+        return `${nam}/${thang}/${ngay}`;
     }
 
     const now = new Date();
