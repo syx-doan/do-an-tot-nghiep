@@ -80,6 +80,14 @@ function Register() {
 
         if (!isValidate) return;
 
+        axiosClient.post('dangky', {
+            // action: 'login',
+            fullname,
+            password,
+            email,
+            phone,
+        });
+
         try {
             axiosClient.post('dangky', {
                 fullname,
@@ -88,12 +96,13 @@ function Register() {
                 phone,
             });
             success();
-            setTimeout(() => { navigate('/dangnhap');}, 1000);
+            setTimeout(() => {
+                navigate('/dangnhap');
+            }, 1000);
             // console.log('aloalo')
         } catch (error) {
             alert('error');
         }
-
     };
     return (
         <div>
@@ -216,8 +225,6 @@ function Register() {
                                             </div>
                                         </div>
                                     </div>
-
-
 
                                     <div className="form-item">
                                         <div className="row flex-column flex-wrap">
