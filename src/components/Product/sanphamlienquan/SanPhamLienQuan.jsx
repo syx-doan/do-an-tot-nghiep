@@ -26,7 +26,9 @@ const SanPhamLienQuan = ({ detailPro, url }) => {
     return (
         <div className={cx('col p-2-4 t-0 m-12')}>
             <div className={cx('detail__product-right')}>
-                <div className={cx('detail__top-product--head')}>Sản Phẩm Bán Chạy</div>
+                <div className={cx('detail__top-product--head')}>
+                    <p>Sản Phẩm Liên Quan</p>
+                </div>
 
                 {data.map((val) => {
                     if (val.category_id === category_id) {
@@ -42,11 +44,15 @@ const SanPhamLienQuan = ({ detailPro, url }) => {
                                 </Link>
 
                                 <div className={cx('detail__top-product--text')}>
-                                    <h3 className={cx('detail__top-product--name')}>{val.name}</h3>
+                                    <h3 className={cx('detail__top-product--name')}>
+                                        <p>{val.name}</p>
+                                    </h3>
                                     <div className={cx('detail__top-price')}>
                                         <span className={cx('detail__top-product--price')}>
-                                            {val.price.toLocaleString('us-US')}
-                                            <span className={cx('vnd-class')}>₫</span>
+                                            <p>{val.price.toLocaleString('us-US')}</p>
+                                            <span className={cx('vnd-class')}>
+                                                <p>₫</p>
+                                            </span>
                                         </span>
                                     </div>
                                 </div>
