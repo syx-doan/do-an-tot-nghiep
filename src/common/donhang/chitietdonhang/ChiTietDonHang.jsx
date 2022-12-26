@@ -1,8 +1,11 @@
 /* eslint-disable array-callback-return */
+import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '~/utils/http';
-import './donhangchitiet.scss';
+import styles from './donhangchitiet.module.scss';
+
+const cx = classNames.bind(styles);
 const ChiTietDonHang = ({ url }) => {
     const [data, setData] = useState([]);
     const [product, setProduct] = useState([]);
@@ -25,17 +28,6 @@ const ChiTietDonHang = ({ url }) => {
             console.error(err);
         }
     };
-    // var [name, setName] = useState(15);
-    // var [description, setDescription] = useState(100);
- 
-    // };
-    // var moreDescription = () => {
-    //     if (description === 100) {
-    //         setDescription(2000);
-    //     } else {
-    //         setDescription(100);
-    //     }
-    // };
 
     useEffect(() => {
         fetchProducts();
@@ -43,23 +35,24 @@ const ChiTietDonHang = ({ url }) => {
     }, []);
     return (
         <>
-            <div className='donhanglink'>
-                <Link to={"/donhang"}>
-                <i class="fa-solid fa-backward iconback"></i>
-                 <span>Đơn hàng</span></Link>
+            <div className={cx('donhanglink')}>
+                <Link to={'/donhang'}>
+                    <i className="fa-solid fa-backward iconback"></i>
+                    <span>Đơn hàng</span>
+                </Link>
             </div>
-            <div className="donhangchitiet">
-                <section className="ftco-section">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <h3 className=" mb-4 text-center">Đơn hàng chi tiết </h3>
-                                <div className="table-wrap">
-                                    <table className="table">
-                                        <thead className="thead-primary">
+            <div className={cx('donhangchitiet')}>
+                <section className={cx('ftco-section')}>
+                    <div className={cx('container')}>
+                        <div className={cx('row')}>
+                            <div className={cx('col-md-12')}>
+                                <h3 className={cx(' mb-4 text-center')}>Đơn hàng chi tiết </h3>
+                                <div className={cx('table-wrap')}>
+                                    <table className={cx('table')}>
+                                        <thead className={cx('thead-primary')}>
                                             <tr>
                                                 <th>Tên sản phẩm</th>
-                                                <th className="img">&nbsp;</th>
+                                                <th className={cx('img')}>&nbsp;</th>
                                                 <th>Giá</th>
                                                 <th>Mô tả</th>
                                                 <th>số lượng</th>
@@ -73,7 +66,8 @@ const ChiTietDonHang = ({ url }) => {
                                                             <tr>
                                                                 {product.map((value) => {
                                                                     if (
-                                                                        item.id_product === value.id_product
+                                                                        item.id_product ===
+                                                                        value.id_product
                                                                     ) {
                                                                         return (
                                                                             <>
@@ -93,20 +87,20 @@ const ChiTietDonHang = ({ url }) => {
                                                                                     vnđ
                                                                                 </td>
                                                                                 <td
-                                                                                    // onClick={() =>
-                                                                                    //     moreDescription()
-                                                                                    // }
+                                                                                // onClick={() =>
+                                                                                //     moreDescription()
+                                                                                // }
                                                                                 >
-                                                                                    {value.description}
+                                                                                    {
+                                                                                        value.description
+                                                                                    }
                                                                                 </td>
                                                                             </>
                                                                         );
                                                                     }
                                                                 })}
 
-                                                                <td>
-                                                                    {item.total}
-                                                                </td>
+                                                                <td>{item.total}</td>
                                                             </tr>
                                                         </>
                                                     );
