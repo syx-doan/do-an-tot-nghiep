@@ -6,23 +6,37 @@
 	background: #f8f9fd;
 	width: 90%;
     margin-left: 5%;
-    margin-top: 50px;
     margin-bottom: 50px;
 }
-.donhanglink{
-	margin-top: 20px;
-	margin-left: 110px;
-	font-size: 17px;
-	font-family:'Times New Roman', Times, serif;
-	span{
-		color: black !important;
-		margin-left: 10px;
+.beautiful-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #1f71a8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px #0a334e;
+  cursor: pointer;
+  margin-left: 90px;
+  margin-top: 40px;
+  span{
+	margin-left: 5px;
+	color: rgb(228, 218, 218);
+  }
+}
 
-	}
+.beautiful-button:hover {
+  background-color: #2980b9;
+}
 
+.beautiful-button:active {
+  box-shadow: 0 2px #2980b9;
+  transform: translateY(2px);
 }
 .iconback{
-	color: black;
+	color: rgb(224, 218, 218);
 }
 .donhangchitiet .row {
 	display: -webkit-box;

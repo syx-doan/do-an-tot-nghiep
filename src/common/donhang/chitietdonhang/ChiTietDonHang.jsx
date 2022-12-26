@@ -28,17 +28,6 @@ const ChiTietDonHang = ({ url }) => {
             console.error(err);
         }
     };
-    // var [name, setName] = useState(15);
-    // var [description, setDescription] = useState(100);
- 
-    // };
-    // var moreDescription = () => {
-    //     if (description === 100) {
-    //         setDescription(2000);
-    //     } else {
-    //         setDescription(100);
-    //     }
-    // };
 
     useEffect(() => {
         fetchProducts();
